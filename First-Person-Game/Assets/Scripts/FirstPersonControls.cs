@@ -26,12 +26,20 @@ public class FirstPersonControls : MonoBehaviour
     public Transform firePoint; // Point from which the projectile is fired
     public float projectileSpeed = 20f; // Speed at which the projectile is fired
     public float pickUpRange = 3f; // Range within which objects can be picked up
-    private bool holdingGun = true;
+    private bool holdingGun = false;
 
     [Header("PICKING UP SETTINGS")]
     [Space(5)]
     public Transform holdPosition; // Position where the picked-up object will be held
     private GameObject heldObject; // Reference to the currently held object
+
+    [Header("CROUCH SETTINGS")]
+    [Space(5)]
+    public float crouchHeight = 1f;//height of the player when crouching
+    public float standingHeight = 2f;//Height of the player when standing 
+    public float crouchSpeed = 1.5f;//Speed at which the player is moving while crouching
+    private bool isCrouching = false; //Whether player is currently crouching
+
 
 
     private void Awake()
@@ -64,8 +72,11 @@ public class FirstPersonControls : MonoBehaviour
 
         // Subscribe to the pick-up input event
         playerInput.Player.PickUp.performed += ctx => PickUpObject(); // Call the PickUpObject method when pick-up input is performed
+        
+        
+        playerInput.Player.Crouch.performed += ctx => ToggleCrouch(); // Call the ToggleCrouchObject method when pick-up input is performed
 
-
+        
     }
 
     private void Update()
@@ -83,6 +94,16 @@ public class FirstPersonControls : MonoBehaviour
 
         // Transform direction from local to world space
         move = transform.TransformDirection(move);
+
+        float currentSpeed;
+        if (isCrouching)
+        {
+            currentSpeed = crouchSpeed;
+        }
+        else
+        {
+            currentSpeed = moveSpeed;
+        }
 
         // Move the character controller based on the movement vector and speed
         characterController.Move(move * moveSpeed * Time.deltaTime);
@@ -186,6 +207,20 @@ public class FirstPersonControls : MonoBehaviour
 
                 holdingGun = true;
             }
+        }
+    }
+
+    public void ToggleCrouch()
+    {
+        if (isCrouching)
+        {
+            characterController.height = standingHeight;
+            isCrouching = false;
+        }
+        else
+        {
+            characterController.height = crouchHeight;
+            isCrouching = true;
         }
     }
 
