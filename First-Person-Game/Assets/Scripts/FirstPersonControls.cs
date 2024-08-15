@@ -2,6 +2,8 @@ using System.CodeDom.Compiler;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEditor;
 
 public class FirstPersonControls : MonoBehaviour
 {
@@ -48,12 +50,23 @@ public class FirstPersonControls : MonoBehaviour
     public string doorOpenAnimName, doorCloseAnimName;
     public LayerMask layers;
 
+    [Header("INSPECTION")]
+    [Space(5)]
+    public GameObject descriptionText1;
+    public GameObject InspectionEye;
+    
 
 
     private void Awake()
     {
         // Get and store the CharacterController component attached to this GameObject
         characterController = GetComponent<CharacterController>();
+    }
+
+    private void Start()
+    {
+        descriptionText1.SetActive(false);
+        InspectionEye.SetActive(false);
     }
 
     private void OnEnable()
@@ -203,7 +216,7 @@ public class FirstPersonControls : MonoBehaviour
                 heldObject.transform.rotation = holdPosition.rotation;
                 heldObject.transform.parent = holdPosition;
             }
-            else if (hit.collider.CompareTag("Gun"))
+            else if (hit.collider.CompareTag("Magic Staff"))
             {
                 // Pick up the object
                 heldObject = hit.collider.gameObject;
@@ -215,8 +228,27 @@ public class FirstPersonControls : MonoBehaviour
                 heldObject.transform.parent = holdPosition;
 
                 holdingGun = true;
+                StartCoroutine(InspectionDelay());
+
+
             }
         }
+    }
+
+    IEnumerator InspectionDelay()
+    {
+        yield return new WaitForSeconds(0.1f);
+        if(heldObject.name == "Magic Staff")
+        {
+            descriptionText1.SetActive(true);
+            InspectionEye.SetActive(true);
+        }
+        yield return new WaitForSeconds(5f);
+        Destroy(descriptionText1);
+        Destroy(InspectionEye);
+
+
+
     }
 
     public void ToggleCrouch()
