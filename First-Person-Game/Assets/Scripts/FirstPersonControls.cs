@@ -1,30 +1,72 @@
+using System.CodeDom.Compiler;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.ShaderGraph;
 using UnityEngine;
-using UnityEngine.InputSystem;
+using TMPro;
+using UnityEditor;
 
 public class FirstPersonControls : MonoBehaviour
 {
+
+    [Header("MOVEMENT SETTINGS")]
+    [Space(5)]
     // Public variables to set movement and look speed, and the player camera
     public float moveSpeed; // Speed at which the player moves
     public float lookSpeed; // Sensitivity of the camera movement
     public float gravity = -9.81f; // Gravity value
+    public float jumpHeight = 1.0f; // Height of the jump
     public Transform playerCamera; // Reference to the player's camera
-
-    // Private variables to store input values and the character controller
+                                   // Private variables to store input values and the character controller
     private Vector2 moveInput; // Stores the movement input from the player
     private Vector2 lookInput; // Stores the look input from the player
     private float verticalLookRotation = 0f; // Keeps track of vertical camera rotation for clamping
     private Vector3 velocity; // Velocity of the player
-
     private CharacterController characterController; // Reference to the CharacterController component
+    public GameObject crosshair;
+
+    [Header("SHOOTING SETTINGS")]
+    [Space(5)]
+    public GameObject projectilePrefab; // Projectile prefab for shooting
+    public Transform firePoint; // Point from which the projectile is fired
+    public float projectileSpeed = 20f; // Speed at which the projectile is fired
+    public float pickUpRange = 3f; // Range within which objects can be picked up
+    private bool holdingGun = false;
+
+    [Header("PICKING UP SETTINGS")]
+    [Space(5)]
+    public Transform holdPosition; // Position where the picked-up object will be held
+    private GameObject heldObject; // Reference to the currently held object
+
+    [Header("CROUCH SETTINGS")]
+    [Space(5)]
+    public float crouchHeight = 1f;//height of the player when crouching
+    public float standingHeight = 2f;//Height of the player when standing 
+    public float crouchSpeed = 1.5f;//Speed at which the player is moving while crouching
+    private bool isCrouching = false; //Whether player is currently crouching
+
+    [Header("DOOR SETTINGS")]
+    [Space(5)]
+    public float Interactiondistance = 3f;
+    public string doorOpenAnimName, doorCloseAnimName;
+    public LayerMask layers;
+
+    [Header("INSPECTION")]
+    [Space(5)]
+    public GameObject descriptionText1;
+    public GameObject InspectionEye;
+    
 
 
     private void Awake()
     {
         // Get and store the CharacterController component attached to this GameObject
         characterController = GetComponent<CharacterController>();
+    }
+
+    private void Start()
+    {
+        descriptionText1.SetActive(false);
+        InspectionEye.SetActive(false);
     }
 
     private void OnEnable()
@@ -42,6 +84,19 @@ public class FirstPersonControls : MonoBehaviour
         // Subscribe to the look input events
         playerInput.Player.LookAround.performed += ctx => lookInput = ctx.ReadValue<Vector2>(); // Update lookInput when look input is performed
         playerInput.Player.LookAround.canceled += ctx => lookInput = Vector2.zero; // Reset lookInput when look input is canceled
+
+        // Subscribe to the jump input event
+        playerInput.Player.Jump.performed += ctx => Jump(); // Call the Jump method when jump input is performed
+
+        // Subscribe to the shoot input event
+        playerInput.Player.Shoot.performed += ctx => Shoot(); // Call the Shoot method when shoot input is performed
+
+        // Subscribe to the pick-up input event
+        playerInput.Player.PickUp.performed += ctx => PickUpObject(); // Call the PickUpObject method when pick-up input is performed
+        playerInput.Player.Interact.performed += ctx => DoorInteraction(); // Call the PickUpObject method when pick-up input is performed
+        
+        
+        playerInput.Player.Crouch.performed += ctx => ToggleCrouch(); // Call the ToggleCrouchObject method when pick-up input is performed
 
         
     }
@@ -61,6 +116,16 @@ public class FirstPersonControls : MonoBehaviour
 
         // Transform direction from local to world space
         move = transform.TransformDirection(move);
+
+        float currentSpeed;
+        if (isCrouching)
+        {
+            currentSpeed = crouchSpeed;
+        }
+        else
+        {
+            currentSpeed = moveSpeed;
+        }
 
         // Move the character controller based on the movement vector and speed
         characterController.Move(move * moveSpeed * Time.deltaTime);
@@ -94,5 +159,143 @@ public class FirstPersonControls : MonoBehaviour
         characterController.Move(velocity * Time.deltaTime); // Apply the velocity to the character
     }
 
-    
+    public void Jump()
+    {
+        if (characterController.isGrounded)
+        {
+            // Calculate the jump velocity
+            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+        }
+    }
+
+    public void Shoot()
+    {
+        if (holdingGun == true)
+        {
+            // Instantiate the projectile at the fire point
+            GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
+
+            // Get the Rigidbody component of the projectile and set its velocity
+            Rigidbody rb = projectile.GetComponent<Rigidbody>();
+            rb.velocity = firePoint.forward * projectileSpeed;
+
+            // Destroy the projectile after 3 seconds
+            Destroy(projectile, 3f);
+        }
+    }
+
+    public void PickUpObject()
+    {
+        // Check if we are already holding an object
+        if (heldObject != null)
+        {
+            heldObject.GetComponent<Rigidbody>().isKinematic = false; // Enable physics
+            heldObject.transform.parent = null;
+            holdingGun = false;
+        }
+
+        // Perform a raycast from the camera's position forward
+        Ray ray = new Ray(playerCamera.position, playerCamera.forward);
+        RaycastHit hit;
+
+        // Debugging: Draw the ray in the Scene view
+        Debug.DrawRay(playerCamera.position, playerCamera.forward * pickUpRange, Color.red, 2f);
+
+
+        if (Physics.Raycast(ray, out hit, pickUpRange))
+        {
+            // Check if the hit object has the tag "PickUp"
+            if (hit.collider.CompareTag("PickUp"))
+            {
+                // Pick up the object
+                heldObject = hit.collider.gameObject;
+                heldObject.GetComponent<Rigidbody>().isKinematic = true; // Disable physics
+
+                // Attach the object to the hold position
+                heldObject.transform.position = holdPosition.position;
+                heldObject.transform.rotation = holdPosition.rotation;
+                heldObject.transform.parent = holdPosition;
+            }
+            else if (hit.collider.CompareTag("Magic Staff"))
+            {
+                // Pick up the object
+                heldObject = hit.collider.gameObject;
+                heldObject.GetComponent<Rigidbody>().isKinematic = true; // Disable physics
+
+                // Attach the object to the hold position
+                heldObject.transform.position = holdPosition.position;
+                heldObject.transform.rotation = holdPosition.rotation;
+                heldObject.transform.parent = holdPosition;
+
+                holdingGun = true;
+                StartCoroutine(InspectionDelay());
+
+
+            }
+        }
+    }
+
+    IEnumerator InspectionDelay()
+    {
+        yield return new WaitForSeconds(0.1f);
+        if(heldObject.name == "Magic Staff")
+        {
+            descriptionText1.SetActive(true);
+            InspectionEye.SetActive(true);
+        }
+        yield return new WaitForSeconds(5f);
+        Destroy(descriptionText1);
+        Destroy(InspectionEye);
+
+
+
+    }
+
+    public void ToggleCrouch()
+    {
+        if (isCrouching)
+        {
+            characterController.height = standingHeight;
+            isCrouching = false;
+        }
+        else
+        {
+            characterController.height = crouchHeight;
+            isCrouching = true;
+        }
+    }
+
+    public void DoorInteraction()
+    {
+        Ray ray = new Ray(playerCamera.position, playerCamera.forward);
+        RaycastHit hit;
+
+        Debug.DrawRay(playerCamera.position, playerCamera.forward * Interactiondistance, Color.blue, 2f);
+
+        if (Physics.Raycast(ray, out hit, Interactiondistance, layers))
+        {
+            if (hit.collider.CompareTag("Door"))
+            {
+                crosshair.SetActive(true);
+                hit.collider.GetComponent<Door>().OpenClose();
+
+
+              
+            }
+            else
+            {
+                crosshair.SetActive(false);
+            }
+        }
+        else
+        {
+            crosshair.SetActive(false);
+        }
+            
+        
+           
+        
+    }
+
+
 }
