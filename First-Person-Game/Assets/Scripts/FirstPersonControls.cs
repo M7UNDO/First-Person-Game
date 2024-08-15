@@ -1,3 +1,4 @@
+using System.CodeDom.Compiler;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,6 +20,7 @@ public class FirstPersonControls : MonoBehaviour
     private float verticalLookRotation = 0f; // Keeps track of vertical camera rotation for clamping
     private Vector3 velocity; // Velocity of the player
     private CharacterController characterController; // Reference to the CharacterController component
+    public GameObject crosshair;
 
     [Header("SHOOTING SETTINGS")]
     [Space(5)]
@@ -39,6 +41,12 @@ public class FirstPersonControls : MonoBehaviour
     public float standingHeight = 2f;//Height of the player when standing 
     public float crouchSpeed = 1.5f;//Speed at which the player is moving while crouching
     private bool isCrouching = false; //Whether player is currently crouching
+
+    [Header("DOOR SETTINGS")]
+    [Space(5)]
+    public float Interactiondistance = 3f;
+    public string doorOpenAnimName, doorCloseAnimName;
+    public LayerMask layers;
 
 
 
@@ -72,6 +80,7 @@ public class FirstPersonControls : MonoBehaviour
 
         // Subscribe to the pick-up input event
         playerInput.Player.PickUp.performed += ctx => PickUpObject(); // Call the PickUpObject method when pick-up input is performed
+        playerInput.Player.Interact.performed += ctx => DoorInteraction(); // Call the PickUpObject method when pick-up input is performed
         
         
         playerInput.Player.Crouch.performed += ctx => ToggleCrouch(); // Call the ToggleCrouchObject method when pick-up input is performed
@@ -222,6 +231,38 @@ public class FirstPersonControls : MonoBehaviour
             characterController.height = crouchHeight;
             isCrouching = true;
         }
+    }
+
+    public void DoorInteraction()
+    {
+        Ray ray = new Ray(playerCamera.position, playerCamera.forward);
+        RaycastHit hit;
+
+        Debug.DrawRay(playerCamera.position, playerCamera.forward * Interactiondistance, Color.blue, 2f);
+
+        if (Physics.Raycast(ray, out hit, Interactiondistance, layers))
+        {
+            if (hit.collider.CompareTag("Door"))
+            {
+                crosshair.SetActive(true);
+                hit.collider.GetComponent<Door>().OpenClose();
+
+
+              
+            }
+            else
+            {
+                crosshair.SetActive(false);
+            }
+        }
+        else
+        {
+            crosshair.SetActive(false);
+        }
+            
+        
+           
+        
     }
 
 
