@@ -503,11 +503,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      propertyPath: m_TagString
-      value: Examinable
-      objectReference: {fileID: 0}
     - target: {fileID: -8143710011712545758, guid: 18f383a943edc1e4694f1db4693c2732,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -571,10 +566,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 86757162}
-    - targetCorrespondingSourceObject: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 86757164}
   m_SourcePrefab: {fileID: 100100000, guid: 18f383a943edc1e4694f1db4693c2732, type: 3}
 --- !u!1 &86757161 stripped
 GameObject:
@@ -603,20 +594,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.0000005, y: 2.0000002, z: 1.9999996}
   m_Center: {x: 0, y: 0, z: -0.00000047683716}
---- !u!114 &86757164
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 86757161}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e880132b8a4fdb94ea0aea8ad5cb93cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemDescription: It's a bookshelf filled with ancient texts about spells and potions
-  itemDescriptionText: {fileID: 1019713670}
 --- !u!1 &106180575
 GameObject:
   m_ObjectHideFlags: 0
@@ -892,11 +869,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      propertyPath: m_TagString
-      value: Examinable
-      objectReference: {fileID: 0}
     - target: {fileID: -8143710011712545758, guid: 18f383a943edc1e4694f1db4693c2732,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -960,10 +932,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 124494322}
-    - targetCorrespondingSourceObject: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 124494324}
   m_SourcePrefab: {fileID: 100100000, guid: 18f383a943edc1e4694f1db4693c2732, type: 3}
 --- !u!1 &124494321 stripped
 GameObject:
@@ -992,20 +960,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.0000005, y: 2.0000002, z: 1.9999996}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &124494324
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 124494321}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e880132b8a4fdb94ea0aea8ad5cb93cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemDescription: It's a bookshelf filled with ancient texts about spells and potions
-  itemDescriptionText: {fileID: 1019713670}
 --- !u!1 &144600871
 GameObject:
   m_ObjectHideFlags: 0
@@ -1817,11 +1771,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      propertyPath: m_TagString
-      value: Examinable
-      objectReference: {fileID: 0}
     - target: {fileID: -8143710011712545758, guid: 18f383a943edc1e4694f1db4693c2732,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1885,10 +1834,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 311357323}
-    - targetCorrespondingSourceObject: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 311357325}
   m_SourcePrefab: {fileID: 100100000, guid: 18f383a943edc1e4694f1db4693c2732, type: 3}
 --- !u!1 &311357322 stripped
 GameObject:
@@ -1917,20 +1862,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.0000005, y: 2.0000002, z: 1.9999996}
   m_Center: {x: 0.0000019073486, y: 0, z: 0}
---- !u!114 &311357325
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 311357322}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e880132b8a4fdb94ea0aea8ad5cb93cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemDescription: It's a bookshelf filled with ancient texts about spells and potions
-  itemDescriptionText: {fileID: 1019713670}
 --- !u!1 &320992650
 GameObject:
   m_ObjectHideFlags: 0
@@ -2379,11 +2310,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      propertyPath: m_TagString
-      value: Examinable
-      objectReference: {fileID: 0}
     - target: {fileID: -8143710011712545758, guid: 18f383a943edc1e4694f1db4693c2732,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -2447,10 +2373,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 385398963}
-    - targetCorrespondingSourceObject: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 385398965}
   m_SourcePrefab: {fileID: 100100000, guid: 18f383a943edc1e4694f1db4693c2732, type: 3}
 --- !u!1 &385398962 stripped
 GameObject:
@@ -2479,20 +2401,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.0000005, y: 2.0000002, z: 1.9999996}
   m_Center: {x: 0, y: -0.0000009536743, z: -0.00000011920929}
---- !u!114 &385398965
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 385398962}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e880132b8a4fdb94ea0aea8ad5cb93cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemDescription: It's a bookshelf filled with ancient texts about spells and potions
-  itemDescriptionText: {fileID: 1019713670}
 --- !u!1001 &392310042
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2555,11 +2463,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      propertyPath: m_TagString
-      value: Examinable
       objectReference: {fileID: 0}
     - target: {fileID: -8143710011712545758, guid: 18f383a943edc1e4694f1db4693c2732,
         type: 3}
@@ -2624,10 +2527,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 392310044}
-    - targetCorrespondingSourceObject: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 392310046}
   m_SourcePrefab: {fileID: 100100000, guid: 18f383a943edc1e4694f1db4693c2732, type: 3}
 --- !u!1 &392310043 stripped
 GameObject:
@@ -2656,20 +2555,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.0000005, y: 2.0000002, z: 1.9999996}
   m_Center: {x: 0, y: 0.000000029802322, z: -0.00000023841858}
---- !u!114 &392310046
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 392310043}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e880132b8a4fdb94ea0aea8ad5cb93cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemDescription: It's a bookshelf filled with ancient texts about spells and potions
-  itemDescriptionText: {fileID: 1019713670}
 --- !u!1001 &396250430
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2732,11 +2617,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      propertyPath: m_TagString
-      value: Examinable
       objectReference: {fileID: 0}
     - target: {fileID: -8143710011712545758, guid: 18f383a943edc1e4694f1db4693c2732,
         type: 3}
@@ -2801,10 +2681,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 396250432}
-    - targetCorrespondingSourceObject: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 396250434}
   m_SourcePrefab: {fileID: 100100000, guid: 18f383a943edc1e4694f1db4693c2732, type: 3}
 --- !u!1 &396250431 stripped
 GameObject:
@@ -2833,20 +2709,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.0000005, y: 2.0000002, z: 1.9999996}
   m_Center: {x: 0.0000019073486, y: 0, z: 0}
---- !u!114 &396250434
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 396250431}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e880132b8a4fdb94ea0aea8ad5cb93cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemDescription: It's a bookshelf filled with ancient texts about spells and potions
-  itemDescriptionText: {fileID: 1019713670}
 --- !u!1 &411736396
 GameObject:
   m_ObjectHideFlags: 0
@@ -4184,11 +4046,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      propertyPath: m_TagString
-      value: Examinable
-      objectReference: {fileID: 0}
     - target: {fileID: -8143710011712545758, guid: 18f383a943edc1e4694f1db4693c2732,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -4252,10 +4109,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 650484192}
-    - targetCorrespondingSourceObject: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 650484194}
   m_SourcePrefab: {fileID: 100100000, guid: 18f383a943edc1e4694f1db4693c2732, type: 3}
 --- !u!1 &650484191 stripped
 GameObject:
@@ -4284,20 +4137,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.0000005, y: 2.0000002, z: 1.9999996}
   m_Center: {x: 0.0000038146973, y: 0, z: -0.00000047683716}
---- !u!114 &650484194
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 650484191}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e880132b8a4fdb94ea0aea8ad5cb93cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemDescription: It's a bookshelf filled with ancient texts about spells and potions
-  itemDescriptionText: {fileID: 1019713670}
 --- !u!1 &663797640
 GameObject:
   m_ObjectHideFlags: 0
@@ -4797,11 +4636,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      propertyPath: m_TagString
-      value: Examinable
-      objectReference: {fileID: 0}
     - target: {fileID: -8143710011712545758, guid: 18f383a943edc1e4694f1db4693c2732,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -4865,10 +4699,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 696174787}
-    - targetCorrespondingSourceObject: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 696174789}
   m_SourcePrefab: {fileID: 100100000, guid: 18f383a943edc1e4694f1db4693c2732, type: 3}
 --- !u!1 &696174786 stripped
 GameObject:
@@ -4897,20 +4727,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.0000005, y: 2.0000002, z: 1.9999996}
   m_Center: {x: 0.0000038146973, y: 0.00000047683716, z: 0}
---- !u!114 &696174789
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 696174786}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e880132b8a4fdb94ea0aea8ad5cb93cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemDescription: It's a bookshelf filled with ancient texts about spells and potions
-  itemDescriptionText: {fileID: 1019713670}
 --- !u!1 &710132316
 GameObject:
   m_ObjectHideFlags: 0
@@ -5080,11 +4896,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      propertyPath: m_TagString
-      value: Examinable
-      objectReference: {fileID: 0}
     - target: {fileID: -8143710011712545758, guid: 18f383a943edc1e4694f1db4693c2732,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -5148,10 +4959,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 718245357}
-    - targetCorrespondingSourceObject: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 718245359}
   m_SourcePrefab: {fileID: 100100000, guid: 18f383a943edc1e4694f1db4693c2732, type: 3}
 --- !u!1 &718245356 stripped
 GameObject:
@@ -5180,20 +4987,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.0000005, y: 2.0000002, z: 1.9999996}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &718245359
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 718245356}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e880132b8a4fdb94ea0aea8ad5cb93cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemDescription: It's a bookshelf filled with ancient texts about spells and potions
-  itemDescriptionText: {fileID: 1019713670}
 --- !u!1 &723491202
 GameObject:
   m_ObjectHideFlags: 0
@@ -5311,11 +5104,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      propertyPath: m_TagString
-      value: Examinable
-      objectReference: {fileID: 0}
     - target: {fileID: -8143710011712545758, guid: 18f383a943edc1e4694f1db4693c2732,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -5379,10 +5167,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 734057082}
-    - targetCorrespondingSourceObject: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 734057084}
   m_SourcePrefab: {fileID: 100100000, guid: 18f383a943edc1e4694f1db4693c2732, type: 3}
 --- !u!1 &734057081 stripped
 GameObject:
@@ -5411,20 +5195,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.0000005, y: 2.0000002, z: 1.9999996}
   m_Center: {x: 0, y: -0.00000047683716, z: 0.00000011920929}
---- !u!114 &734057084
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 734057081}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e880132b8a4fdb94ea0aea8ad5cb93cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemDescription: It's a bookshelf filled with ancient texts about spells and potions
-  itemDescriptionText: {fileID: 1019713670}
 --- !u!1 &741069617
 GameObject:
   m_ObjectHideFlags: 0
@@ -5607,11 +5377,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      propertyPath: m_TagString
-      value: Examinable
-      objectReference: {fileID: 0}
     - target: {fileID: -8143710011712545758, guid: 18f383a943edc1e4694f1db4693c2732,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -5675,10 +5440,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 742039377}
-    - targetCorrespondingSourceObject: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 742039379}
   m_SourcePrefab: {fileID: 100100000, guid: 18f383a943edc1e4694f1db4693c2732, type: 3}
 --- !u!1 &742039376 stripped
 GameObject:
@@ -5707,20 +5468,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.0000005, y: 2.0000002, z: 1.9999996}
   m_Center: {x: 0.0000019073486, y: -0.00000047683716, z: 0.00000011920929}
---- !u!114 &742039379
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 742039376}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e880132b8a4fdb94ea0aea8ad5cb93cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemDescription: It's a bookshelf filled with ancient texts about spells and potions
-  itemDescriptionText: {fileID: 1019713670}
 --- !u!1 &743963172
 GameObject:
   m_ObjectHideFlags: 0
@@ -6254,11 +6001,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      propertyPath: m_TagString
-      value: Examinable
-      objectReference: {fileID: 0}
     - target: {fileID: -8143710011712545758, guid: 18f383a943edc1e4694f1db4693c2732,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -6322,10 +6064,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 882440771}
-    - targetCorrespondingSourceObject: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 882440773}
   m_SourcePrefab: {fileID: 100100000, guid: 18f383a943edc1e4694f1db4693c2732, type: 3}
 --- !u!1 &882440770 stripped
 GameObject:
@@ -6354,20 +6092,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.0000005, y: 2.0000002, z: 1.9999996}
   m_Center: {x: 0, y: -0.00000047683716, z: -0.00000011920929}
---- !u!114 &882440773
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 882440770}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e880132b8a4fdb94ea0aea8ad5cb93cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemDescription: It's a bookshelf filled with ancient texts about spells and potions
-  itemDescriptionText: {fileID: 1019713670}
 --- !u!1 &907626142
 GameObject:
   m_ObjectHideFlags: 0
@@ -6971,11 +6695,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      propertyPath: m_TagString
-      value: Examinable
-      objectReference: {fileID: 0}
     - target: {fileID: -8143710011712545758, guid: 18f383a943edc1e4694f1db4693c2732,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -7039,10 +6758,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 980123316}
-    - targetCorrespondingSourceObject: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 980123318}
   m_SourcePrefab: {fileID: 100100000, guid: 18f383a943edc1e4694f1db4693c2732, type: 3}
 --- !u!1 &980123315 stripped
 GameObject:
@@ -7071,20 +6786,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.0000005, y: 2.0000002, z: 1.9999996}
   m_Center: {x: 0.0000038146973, y: 0.00000023841858, z: -0.00000047683716}
---- !u!114 &980123318
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 980123315}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e880132b8a4fdb94ea0aea8ad5cb93cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemDescription: It's a bookshelf filled with ancient texts about spells and potions
-  itemDescriptionText: {fileID: 1019713670}
 --- !u!1 &995770357
 GameObject:
   m_ObjectHideFlags: 0
@@ -7201,11 +6902,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      propertyPath: m_TagString
-      value: Examinable
-      objectReference: {fileID: 0}
     - target: {fileID: -8143710011712545758, guid: 18f383a943edc1e4694f1db4693c2732,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -7269,10 +6965,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 997370239}
-    - targetCorrespondingSourceObject: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 997370241}
   m_SourcePrefab: {fileID: 100100000, guid: 18f383a943edc1e4694f1db4693c2732, type: 3}
 --- !u!1 &997370238 stripped
 GameObject:
@@ -7301,20 +6993,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2, y: 1.9999996, z: 1.9999996}
   m_Center: {x: 0, y: -0.0000009536743, z: -0.00000023841858}
---- !u!114 &997370241
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 997370238}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e880132b8a4fdb94ea0aea8ad5cb93cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemDescription: It's a bookshelf filled with ancient texts about spells and potions
-  itemDescriptionText: {fileID: 1019713670}
 --- !u!1 &1016909612
 GameObject:
   m_ObjectHideFlags: 0
@@ -7917,11 +7595,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      propertyPath: m_TagString
-      value: Examinable
-      objectReference: {fileID: 0}
     - target: {fileID: -8143710011712545758, guid: 18f383a943edc1e4694f1db4693c2732,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -7985,10 +7658,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1067650851}
-    - targetCorrespondingSourceObject: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1067650853}
   m_SourcePrefab: {fileID: 100100000, guid: 18f383a943edc1e4694f1db4693c2732, type: 3}
 --- !u!1 &1067650850 stripped
 GameObject:
@@ -8017,20 +7686,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2, y: 1.9999996, z: 1.9999996}
   m_Center: {x: 0, y: -0.0000009536743, z: -0.00000047683716}
---- !u!114 &1067650853
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1067650850}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e880132b8a4fdb94ea0aea8ad5cb93cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemDescription: It's a bookshelf filled with ancient texts about spells and potions
-  itemDescriptionText: {fileID: 1019713670}
 --- !u!1 &1077463483
 GameObject:
   m_ObjectHideFlags: 0
@@ -8200,11 +7855,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      propertyPath: m_TagString
-      value: Examinable
-      objectReference: {fileID: 0}
     - target: {fileID: -8143710011712545758, guid: 18f383a943edc1e4694f1db4693c2732,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -8268,10 +7918,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1082957349}
-    - targetCorrespondingSourceObject: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1082957351}
   m_SourcePrefab: {fileID: 100100000, guid: 18f383a943edc1e4694f1db4693c2732, type: 3}
 --- !u!1 &1082957348 stripped
 GameObject:
@@ -8300,20 +7946,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.0000005, y: 2.0000002, z: 1.9999996}
   m_Center: {x: -0.0000019073486, y: 0, z: 0}
---- !u!114 &1082957351
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1082957348}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e880132b8a4fdb94ea0aea8ad5cb93cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemDescription: It's a bookshelf filled with ancient texts about spells and potions
-  itemDescriptionText: {fileID: 1019713670}
 --- !u!1001 &1085928014
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8376,11 +8008,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      propertyPath: m_TagString
-      value: Examinable
       objectReference: {fileID: 0}
     - target: {fileID: -8143710011712545758, guid: 18f383a943edc1e4694f1db4693c2732,
         type: 3}
@@ -8445,10 +8072,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1085928016}
-    - targetCorrespondingSourceObject: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1085928018}
   m_SourcePrefab: {fileID: 100100000, guid: 18f383a943edc1e4694f1db4693c2732, type: 3}
 --- !u!1 &1085928015 stripped
 GameObject:
@@ -8477,20 +8100,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.0000005, y: 2.0000002, z: 1.9999996}
   m_Center: {x: 0, y: 0.00000023841858, z: 0}
---- !u!114 &1085928018
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1085928015}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e880132b8a4fdb94ea0aea8ad5cb93cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemDescription: It's a bookshelf filled with ancient texts about spells and potions
-  itemDescriptionText: {fileID: 1019713670}
 --- !u!1 &1090903885
 GameObject:
   m_ObjectHideFlags: 0
@@ -8660,11 +8269,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      propertyPath: m_TagString
-      value: Examinable
-      objectReference: {fileID: 0}
     - target: {fileID: -8143710011712545758, guid: 18f383a943edc1e4694f1db4693c2732,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -8728,10 +8332,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1097343023}
-    - targetCorrespondingSourceObject: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1097343025}
   m_SourcePrefab: {fileID: 100100000, guid: 18f383a943edc1e4694f1db4693c2732, type: 3}
 --- !u!1 &1097343022 stripped
 GameObject:
@@ -8760,20 +8360,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.0000005, y: 2.0000002, z: 1.9999996}
   m_Center: {x: 0.0000019073486, y: 0.00000047683716, z: 0}
---- !u!114 &1097343025
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1097343022}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e880132b8a4fdb94ea0aea8ad5cb93cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemDescription: It's a bookshelf filled with ancient texts about spells and potions
-  itemDescriptionText: {fileID: 1019713670}
 --- !u!1001 &1100705724
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8836,11 +8422,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      propertyPath: m_TagString
-      value: Examinable
       objectReference: {fileID: 0}
     - target: {fileID: -8143710011712545758, guid: 18f383a943edc1e4694f1db4693c2732,
         type: 3}
@@ -8905,10 +8486,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1100705726}
-    - targetCorrespondingSourceObject: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1100705728}
   m_SourcePrefab: {fileID: 100100000, guid: 18f383a943edc1e4694f1db4693c2732, type: 3}
 --- !u!1 &1100705725 stripped
 GameObject:
@@ -8937,20 +8514,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2, y: 1.9999996, z: 1.9999996}
   m_Center: {x: 0, y: 0, z: -0.00000047683716}
---- !u!114 &1100705728
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1100705725}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e880132b8a4fdb94ea0aea8ad5cb93cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemDescription: It's a bookshelf filled with ancient texts about spells and potions
-  itemDescriptionText: {fileID: 1019713670}
 --- !u!1001 &1107032511
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9013,11 +8576,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      propertyPath: m_TagString
-      value: Examinable
       objectReference: {fileID: 0}
     - target: {fileID: -8143710011712545758, guid: 18f383a943edc1e4694f1db4693c2732,
         type: 3}
@@ -9082,10 +8640,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1107032513}
-    - targetCorrespondingSourceObject: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1107032515}
   m_SourcePrefab: {fileID: 100100000, guid: 18f383a943edc1e4694f1db4693c2732, type: 3}
 --- !u!1 &1107032512 stripped
 GameObject:
@@ -9114,20 +8668,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.0000005, y: 2.0000002, z: 1.9999996}
   m_Center: {x: 0, y: 0, z: 0.00000011920929}
---- !u!114 &1107032515
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1107032512}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e880132b8a4fdb94ea0aea8ad5cb93cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemDescription: It's a bookshelf filled with ancient texts about spells and potions
-  itemDescriptionText: {fileID: 1019713670}
 --- !u!1 &1129883201
 GameObject:
   m_ObjectHideFlags: 0
@@ -9403,11 +8943,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      propertyPath: m_TagString
-      value: Examinable
-      objectReference: {fileID: 0}
     - target: {fileID: -8143710011712545758, guid: 18f383a943edc1e4694f1db4693c2732,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -9471,10 +9006,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1141906782}
-    - targetCorrespondingSourceObject: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1141906784}
   m_SourcePrefab: {fileID: 100100000, guid: 18f383a943edc1e4694f1db4693c2732, type: 3}
 --- !u!1 &1141906781 stripped
 GameObject:
@@ -9503,20 +9034,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.0000005, y: 2.0000002, z: 1.9999996}
   m_Center: {x: 0, y: 0.00000047683716, z: 0}
---- !u!114 &1141906784
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1141906781}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e880132b8a4fdb94ea0aea8ad5cb93cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemDescription: It's a bookshelf filled with ancient texts about spells and potions
-  itemDescriptionText: {fileID: 1019713670}
 --- !u!1 &1142865979
 GameObject:
   m_ObjectHideFlags: 0
@@ -9859,11 +9376,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      propertyPath: m_TagString
-      value: Examinable
-      objectReference: {fileID: 0}
     - target: {fileID: -8143710011712545758, guid: 18f383a943edc1e4694f1db4693c2732,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -9927,10 +9439,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1179973373}
-    - targetCorrespondingSourceObject: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1179973375}
   m_SourcePrefab: {fileID: 100100000, guid: 18f383a943edc1e4694f1db4693c2732, type: 3}
 --- !u!1 &1179973372 stripped
 GameObject:
@@ -9959,20 +9467,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2, y: 1.9999996, z: 1.9999996}
   m_Center: {x: 0, y: 0, z: -0.00000047683716}
---- !u!114 &1179973375
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1179973372}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e880132b8a4fdb94ea0aea8ad5cb93cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemDescription: It's a bookshelf filled with ancient texts about spells and potions
-  itemDescriptionText: {fileID: 1019713670}
 --- !u!1 &1182249425
 GameObject:
   m_ObjectHideFlags: 0
@@ -10566,11 +10060,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      propertyPath: m_TagString
-      value: Examinable
-      objectReference: {fileID: 0}
     - target: {fileID: -8143710011712545758, guid: 18f383a943edc1e4694f1db4693c2732,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -10634,10 +10123,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1239859322}
-    - targetCorrespondingSourceObject: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1239859324}
   m_SourcePrefab: {fileID: 100100000, guid: 18f383a943edc1e4694f1db4693c2732, type: 3}
 --- !u!1 &1239859321 stripped
 GameObject:
@@ -10666,20 +10151,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.0000005, y: 2.0000002, z: 1.9999996}
   m_Center: {x: 0, y: 0.00000071525574, z: -0.00000047683716}
---- !u!114 &1239859324
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1239859321}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e880132b8a4fdb94ea0aea8ad5cb93cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemDescription: It's a bookshelf filled with ancient texts about spells and potions
-  itemDescriptionText: {fileID: 1019713670}
 --- !u!1 &1240509463
 GameObject:
   m_ObjectHideFlags: 0
@@ -11378,11 +10849,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      propertyPath: m_TagString
-      value: Examinable
-      objectReference: {fileID: 0}
     - target: {fileID: -8143710011712545758, guid: 18f383a943edc1e4694f1db4693c2732,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -11446,10 +10912,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1320638703}
-    - targetCorrespondingSourceObject: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1320638705}
   m_SourcePrefab: {fileID: 100100000, guid: 18f383a943edc1e4694f1db4693c2732, type: 3}
 --- !u!1 &1320638702 stripped
 GameObject:
@@ -11478,20 +10940,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.0000005, y: 2.0000002, z: 1.9999996}
   m_Center: {x: 0, y: 0.00000047683716, z: 0}
---- !u!114 &1320638705
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1320638702}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e880132b8a4fdb94ea0aea8ad5cb93cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemDescription: It's a bookshelf filled with ancient texts about spells and potions
-  itemDescriptionText: {fileID: 1019713670}
 --- !u!1 &1335811610
 GameObject:
   m_ObjectHideFlags: 0
@@ -11704,11 +11152,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -180
       objectReference: {fileID: 0}
-    - target: {fileID: -8391222552659086748, guid: 768502dbdf0bf7247bcc034135a3fd52,
-        type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
     - target: {fileID: -4683669308469848369, guid: 768502dbdf0bf7247bcc034135a3fd52,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -11732,10 +11175,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1360691436}
-    - targetCorrespondingSourceObject: {fileID: -8391222552659086748, guid: 768502dbdf0bf7247bcc034135a3fd52,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1360691438}
   m_SourcePrefab: {fileID: 100100000, guid: 768502dbdf0bf7247bcc034135a3fd52, type: 3}
 --- !u!1 &1360691435 stripped
 GameObject:
@@ -11764,20 +11203,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.0000014, y: 2.0000005, z: 14.551375}
   m_Center: {x: -2.2622102e-14, y: -1.6721784e-14, z: 6.275687}
---- !u!114 &1360691438
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1360691435}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e880132b8a4fdb94ea0aea8ad5cb93cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemDescription: It's a desk
-  itemDescriptionText: {fileID: 1019713670}
 --- !u!1 &1392301444
 GameObject:
   m_ObjectHideFlags: 0
@@ -12461,11 +11886,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -180
       objectReference: {fileID: 0}
-    - target: {fileID: -8391222552659086748, guid: 768502dbdf0bf7247bcc034135a3fd52,
-        type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
     - target: {fileID: -4683669308469848369, guid: 768502dbdf0bf7247bcc034135a3fd52,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -12489,10 +11909,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1524961381}
-    - targetCorrespondingSourceObject: {fileID: -8391222552659086748, guid: 768502dbdf0bf7247bcc034135a3fd52,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1524961383}
   m_SourcePrefab: {fileID: 100100000, guid: 768502dbdf0bf7247bcc034135a3fd52, type: 3}
 --- !u!1 &1524961380 stripped
 GameObject:
@@ -12521,20 +11937,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.0000014, y: 2.0000005, z: 14.551375}
   m_Center: {x: -2.2622102e-14, y: -1.6721784e-14, z: 6.275687}
---- !u!114 &1524961383
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1524961380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e880132b8a4fdb94ea0aea8ad5cb93cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemDescription: It's a desk
-  itemDescriptionText: {fileID: 1019713670}
 --- !u!1 &1533288485
 GameObject:
   m_ObjectHideFlags: 0
@@ -13647,11 +13049,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      propertyPath: m_TagString
-      value: Examinable
-      objectReference: {fileID: 0}
     - target: {fileID: -8143710011712545758, guid: 18f383a943edc1e4694f1db4693c2732,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -13715,10 +13112,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1660744757}
-    - targetCorrespondingSourceObject: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1660744759}
   m_SourcePrefab: {fileID: 100100000, guid: 18f383a943edc1e4694f1db4693c2732, type: 3}
 --- !u!1 &1660744756 stripped
 GameObject:
@@ -13747,20 +13140,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.0000005, y: 2.0000002, z: 1.9999996}
   m_Center: {x: 0, y: -0.00000047683716, z: -0.00000011920929}
---- !u!114 &1660744759
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1660744756}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e880132b8a4fdb94ea0aea8ad5cb93cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemDescription: It's a bookshelf filled with ancient texts about spells and potions
-  itemDescriptionText: {fileID: 1019713670}
 --- !u!1 &1710917708
 GameObject:
   m_ObjectHideFlags: 0
@@ -14016,11 +13395,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      propertyPath: m_TagString
-      value: Examinable
-      objectReference: {fileID: 0}
     - target: {fileID: -8143710011712545758, guid: 18f383a943edc1e4694f1db4693c2732,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -14084,10 +13458,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1717501127}
-    - targetCorrespondingSourceObject: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1717501129}
   m_SourcePrefab: {fileID: 100100000, guid: 18f383a943edc1e4694f1db4693c2732, type: 3}
 --- !u!1 &1717501126 stripped
 GameObject:
@@ -14116,20 +13486,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.0000005, y: 2.0000002, z: 1.9999996}
   m_Center: {x: 0, y: 0.00000023841858, z: 0}
---- !u!114 &1717501129
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1717501126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e880132b8a4fdb94ea0aea8ad5cb93cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemDescription: It's a bookshelf filled with ancient texts about spells and potions
-  itemDescriptionText: {fileID: 1019713670}
 --- !u!1001 &1747090772
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14192,11 +13548,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      propertyPath: m_TagString
-      value: Examinable
       objectReference: {fileID: 0}
     - target: {fileID: -8143710011712545758, guid: 18f383a943edc1e4694f1db4693c2732,
         type: 3}
@@ -14261,10 +13612,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1747090774}
-    - targetCorrespondingSourceObject: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1747090776}
   m_SourcePrefab: {fileID: 100100000, guid: 18f383a943edc1e4694f1db4693c2732, type: 3}
 --- !u!1 &1747090773 stripped
 GameObject:
@@ -14293,20 +13640,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.0000005, y: 2.0000002, z: 1.9999996}
   m_Center: {x: 0, y: -0.000000059604645, z: -0.00000023841858}
---- !u!114 &1747090776
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1747090773}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e880132b8a4fdb94ea0aea8ad5cb93cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemDescription: It's a bookshelf filled with ancient texts about spells and potions
-  itemDescriptionText: {fileID: 1019713670}
 --- !u!1 &1747094128
 GameObject:
   m_ObjectHideFlags: 0
@@ -14582,11 +13915,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      propertyPath: m_TagString
-      value: Examinable
-      objectReference: {fileID: 0}
     - target: {fileID: -8143710011712545758, guid: 18f383a943edc1e4694f1db4693c2732,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -14650,10 +13978,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1821443583}
-    - targetCorrespondingSourceObject: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1821443585}
   m_SourcePrefab: {fileID: 100100000, guid: 18f383a943edc1e4694f1db4693c2732, type: 3}
 --- !u!1 &1821443582 stripped
 GameObject:
@@ -14682,20 +14006,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.0000005, y: 2.0000002, z: 1.9999996}
   m_Center: {x: 0, y: 0.00000023841858, z: 0}
---- !u!114 &1821443585
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1821443582}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e880132b8a4fdb94ea0aea8ad5cb93cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemDescription: It's a bookshelf filled with ancient texts about spells and potions
-  itemDescriptionText: {fileID: 1019713670}
 --- !u!1 &1829764596
 GameObject:
   m_ObjectHideFlags: 0
@@ -15077,11 +14387,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      propertyPath: m_TagString
-      value: Examinable
-      objectReference: {fileID: 0}
     - target: {fileID: -8143710011712545758, guid: 18f383a943edc1e4694f1db4693c2732,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -15145,10 +14450,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1848543161}
-    - targetCorrespondingSourceObject: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1848543163}
   m_SourcePrefab: {fileID: 100100000, guid: 18f383a943edc1e4694f1db4693c2732, type: 3}
 --- !u!1 &1848543160 stripped
 GameObject:
@@ -15177,20 +14478,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2, y: 1.9999996, z: 1.9999996}
   m_Center: {x: 0, y: -0.0000009536743, z: -0.00000047683716}
---- !u!114 &1848543163
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1848543160}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e880132b8a4fdb94ea0aea8ad5cb93cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemDescription: It's a bookshelf filled with ancient texts about spells and potions
-  itemDescriptionText: {fileID: 1019713670}
 --- !u!1001 &1864792165
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15253,11 +14540,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      propertyPath: m_TagString
-      value: Examinable
       objectReference: {fileID: 0}
     - target: {fileID: -8143710011712545758, guid: 18f383a943edc1e4694f1db4693c2732,
         type: 3}
@@ -15322,10 +14604,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1864792167}
-    - targetCorrespondingSourceObject: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1864792169}
   m_SourcePrefab: {fileID: 100100000, guid: 18f383a943edc1e4694f1db4693c2732, type: 3}
 --- !u!1 &1864792166 stripped
 GameObject:
@@ -15354,20 +14632,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.0000005, y: 2.0000002, z: 1.9999996}
   m_Center: {x: 0.0000038146973, y: 0, z: 0}
---- !u!114 &1864792169
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1864792166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e880132b8a4fdb94ea0aea8ad5cb93cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemDescription: It's a bookshelf filled with ancient texts about spells and potions
-  itemDescriptionText: {fileID: 1019713670}
 --- !u!1001 &1935504073
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15430,11 +14694,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      propertyPath: m_TagString
-      value: Examinable
       objectReference: {fileID: 0}
     - target: {fileID: -8143710011712545758, guid: 18f383a943edc1e4694f1db4693c2732,
         type: 3}
@@ -15499,10 +14758,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1935504075}
-    - targetCorrespondingSourceObject: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1935504077}
   m_SourcePrefab: {fileID: 100100000, guid: 18f383a943edc1e4694f1db4693c2732, type: 3}
 --- !u!1 &1935504074 stripped
 GameObject:
@@ -15531,20 +14786,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.0000005, y: 2.0000002, z: 1.9999996}
   m_Center: {x: 0, y: 0.00000047683716, z: 0}
---- !u!114 &1935504077
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1935504074}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e880132b8a4fdb94ea0aea8ad5cb93cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemDescription: It's a bookshelf filled with ancient texts about spells and potions
-  itemDescriptionText: {fileID: 1019713670}
 --- !u!1001 &1998367721
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15607,11 +14848,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      propertyPath: m_TagString
-      value: Examinable
       objectReference: {fileID: 0}
     - target: {fileID: -8143710011712545758, guid: 18f383a943edc1e4694f1db4693c2732,
         type: 3}
@@ -15676,10 +14912,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1998367723}
-    - targetCorrespondingSourceObject: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1998367725}
   m_SourcePrefab: {fileID: 100100000, guid: 18f383a943edc1e4694f1db4693c2732, type: 3}
 --- !u!1 &1998367722 stripped
 GameObject:
@@ -15708,20 +14940,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.0000005, y: 2.0000002, z: 1.9999996}
   m_Center: {x: 0, y: 0.00000023841858, z: 0}
---- !u!114 &1998367725
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1998367722}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e880132b8a4fdb94ea0aea8ad5cb93cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemDescription: It's a bookshelf filled with ancient texts about spells and potions
-  itemDescriptionText: {fileID: 1019713670}
 --- !u!1 &1999291489
 GameObject:
   m_ObjectHideFlags: 0
@@ -15832,11 +15050,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -180
       objectReference: {fileID: 0}
-    - target: {fileID: -8391222552659086748, guid: 768502dbdf0bf7247bcc034135a3fd52,
-        type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
     - target: {fileID: -4683669308469848369, guid: 768502dbdf0bf7247bcc034135a3fd52,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -15860,10 +15073,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2011538404}
-    - targetCorrespondingSourceObject: {fileID: -8391222552659086748, guid: 768502dbdf0bf7247bcc034135a3fd52,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2011538406}
   m_SourcePrefab: {fileID: 100100000, guid: 768502dbdf0bf7247bcc034135a3fd52, type: 3}
 --- !u!1 &2011538403 stripped
 GameObject:
@@ -15892,20 +15101,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.0000014, y: 2.0000005, z: 14.551375}
   m_Center: {x: -2.2622102e-14, y: -1.6721784e-14, z: 6.2756834}
---- !u!114 &2011538406
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2011538403}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e880132b8a4fdb94ea0aea8ad5cb93cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemDescription: It's a desk
-  itemDescriptionText: {fileID: 1019713670}
 --- !u!1001 &2012583026
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15968,11 +15163,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      propertyPath: m_TagString
-      value: Examinable
       objectReference: {fileID: 0}
     - target: {fileID: -8143710011712545758, guid: 18f383a943edc1e4694f1db4693c2732,
         type: 3}
@@ -16037,10 +15227,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2012583028}
-    - targetCorrespondingSourceObject: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2012583030}
   m_SourcePrefab: {fileID: 100100000, guid: 18f383a943edc1e4694f1db4693c2732, type: 3}
 --- !u!1 &2012583027 stripped
 GameObject:
@@ -16069,20 +15255,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.0000005, y: 2.0000002, z: 1.9999996}
   m_Center: {x: 0, y: 0.00000011920929, z: 0}
---- !u!114 &2012583030
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2012583027}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e880132b8a4fdb94ea0aea8ad5cb93cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemDescription: It's a bookshelf filled with ancient texts about spells and potions
-  itemDescriptionText: {fileID: 1019713670}
 --- !u!1 &2014486470
 GameObject:
   m_ObjectHideFlags: 0
@@ -16508,11 +15680,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      propertyPath: m_TagString
-      value: Examinable
-      objectReference: {fileID: 0}
     - target: {fileID: -8143710011712545758, guid: 18f383a943edc1e4694f1db4693c2732,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -16576,10 +15743,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2059833944}
-    - targetCorrespondingSourceObject: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2059833946}
   m_SourcePrefab: {fileID: 100100000, guid: 18f383a943edc1e4694f1db4693c2732, type: 3}
 --- !u!1 &2059833943 stripped
 GameObject:
@@ -16608,20 +15771,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.0000005, y: 2.0000002, z: 1.9999996}
   m_Center: {x: 0, y: 0, z: -0.00000047683716}
---- !u!114 &2059833946
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2059833943}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e880132b8a4fdb94ea0aea8ad5cb93cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemDescription: It's a bookshelf filled with ancient texts about spells and potions
-  itemDescriptionText: {fileID: 1019713670}
 --- !u!1001 &2066434513
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16684,11 +15833,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      propertyPath: m_TagString
-      value: Examinable
       objectReference: {fileID: 0}
     - target: {fileID: -8143710011712545758, guid: 18f383a943edc1e4694f1db4693c2732,
         type: 3}
@@ -16753,10 +15897,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2066434515}
-    - targetCorrespondingSourceObject: {fileID: -8391222552659086748, guid: 18f383a943edc1e4694f1db4693c2732,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2066434517}
   m_SourcePrefab: {fileID: 100100000, guid: 18f383a943edc1e4694f1db4693c2732, type: 3}
 --- !u!1 &2066434514 stripped
 GameObject:
@@ -16785,20 +15925,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.0000005, y: 2.0000002, z: 1.9999996}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2066434517
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2066434514}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e880132b8a4fdb94ea0aea8ad5cb93cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemDescription: It's a bookshelf filled with ancient texts about spells and potions
-  itemDescriptionText: {fileID: 1019713670}
 --- !u!1 &2068490527
 GameObject:
   m_ObjectHideFlags: 0
