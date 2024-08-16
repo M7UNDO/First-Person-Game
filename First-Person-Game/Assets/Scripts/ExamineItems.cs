@@ -6,14 +6,14 @@ using TMPro;
 public class ExamineItems : MonoBehaviour
 {
    
-    public string itemDescription = "insert text here";
+    public string itemDescription;
     public TMP_Text itemDescriptionText;
     
 
     // Start is called before the first frame update
     void Start()
     {
-        itemDescriptionText.text = itemDescription;
+        itemDescriptionText.text = gameObject.GetComponent<ExamineItems>().itemDescription;
     }
 
     // Update is called once per frame

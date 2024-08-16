@@ -309,8 +309,6 @@ public class FirstPersonControls : MonoBehaviour
         {
             if (hit.collider.CompareTag("Examinable"))
             {
-                Debug.Log("oya oya. nani kore?");
-
                 toggle = !toggle;
                 if (toggle == false)
                 {
