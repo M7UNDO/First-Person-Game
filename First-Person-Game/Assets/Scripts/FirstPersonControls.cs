@@ -54,7 +54,14 @@ public class FirstPersonControls : MonoBehaviour
     [Space(5)]
     public GameObject descriptionText1;
     public GameObject InspectionEye;
-    
+
+    [Header("EXAMINE SETTINGS")]
+    [Space(5)]
+    public float ExamineRange = 0.2f;
+    public GameObject itemDescriptionPanel;
+    private bool toggle;
+
+
 
 
     private void Awake()
@@ -94,11 +101,12 @@ public class FirstPersonControls : MonoBehaviour
         // Subscribe to the pick-up input event
         playerInput.Player.PickUp.performed += ctx => PickUpObject(); // Call the PickUpObject method when pick-up input is performed
         playerInput.Player.Interact.performed += ctx => DoorInteraction(); // Call the PickUpObject method when pick-up input is performed
-        
-        
+
+        playerInput.Player.Examine.performed += ctx => ItemExamination();//Call the ItemExamination method when an item is examined
+
         playerInput.Player.Crouch.performed += ctx => ToggleCrouch(); // Call the ToggleCrouchObject method when pick-up input is performed
 
-        
+
     }
 
     private void Update()
@@ -238,7 +246,7 @@ public class FirstPersonControls : MonoBehaviour
     IEnumerator InspectionDelay()
     {
         yield return new WaitForSeconds(0.1f);
-        if(heldObject.name == "Magic Staff")
+        if (heldObject.name == "Magic Staff")
         {
             descriptionText1.SetActive(true);
             InspectionEye.SetActive(true);
@@ -280,7 +288,7 @@ public class FirstPersonControls : MonoBehaviour
                 hit.collider.GetComponent<Door>().OpenClose();
 
 
-              
+
             }
             else
             {
@@ -291,11 +299,38 @@ public class FirstPersonControls : MonoBehaviour
         {
             crosshair.SetActive(false);
         }
-            
-        
-           
-        
+
+
+
     }
 
+    public void ItemExamination()
+    {
+        Ray ray = new Ray(playerCamera.position, playerCamera.forward);
+        RaycastHit hit;
+
+        Debug.DrawRay(playerCamera.position, playerCamera.forward * ExamineRange, Color.green, 0.2f);
+
+        if (Physics.Raycast(ray, out hit, ExamineRange))
+        {
+            if (hit.collider.CompareTag("Examinable"))
+            {
+                Debug.Log("oya oya. nani kore?");
+
+                toggle = !toggle;
+                if (toggle == false)
+                {
+                    itemDescriptionPanel.SetActive(false);
+                }
+
+                if (toggle)
+                {
+                    itemDescriptionPanel.SetActive(true);
+                }
+            }
+
+        }
+
+    }
 
 }
