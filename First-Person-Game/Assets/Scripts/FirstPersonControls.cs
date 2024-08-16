@@ -53,12 +53,6 @@ public class FirstPersonControls : MonoBehaviour
     public GameObject block;
     public Collider myCollider;
 
-
-    [Header("INSPECTION")]
-    [Space(5)]
-    public GameObject descriptionText1;
-    public GameObject InspectionEye;
-
     [Header("EXAMINE SETTINGS")]
     [Space(5)]
     public float ExamineRange = 0.2f;
