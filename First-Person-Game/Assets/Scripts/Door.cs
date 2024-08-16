@@ -7,6 +7,13 @@ public class Door : MonoBehaviour
     private bool toggle;
     public Animator animator;
 
+
+    //Method referenced: OpenClose()
+    //Title: How to Make Doors in Unity-Unity C# Tutorial
+    //Author: Omogonix
+    //Date: 3 November 2023
+    //Availability: https://youtu.be/wzNykqSPa0M?si=VhTGdgftZh2k-Q3Z
+
     public void OpenClose()
     {
         toggle = !toggle;

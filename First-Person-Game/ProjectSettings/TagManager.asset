@@ -8,6 +8,11 @@ TagManager:
   - PickUp
   - Door
   - Magic Staff
+  - Examinable
+  - Key
+  - Bullet
+  - Bookshelf
+  - Desk
   layers:
   - Default
   - TransparentFX
