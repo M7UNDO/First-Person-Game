@@ -13,7 +13,7 @@ public class ExamineItems : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        itemDescriptionText.text = gameObject.GetComponent<ExamineItems>().itemDescription;
+        itemDescriptionText.text = itemDescription; //a description of the bookshelf will popup if the Item Examination metion in the First Person Controls script is called on
     }
 
     // Update is called once per frame
