@@ -56,7 +56,8 @@ public class FirstPersonControls : MonoBehaviour
     [Header("EXAMINE SETTINGS")]
     [Space(5)]
     public float ExamineRange = 0.2f;
-    public GameObject itemDescriptionPanel;
+    public GameObject DeskDescriptionPanel;
+    public GameObject BookshelfDescriptionPanel;
     private bool toggle;
 
 
@@ -307,19 +308,34 @@ public class FirstPersonControls : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, ExamineRange))
         {
-            if (hit.collider.CompareTag("Examinable"))
+            if (hit.collider.CompareTag("Desk"))
             {
                 toggle = !toggle;
                 if (toggle == false)
                 {
-                    itemDescriptionPanel.SetActive(false);
+                    DeskDescriptionPanel.SetActive(false);
                 }
 
                 if (toggle)
                 {
-                    itemDescriptionPanel.SetActive(true);
+                    DeskDescriptionPanel.SetActive(true);
                 }
             }
+            else if (hit.collider.CompareTag("Bookshelf"))
+            {
+                toggle = !toggle;
+                if (toggle == false)
+                {
+                    BookshelfDescriptionPanel.SetActive(false);
+                }
+
+                if (toggle)
+                {
+                    BookshelfDescriptionPanel.SetActive(true);
+                }
+            }
+
+
 
         }
 
