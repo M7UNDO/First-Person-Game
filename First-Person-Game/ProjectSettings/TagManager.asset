@@ -9,6 +9,7 @@ TagManager:
   - Door
   - Magic Staff
   - Examinable
+  - Key
   layers:
   - Default
   - TransparentFX

@@ -49,6 +49,10 @@ public class FirstPersonControls : MonoBehaviour
     public float Interactiondistance = 3f;
     public string doorOpenAnimName, doorCloseAnimName;
     public LayerMask layers;
+    public GameObject lockedDoor;
+    public GameObject block;
+    public Collider myCollider;
+
 
     [Header("INSPECTION")]
     [Space(5)]
@@ -68,12 +72,13 @@ public class FirstPersonControls : MonoBehaviour
     {
         // Get and store the CharacterController component attached to this GameObject
         characterController = GetComponent<CharacterController>();
+        myCollider = lockedDoor.GetComponent<Collider>();
+        myCollider.enabled = false;
     }
 
     private void Start()
     {
-        descriptionText1.SetActive(false);
-        InspectionEye.SetActive(false);
+        
     }
 
     private void OnEnable()
@@ -115,6 +120,16 @@ public class FirstPersonControls : MonoBehaviour
         Move();
         LookAround();
         ApplyGravity();
+    }
+
+    private void OnTriggerEnter(Collider coli)
+    {
+        if (coli.gameObject.tag == "Key")
+        {
+            block.SetActive(false);
+            myCollider.enabled = true;
+            Destroy(coli.gameObject);
+        }
     }
 
     public void Move()
@@ -236,28 +251,13 @@ public class FirstPersonControls : MonoBehaviour
                 heldObject.transform.parent = holdPosition;
 
                 holdingGun = true;
-                StartCoroutine(InspectionDelay());
+                
 
 
             }
         }
     }
 
-    IEnumerator InspectionDelay()
-    {
-        yield return new WaitForSeconds(0.1f);
-        if (heldObject.name == "Magic Staff")
-        {
-            descriptionText1.SetActive(true);
-            InspectionEye.SetActive(true);
-        }
-        yield return new WaitForSeconds(5f);
-        Destroy(descriptionText1);
-        Destroy(InspectionEye);
-
-
-
-    }
 
     public void ToggleCrouch()
     {
