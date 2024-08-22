@@ -82,7 +82,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Interact"",
+                    ""name"": ""OldInteract"",
                     ""type"": ""Button"",
                     ""id"": ""4159b236-e38a-448e-9bcd-e4447cd75903"",
                     ""expectedControlType"": ""Button"",
@@ -94,6 +94,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""name"": ""Examine"",
                     ""type"": ""Button"",
                     ""id"": ""204b0910-bea4-4c47-89d5-cd49521dedf6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""5195da84-df22-4d06-b864-0b965a2ee672"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -339,7 +348,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""Interact"",
+                    ""action"": ""OldInteract"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -351,6 +360,28 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
                     ""action"": ""Examine"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""00d9f0e3-d186-4b49-901f-e0b1653adf22"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0f2e687f-d139-4d76-a3f0-6936ba39d2c8"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -390,8 +421,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
         m_Player_PickUp = m_Player.FindAction("PickUp", throwIfNotFound: true);
         m_Player_Crouch = m_Player.FindAction("Crouch", throwIfNotFound: true);
-        m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
+        m_Player_OldInteract = m_Player.FindAction("OldInteract", throwIfNotFound: true);
         m_Player_Examine = m_Player.FindAction("Examine", throwIfNotFound: true);
+        m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -459,8 +491,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Shoot;
     private readonly InputAction m_Player_PickUp;
     private readonly InputAction m_Player_Crouch;
-    private readonly InputAction m_Player_Interact;
+    private readonly InputAction m_Player_OldInteract;
     private readonly InputAction m_Player_Examine;
+    private readonly InputAction m_Player_Interact;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -471,8 +504,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
         public InputAction @PickUp => m_Wrapper.m_Player_PickUp;
         public InputAction @Crouch => m_Wrapper.m_Player_Crouch;
-        public InputAction @Interact => m_Wrapper.m_Player_Interact;
+        public InputAction @OldInteract => m_Wrapper.m_Player_OldInteract;
         public InputAction @Examine => m_Wrapper.m_Player_Examine;
+        public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -500,12 +534,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Crouch.started += instance.OnCrouch;
             @Crouch.performed += instance.OnCrouch;
             @Crouch.canceled += instance.OnCrouch;
-            @Interact.started += instance.OnInteract;
-            @Interact.performed += instance.OnInteract;
-            @Interact.canceled += instance.OnInteract;
+            @OldInteract.started += instance.OnOldInteract;
+            @OldInteract.performed += instance.OnOldInteract;
+            @OldInteract.canceled += instance.OnOldInteract;
             @Examine.started += instance.OnExamine;
             @Examine.performed += instance.OnExamine;
             @Examine.canceled += instance.OnExamine;
+            @Interact.started += instance.OnInteract;
+            @Interact.performed += instance.OnInteract;
+            @Interact.canceled += instance.OnInteract;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -528,12 +565,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Crouch.started -= instance.OnCrouch;
             @Crouch.performed -= instance.OnCrouch;
             @Crouch.canceled -= instance.OnCrouch;
-            @Interact.started -= instance.OnInteract;
-            @Interact.performed -= instance.OnInteract;
-            @Interact.canceled -= instance.OnInteract;
+            @OldInteract.started -= instance.OnOldInteract;
+            @OldInteract.performed -= instance.OnOldInteract;
+            @OldInteract.canceled -= instance.OnOldInteract;
             @Examine.started -= instance.OnExamine;
             @Examine.performed -= instance.OnExamine;
             @Examine.canceled -= instance.OnExamine;
+            @Interact.started -= instance.OnInteract;
+            @Interact.performed -= instance.OnInteract;
+            @Interact.canceled -= instance.OnInteract;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -577,7 +617,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnShoot(InputAction.CallbackContext context);
         void OnPickUp(InputAction.CallbackContext context);
         void OnCrouch(InputAction.CallbackContext context);
-        void OnInteract(InputAction.CallbackContext context);
+        void OnOldInteract(InputAction.CallbackContext context);
         void OnExamine(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
 }

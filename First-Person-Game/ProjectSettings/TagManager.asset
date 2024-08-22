@@ -11,6 +11,9 @@ TagManager:
   - Examinable
   - Key
   - Bullet
+  - Bookshelf
+  - Desk
+  - Switch
   layers:
   - Default
   - TransparentFX
