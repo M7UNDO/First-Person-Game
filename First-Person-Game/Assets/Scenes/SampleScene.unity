@@ -376,7 +376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1133,28 +1133,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 6.5
   lookSpeed: 0.7
-  gravity: -9.81
-  jumpHeight: 3
+  gravity: -27.68
+  jumpHeight: 2
   playerCamera: {fileID: 330585546}
-  crosshair: {fileID: 278465861}
+  crosshair: {fileID: 278465863}
   projectilePrefab: {fileID: 1648695503671054799, guid: b4a0d6b39169544499a24dfa5dae6028,
     type: 3}
   firePoint: {fileID: 260251180}
-  projectileSpeed: 20
+  projectileSpeed: 40
   pickUpRange: 4
   holdPosition: {fileID: 2099031755}
   crouchHeight: 1
   standingHeight: 2
   crouchSpeed: 1.5
-  Interactiondistance: 5
+  Interactiondistance: 10
   doorOpenAnimName: DoorOpen
   doorCloseAnimName: DoorClose
   layers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 115
   lockedDoor: {fileID: 1569463745}
   block: {fileID: 366591500}
-  myCollider: {fileID: 366591502}
+  myCollider: {fileID: 0}
   ExamineRange: 2
   DeskDescriptionPanel: {fileID: 0}
   BookshelfDescriptionPanel: {fileID: 0}
@@ -1538,7 +1538,7 @@ GameObject:
   - component: {fileID: 1569463747}
   m_Layer: 0
   m_Name: Door
-  m_TagString: Door
+  m_TagString: LockedDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

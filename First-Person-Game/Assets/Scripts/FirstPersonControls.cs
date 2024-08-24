@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEditor;
+using Unity.UI;
+using UnityEngine.UI;
 
 public class FirstPersonControls : MonoBehaviour
 {
@@ -22,7 +24,7 @@ public class FirstPersonControls : MonoBehaviour
     private float verticalLookRotation = 0f; // Keeps track of vertical camera rotation for clamping
     private Vector3 velocity; // Velocity of the player
     private CharacterController characterController; // Reference to the CharacterController component
-    public GameObject crosshair;
+    public Image crosshair;
 
     [Header("SHOOTING SETTINGS")]
     [Space(5)]
@@ -70,8 +72,7 @@ public class FirstPersonControls : MonoBehaviour
     {
         // Get and store the CharacterController component attached to this GameObject
         characterController = GetComponent<CharacterController>();
-        myCollider = lockedDoor.GetComponent<Collider>();
-        myCollider.enabled = false;
+        lockedDoor.layer = 2;
     }
 
     private void Start()
@@ -127,9 +128,11 @@ public class FirstPersonControls : MonoBehaviour
     {
         if (coli.gameObject.tag == "Key")
         {
-            block.SetActive(false);
-            myCollider.enabled = true;
+
+
+            lockedDoor.layer = 0;
             Destroy(coli.gameObject);
+
         }
     }
 
@@ -288,7 +291,7 @@ public class FirstPersonControls : MonoBehaviour
         {
             if (hit.collider.CompareTag("Door"))
             {
-                crosshair.SetActive(true);
+                
                 hit.collider.GetComponent<Door>().OpenClose();
 
 
@@ -296,13 +299,28 @@ public class FirstPersonControls : MonoBehaviour
             }
             else
             {
-                crosshair.SetActive(false);
+                
+            }
+
+            
+            if (hit.collider.CompareTag("LockedDoor"))
+            {
+                
+                hit.collider.GetComponent<Door>().OpenClose();
+
+
+
+            }
+            else
+            {
+                
             }
         }
         else
         {
-            crosshair.SetActive(false);
+            StartCoroutine(LockedDoor());
         }
+        
 
 
 
@@ -394,6 +412,13 @@ public class FirstPersonControls : MonoBehaviour
             door.transform.position = Vector3.MoveTowards(door.transform.position, endPosition, raiseSpeed * Time.deltaTime);
             yield return null; // Wait until the next frame before continuing the loop
         }
+    }
+
+    private IEnumerator LockedDoor()
+    {
+        crosshair.color = Color.grey;
+        yield return new WaitForSeconds(1f);
+        crosshair.color = Color.white;
     }
 
 
