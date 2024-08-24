@@ -51,9 +51,7 @@ public class FirstPersonControls : MonoBehaviour
     public float Interactiondistance = 3f;
     public string doorOpenAnimName, doorCloseAnimName;
     public LayerMask layers;
-    public GameObject lockedDoor;
-    public GameObject block;
-    public Collider myCollider;
+    public GameObject[] Doors;
 
     [Header("EXAMINE SETTINGS")]
     [Space(5)]
@@ -72,7 +70,9 @@ public class FirstPersonControls : MonoBehaviour
     {
         // Get and store the CharacterController component attached to this GameObject
         characterController = GetComponent<CharacterController>();
-        lockedDoor.layer = 2;
+        Doors[0].layer = 2;
+        Doors[2].layer = 2;
+        Doors[3].layer = 2;
     }
 
     private void Start()
@@ -126,13 +126,20 @@ public class FirstPersonControls : MonoBehaviour
 
     private void OnTriggerEnter(Collider coli)
     {
-        if (coli.gameObject.tag == "Key")
+        if (coli.gameObject.CompareTag("GoldKey"))
         {
-
-
-            lockedDoor.layer = 0;
+            Doors[0].layer = 0;
             Destroy(coli.gameObject);
-
+        }
+        else if (coli.gameObject.CompareTag("SilverKey"))
+        {
+            Doors[2].layer = 0;
+            Destroy(coli.gameObject);
+        }
+        else if (coli.gameObject.CompareTag("BronzeKey"))
+        {
+            Doors[3].layer = 0;
+            Destroy(coli.gameObject);
         }
     }
 
@@ -307,6 +314,7 @@ public class FirstPersonControls : MonoBehaviour
             {
                 
                 hit.collider.GetComponent<Door>().OpenClose();
+                Debug.Log("The door has opened");
 
 
 
