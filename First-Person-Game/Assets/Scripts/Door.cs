@@ -29,14 +29,5 @@ public class Door : MonoBehaviour
             animator.SetTrigger("open");
         }
     }
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

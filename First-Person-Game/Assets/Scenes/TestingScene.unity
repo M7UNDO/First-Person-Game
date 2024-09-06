@@ -6026,7 +6026,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!199 &685843464
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -11101,9 +11101,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6c6ca75bfc813b4196be3f9da544121, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 6.5
-  lookSpeed: 0.7
-  gravity: -27.68
+  moveSpeed: 6.4
+  lookSpeed: 0.62
+  gravity: -17.2
   jumpHeight: 2
   playerCamera: {fileID: 330585546}
   crosshair: {fileID: 278465863}
