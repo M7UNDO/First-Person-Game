@@ -55,14 +55,6 @@ public class FirstPersonControls : MonoBehaviour
     public GameObject[] Doors;
     public GameObject[] Drawers;
 
-    [Header("CUPBOARD SETTINGS")]
-    [Space(5)]
-
-    //public GameObject[] LeftDoors;
-    //public GameObject[] RightDoors;
-
-
-
     [Header("EXAMINE SETTINGS")]
     [Space(5)]
     public float ExamineRange = 0.2f;
@@ -138,18 +130,18 @@ public class FirstPersonControls : MonoBehaviour
     {
         if (coli.gameObject.CompareTag("GoldKey"))
         {
-            Doors[0].layer = 0;
-            Destroy(coli.gameObject);
+            Doors[0].layer = 0;//Changes the layer the doors on back to the default so the raycast can interact with. Essentially unlocking the door
+            Destroy(coli.gameObject);//The Key is destroyed after it is collected
         }
         else if (coli.gameObject.CompareTag("SilverKey"))
         {
-            Doors[2].layer = 0;
-            Destroy(coli.gameObject);
+            Doors[2].layer = 0;//Changes the layer the doors on back to the default so the raycast can interact with. Essentially unlocking the door
+            Destroy(coli.gameObject);//The Key is destroyed after it is collected
         }
         else if (coli.gameObject.CompareTag("BronzeKey"))
         {
-            Doors[3].layer = 0;
-            Destroy(coli.gameObject);
+            Doors[3].layer = 0;//Changes the layer the doors on back to the default so the raycast can interact with. Essentially unlocking the door
+            Destroy(coli.gameObject);//The Key is destroyed after it is collected
         }
     }
 
@@ -282,9 +274,6 @@ public class FirstPersonControls : MonoBehaviour
         }
     }
 
-
-
-
     public void ToggleCrouch()
     {
         if (isCrouching)
@@ -330,10 +319,18 @@ public class FirstPersonControls : MonoBehaviour
             {
                 hit.collider.GetComponent<CupboardScript>().LeftDoor();
             }
-            else if (hit.collider.CompareTag("RightDoor"))
+            else if(hit.collider.CompareTag("RightDoor"))
             {
                 hit.collider.GetComponent<CupboardScript>().RightDoor();
             }
+            else if (hit.collider.CompareTag("Lever"))
+            {
+                hit.collider.GetComponent<ShelfSwitch>().Lever();
+                
+            }
+
+
+
         }
         else
         {
@@ -403,7 +400,6 @@ public class FirstPersonControls : MonoBehaviour
             
         }
     }
-
 
     private IEnumerator LockedDoor()
     {

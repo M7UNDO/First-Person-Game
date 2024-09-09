@@ -21,6 +21,7 @@ TagManager:
   - Drawer
   - RightDoor
   - LeftDoor
+  - Lever
   layers:
   - Default
   - TransparentFX
