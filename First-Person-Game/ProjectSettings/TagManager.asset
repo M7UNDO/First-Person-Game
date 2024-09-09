@@ -19,6 +19,8 @@ TagManager:
   - SilverKey
   - BronzeKey
   - Drawer
+  - RightDoor
+  - LeftDoor
   layers:
   - Default
   - TransparentFX

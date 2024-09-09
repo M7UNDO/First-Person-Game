@@ -38,7 +38,7 @@ public class FirstPersonControls : MonoBehaviour
     [Space(5)]
     public Transform holdPosition; // Position where the picked-up object will be held
     private GameObject heldObject; // Reference to the currently held object
-    private bool isHoldingObject = false;
+    
 
     [Header("CROUCH SETTINGS")]
     [Space(5)]
@@ -47,13 +47,21 @@ public class FirstPersonControls : MonoBehaviour
     public float crouchSpeed = 1.5f;//Speed at which the player is moving while crouching
     private bool isCrouching = false; //Whether player is currently crouching
 
-    [Header("DOOR SETTINGS")]
+    [Header("DOOR AND DRAWER SETTINGS")]
     [Space(5)]
     public float Interactiondistance = 3f;
     public string doorOpenAnimName, doorCloseAnimName;
     public LayerMask layers;
     public GameObject[] Doors;
     public GameObject[] Drawers;
+
+    [Header("CUPBOARD SETTINGS")]
+    [Space(5)]
+
+    //public GameObject[] LeftDoors;
+    //public GameObject[] RightDoors;
+
+
 
     [Header("EXAMINE SETTINGS")]
     [Space(5)]
@@ -222,17 +230,13 @@ public class FirstPersonControls : MonoBehaviour
 
     public void PickUpObject()
     {
-        if (isHoldingObject)
-        {
-         
-        }
         // Check if we are already holding an object
         if (heldObject != null)
         {
             heldObject.GetComponent<Rigidbody>().isKinematic = false; // Enable physics
             heldObject.transform.parent = null;
             holdingGun = false;
-            isHoldingObject = false;
+            
         }
 
         // Perform a raycast from the camera's position forward
@@ -257,7 +261,7 @@ public class FirstPersonControls : MonoBehaviour
                 heldObject.transform.rotation = holdPosition.rotation;
                 heldObject.transform.parent = holdPosition;
 
-                isHoldingObject = true;
+               
             }
             else if (hit.collider.CompareTag("Magic Staff"))
             {
@@ -306,47 +310,35 @@ public class FirstPersonControls : MonoBehaviour
         if (Physics.Raycast(ray, out hit, Interactiondistance, layers))
         {
             if (hit.collider.CompareTag("Door"))
-            {
-                
+            { 
                 hit.collider.GetComponent<Door>().DoorOpenClose();
 
-
-
             }
-            else
-            {
-                
-            }
-
-            if (hit.collider.CompareTag("Drawer"))
+            else if(hit.collider.CompareTag("Drawer"))
             {
                 hit.collider.GetComponent<Door>().DrawerOpenClose();
-            }
 
-            
-            if (hit.collider.CompareTag("LockedDoor"))
+            }
+            else if (hit.collider.CompareTag("LockedDoor"))
             {
                 
                 hit.collider.GetComponent<Door>().DoorOpenClose();
                 Debug.Log("The door has opened");
 
-
-
             }
-            else
+            else if(hit.collider.CompareTag("LeftDoor"))
             {
-                
+                hit.collider.GetComponent<CupboardScript>().LeftDoor();
+            }
+            else if (hit.collider.CompareTag("RightDoor"))
+            {
+                hit.collider.GetComponent<CupboardScript>().RightDoor();
             }
         }
         else
         {
             StartCoroutine(LockedDoor());
         }
-
-        
-
-
-
     }
 
     public void ItemExamination()
@@ -384,9 +376,6 @@ public class FirstPersonControls : MonoBehaviour
                     BookshelfDescriptionPanel.SetActive(true);
                 }
             }
-
-
-
         }
 
     }
@@ -411,7 +400,6 @@ public class FirstPersonControls : MonoBehaviour
                     }
                 }
             }
-
             
         }
     }
