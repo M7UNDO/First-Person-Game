@@ -5,7 +5,8 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     private bool toggle;
-    public Animator animator;
+    public Animator DoorAnimator;
+    public Animator DrawerAnimator;
 
 
     //Method referenced: OpenClose()
@@ -14,20 +15,37 @@ public class Door : MonoBehaviour
     //Date: 3 November 2023
     //Availability: https://youtu.be/wzNykqSPa0M?si=VhTGdgftZh2k-Q3Z
 
-    public void OpenClose()
+    public void DoorOpenClose()
     {
         toggle = !toggle;
         if(toggle == false)
         {
-            animator.ResetTrigger("open");
-            animator.SetTrigger("close");
+            DoorAnimator.ResetTrigger("open");
+            DoorAnimator.SetTrigger("close");
         }
 
         if (toggle)
         {
-            animator.ResetTrigger("close");
-            animator.SetTrigger("open");
+            DoorAnimator.ResetTrigger("close");
+            DoorAnimator.SetTrigger("open");
         }
     }
+
+    public void DrawerOpenClose()
+    {
+        toggle = !toggle;
+        if (toggle == false)
+        {
+            DrawerAnimator.ResetTrigger("OpenDrawer");
+            DrawerAnimator.SetTrigger("CloseDrawer");
+        }
+
+        if (toggle)
+        {
+            DrawerAnimator.ResetTrigger("CloseDrawer");
+            DrawerAnimator.SetTrigger("OpenDrawer");
+        }
+    }
+
 
 }

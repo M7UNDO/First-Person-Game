@@ -18,6 +18,7 @@ TagManager:
   - GoldKey
   - SilverKey
   - BronzeKey
+  - Drawer
   layers:
   - Default
   - TransparentFX

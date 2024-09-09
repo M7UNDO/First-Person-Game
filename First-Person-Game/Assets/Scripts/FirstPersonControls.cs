@@ -38,6 +38,7 @@ public class FirstPersonControls : MonoBehaviour
     [Space(5)]
     public Transform holdPosition; // Position where the picked-up object will be held
     private GameObject heldObject; // Reference to the currently held object
+    private bool isHoldingObject = false;
 
     [Header("CROUCH SETTINGS")]
     [Space(5)]
@@ -52,6 +53,7 @@ public class FirstPersonControls : MonoBehaviour
     public string doorOpenAnimName, doorCloseAnimName;
     public LayerMask layers;
     public GameObject[] Doors;
+    public GameObject[] Drawers;
 
     [Header("EXAMINE SETTINGS")]
     [Space(5)]
@@ -220,12 +222,17 @@ public class FirstPersonControls : MonoBehaviour
 
     public void PickUpObject()
     {
+        if (isHoldingObject)
+        {
+         
+        }
         // Check if we are already holding an object
         if (heldObject != null)
         {
             heldObject.GetComponent<Rigidbody>().isKinematic = false; // Enable physics
             heldObject.transform.parent = null;
             holdingGun = false;
+            isHoldingObject = false;
         }
 
         // Perform a raycast from the camera's position forward
@@ -249,6 +256,8 @@ public class FirstPersonControls : MonoBehaviour
                 heldObject.transform.position = holdPosition.position;
                 heldObject.transform.rotation = holdPosition.rotation;
                 heldObject.transform.parent = holdPosition;
+
+                isHoldingObject = true;
             }
             else if (hit.collider.CompareTag("Magic Staff"))
             {
@@ -299,7 +308,7 @@ public class FirstPersonControls : MonoBehaviour
             if (hit.collider.CompareTag("Door"))
             {
                 
-                hit.collider.GetComponent<Door>().OpenClose();
+                hit.collider.GetComponent<Door>().DoorOpenClose();
 
 
 
@@ -309,11 +318,16 @@ public class FirstPersonControls : MonoBehaviour
                 
             }
 
+            if (hit.collider.CompareTag("Drawer"))
+            {
+                hit.collider.GetComponent<Door>().DrawerOpenClose();
+            }
+
             
             if (hit.collider.CompareTag("LockedDoor"))
             {
                 
-                hit.collider.GetComponent<Door>().OpenClose();
+                hit.collider.GetComponent<Door>().DoorOpenClose();
                 Debug.Log("The door has opened");
 
 
@@ -328,6 +342,7 @@ public class FirstPersonControls : MonoBehaviour
         {
             StartCoroutine(LockedDoor());
         }
+
         
 
 
