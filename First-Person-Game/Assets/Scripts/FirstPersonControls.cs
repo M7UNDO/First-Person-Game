@@ -58,8 +58,9 @@ public class FirstPersonControls : MonoBehaviour
     [Header("EXAMINE SETTINGS")]
     [Space(5)]
     public float ExamineRange = 0.2f;
-    public GameObject DeskDescriptionPanel;
-    public GameObject BookshelfDescriptionPanel;
+    //public GameObject DeskDescriptionPanel;
+    //public GameObject BookshelfDescriptionPanel;
+    public GameObject[] ItemDescriptions;
     private bool toggle;
 
 
@@ -357,12 +358,13 @@ public class FirstPersonControls : MonoBehaviour
                 toggle = !toggle;
                 if (toggle == false)
                 {
-                    DeskDescriptionPanel.SetActive(false);
+                    //DeskDescriptionPanel.SetActive(false);
+                    ItemDescriptions[1].SetActive(false);
                 }
 
                 if (toggle)
                 {
-                    DeskDescriptionPanel.SetActive(true);
+                    //DeskDescriptionPanel.SetActive(true);
                 }
             }
             else if (hit.collider.CompareTag("Bookshelf"))
@@ -370,12 +372,12 @@ public class FirstPersonControls : MonoBehaviour
                 toggle = !toggle;
                 if (toggle == false)
                 {
-                    BookshelfDescriptionPanel.SetActive(false);
+                    //BookshelfDescriptionPanel.SetActive(false);
                 }
 
                 if (toggle)
                 {
-                    BookshelfDescriptionPanel.SetActive(true);
+                    //BookshelfDescriptionPanel.SetActive(true);
                 }
             }
         }
