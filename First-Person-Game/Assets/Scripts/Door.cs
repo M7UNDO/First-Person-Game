@@ -6,13 +6,20 @@ public class Door : MonoBehaviour
 {
     [Header("DOOR ANIMATION SETTINGS")]
     [Space(5)]
+
     private bool toggle;
     public Animator DoorAnimator;
 
 
     [Header("DRAWER ANIMATION SETTINGS")]
     [Space(5)]
+
     public Animator DrawerAnimator;
+
+    [Header("CABINET ANIMATION SETTINGS")]
+    [Space(5)]
+
+    public Animator cabinetAnimator;
 
 
     //Method referenced: OpenClose()
@@ -50,6 +57,22 @@ public class Door : MonoBehaviour
         {
             DrawerAnimator.ResetTrigger("CloseDrawer");
             DrawerAnimator.SetTrigger("OpenDrawer");
+        }
+    }
+
+    public void CabinetOpenClose()
+    {
+        toggle = !toggle;
+        if (toggle == false)
+        {
+            cabinetAnimator.ResetTrigger("CabinetOpen");
+            cabinetAnimator.SetTrigger("CabinetClose");
+        }
+
+        if (toggle)
+        {
+            cabinetAnimator.ResetTrigger("CabinetClose");
+            cabinetAnimator.SetTrigger("CabinetOpen");
         }
     }
 

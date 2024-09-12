@@ -306,6 +306,7 @@ public class FirstPersonControls : MonoBehaviour
             else if(hit.collider.CompareTag("Drawer"))
             {
                 hit.collider.GetComponent<Door>().DrawerOpenClose();
+                print("DRAWER OPENED");
 
             }
             else if (hit.collider.CompareTag("LockedDoor"))
@@ -327,6 +328,10 @@ public class FirstPersonControls : MonoBehaviour
             {
                 hit.collider.GetComponent<ShelfSwitch>().Lever();
                 
+            }
+            else if (hit.collider.CompareTag("Cabinet"))
+            {
+                hit.collider.GetComponent<Door>().CabinetOpenClose();
             }
 
 
