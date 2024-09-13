@@ -73,9 +73,9 @@ public class FirstPersonControls : MonoBehaviour
     {
         // Get and store the CharacterController component attached to this GameObject
         characterController = GetComponent<CharacterController>();
-        Doors[0].layer = 2;
-        Doors[2].layer = 2;
-        Doors[3].layer = 2;
+        //Doors[0].layer = 2;
+        //Doors[2].layer = 2;
+        //Doors[3].layer = 2;
     }
 
     private void Start()
@@ -127,7 +127,7 @@ public class FirstPersonControls : MonoBehaviour
         ApplyGravity();
     }
 
-    private void OnTriggerEnter(Collider coli)
+   /* private void OnTriggerEnter(Collider coli)
     {
         if (coli.gameObject.CompareTag("GoldKey"))
         {
@@ -144,7 +144,7 @@ public class FirstPersonControls : MonoBehaviour
             Doors[3].layer = 0;//Changes the layer the doors on back to the default so the raycast can interact with. Essentially unlocking the door
             Destroy(coli.gameObject);//The Key is destroyed after it is collected
         }
-    }
+    }*/
 
     public void Move()
     {
