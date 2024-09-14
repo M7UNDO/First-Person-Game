@@ -57,9 +57,7 @@ public class FirstPersonControls : MonoBehaviour
 
     [Header("EXAMINE SETTINGS")]
     [Space(5)]
-    public float ExamineRange = 0.2f;
-    public GameObject DeskDescriptionPanel;
-    public GameObject BookshelfDescriptionPanel;
+    public GameObject[] ItemDescriptions;
     private bool toggle;
 
 
@@ -72,9 +70,9 @@ public class FirstPersonControls : MonoBehaviour
     {
         // Get and store the CharacterController component attached to this GameObject
         characterController = GetComponent<CharacterController>();
-        Doors[0].layer = 2;
-        Doors[2].layer = 2;
-        Doors[3].layer = 2;
+        //Doors[0].layer = 2;
+        //Doors[2].layer = 2;
+        //Doors[3].layer = 2;
     }
 
     private void Start()
@@ -126,7 +124,7 @@ public class FirstPersonControls : MonoBehaviour
         ApplyGravity();
     }
 
-    private void OnTriggerEnter(Collider coli)
+   /* private void OnTriggerEnter(Collider coli)
     {
         if (coli.gameObject.CompareTag("GoldKey"))
         {
@@ -143,7 +141,7 @@ public class FirstPersonControls : MonoBehaviour
             Doors[3].layer = 0;//Changes the layer the doors on back to the default so the raycast can interact with. Essentially unlocking the door
             Destroy(coli.gameObject);//The Key is destroyed after it is collected
         }
-    }
+    }*/
 
     public void Move()
     {
@@ -348,34 +346,35 @@ public class FirstPersonControls : MonoBehaviour
         Ray ray = new Ray(playerCamera.position, playerCamera.forward);
         RaycastHit hit;
 
-        Debug.DrawRay(playerCamera.position, playerCamera.forward * ExamineRange, Color.green, 0.2f);
+        Debug.DrawRay(playerCamera.position, playerCamera.forward * pickUpRange, Color.green, 0.2f);
 
-        if (Physics.Raycast(ray, out hit, ExamineRange))
+        if (Physics.Raycast(ray, out hit, pickUpRange))
         {
-            if (hit.collider.CompareTag("Desk"))
+            if (hit.collider.CompareTag("Bookshelf"))
             {
                 toggle = !toggle;
                 if (toggle == false)
                 {
-                    DeskDescriptionPanel.SetActive(false);
+                   
+                    ItemDescriptions[0].SetActive(false);
                 }
 
                 if (toggle)
                 {
-                    DeskDescriptionPanel.SetActive(true);
+                    ItemDescriptions[0].SetActive(true);
                 }
             }
-            else if (hit.collider.CompareTag("Bookshelf"))
+            else if (hit.collider.CompareTag("Book"))
             {
                 toggle = !toggle;
                 if (toggle == false)
                 {
-                    BookshelfDescriptionPanel.SetActive(false);
+                    
                 }
 
                 if (toggle)
                 {
-                    BookshelfDescriptionPanel.SetActive(true);
+                    
                 }
             }
         }
