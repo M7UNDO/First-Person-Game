@@ -11333,7 +11333,6 @@ MonoBehaviour:
   - {fileID: 0}
   ItemDescriptions:
   - {fileID: 2123163188}
-  examinePosition: {fileID: 0}
   switchMaterial: {fileID: 2100000, guid: c5cfab8e2e0b0774aa76c6968795b962, type: 2}
   objectsToChangeColor:
   - {fileID: 1885275103}
