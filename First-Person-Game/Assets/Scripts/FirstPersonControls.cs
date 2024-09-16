@@ -59,6 +59,8 @@ public class FirstPersonControls : MonoBehaviour
     [Space(5)]
     public GameObject[] ItemDescriptions;
     private bool toggle;
+    private GameObject examinedObject;
+    public Transform examinePosition;
 
 
     [Header("INTERACT SETTINGS")]
@@ -350,17 +352,28 @@ public class FirstPersonControls : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, pickUpRange))
         {
-            if (hit.collider.CompareTag("Bookshelf"))
+            if (hit.collider.CompareTag("test"))
             {
+
+                // Pick up the object
+                examinedObject = hit.collider.gameObject;
+                examinedObject.GetComponent<Rigidbody>().isKinematic = true; // Disable physics
+
+                // Attach the object to the hold position
+                examinedObject.transform.position = examinePosition.position;
+                examinedObject.transform.rotation = examinePosition.rotation;
+                examinedObject.transform.parent = examinePosition;
+
                 toggle = !toggle;
                 if (toggle == false)
                 {
-                   
+                  
                     ItemDescriptions[0].SetActive(false);
                 }
 
                 if (toggle)
                 {
+                   
                     ItemDescriptions[0].SetActive(true);
                 }
             }

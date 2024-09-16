@@ -23,6 +23,7 @@ TagManager:
   - LeftDoor
   - Lever
   - Cabinet
+  - test
   layers:
   - Default
   - TransparentFX
