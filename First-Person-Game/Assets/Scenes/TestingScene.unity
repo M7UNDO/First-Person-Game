@@ -6016,7 +6016,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &638512767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6078,7 +6078,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 11
   m_TargetDisplay: 0
 --- !u!224 &638512770
 RectTransform:
@@ -11441,6 +11441,7 @@ MonoBehaviour:
   - {fileID: 1885275103}
   - {fileID: 1807093491}
   - {fileID: 0}
+  noteCanvas: {fileID: 638512766}
 --- !u!1 &1053856188
 GameObject:
   m_ObjectHideFlags: 0
@@ -18725,7 +18726,7 @@ GameObject:
   - component: {fileID: 2027487428}
   m_Layer: 0
   m_Name: Note
-  m_TagString: Untagged
+  m_TagString: Note
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -66,6 +66,13 @@ public class FirstPersonControls : MonoBehaviour
     public Material switchMaterial; // Material to apply when switch is activated
     public GameObject[] objectsToChangeColor; // Array of objects to change color
 
+    [Header("NOTE SETTINGS")]
+    [Space(5)]
+
+    public GameObject noteCanvas;
+
+
+
     private void Awake()
     {
         // Get and store the CharacterController component attached to this GameObject
@@ -297,11 +304,11 @@ public class FirstPersonControls : MonoBehaviour
         if (Physics.Raycast(ray, out hit, Interactiondistance, layers))
         {
             if (hit.collider.CompareTag("Door"))
-            { 
+            {
                 hit.collider.GetComponent<Door>().DoorOpenClose();
 
             }
-            else if(hit.collider.CompareTag("Drawer"))
+            else if (hit.collider.CompareTag("Drawer"))
             {
                 hit.collider.GetComponent<Door>().DrawerOpenClose();
                 print("DRAWER OPENED");
@@ -309,27 +316,45 @@ public class FirstPersonControls : MonoBehaviour
             }
             else if (hit.collider.CompareTag("LockedDoor"))
             {
-                
+
                 hit.collider.GetComponent<Door>().DoorOpenClose();
                 Debug.Log("The door has opened");
 
             }
-            else if(hit.collider.CompareTag("LeftDoor"))
+            else if (hit.collider.CompareTag("LeftDoor"))
             {
                 hit.collider.GetComponent<CupboardScript>().LeftDoor();
             }
-            else if(hit.collider.CompareTag("RightDoor"))
+            else if (hit.collider.CompareTag("RightDoor"))
             {
                 hit.collider.GetComponent<CupboardScript>().RightDoor();
             }
             else if (hit.collider.CompareTag("Lever"))
             {
                 hit.collider.GetComponent<ShelfSwitch>().Lever();
-                
+
             }
             else if (hit.collider.CompareTag("Cabinet"))
             {
                 hit.collider.GetComponent<Door>().CabinetOpenClose();
+            }
+            else if (hit.collider.CompareTag("Note"))
+            {
+
+                toggle = !toggle;
+                if (toggle == false)
+                {
+
+                    noteCanvas.SetActive(false);
+                }
+
+                if (toggle)
+                {
+                    noteCanvas.SetActive(true);
+                    
+                }
+                
+
             }
 
 
@@ -337,6 +362,7 @@ public class FirstPersonControls : MonoBehaviour
         }
         else
         {
+            noteCanvas.SetActive(false);
             StartCoroutine(LockedDoor());
         }
     }

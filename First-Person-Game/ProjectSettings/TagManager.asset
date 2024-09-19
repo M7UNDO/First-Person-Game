@@ -23,6 +23,7 @@ TagManager:
   - LeftDoor
   - Lever
   - Cabinet
+  - Note
   layers:
   - Default
   - TransparentFX
