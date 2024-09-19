@@ -1,0 +1,294 @@
+fileFormatVersion: 2
+guid: 8a2e057d1d6d95d418d110e40d290866
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Brown Motar
+    second: {fileID: 2100000, guid: aa4dca7ad63ec1744a7779554288239e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ceiling
+    second: {fileID: 2100000, guid: 0d96b4eb4843d4c49ac922f80162b8fb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Dark brick
+    second: {fileID: 2100000, guid: 09aae7ffe36395e4a9723d02b68baa16, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Entrane floor
+    second: {fileID: 2100000, guid: d1e626e6608d8084c874328c1b1fd1bc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GreyHeavenRoom2
+    second: {fileID: 2100000, guid: a84652cc001ed2040bae4ff80d57ff51, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: H Room 1
+    second: {fileID: 2100000, guid: 5496362ad4056c943ab92d702c9f1b10, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: H Room 2
+    second: {fileID: 2100000, guid: 5b0d1059b5d5aae42b351580f41b29d8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: H Room 3
+    second: {fileID: 2100000, guid: 9b73a46b5334217469f7f4e8a97e6eca, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: H Room 4
+    second: {fileID: 2100000, guid: 5e76a097d0b3ffa4cb19d2484d3c8ca8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: H Room 5
+    second: {fileID: 2100000, guid: fab92c0661b00244db579e2de48fed4f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: HL Room 1
+    second: {fileID: 2100000, guid: 82c397d9e515b43478ee7be1073480a5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: HL Room 2
+    second: {fileID: 2100000, guid: cf13e8e9651b85947919af6a45a58bcd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: HL Room 3
+    second: {fileID: 2100000, guid: 2e1a67d0e277d6146ad5be87bb13d00c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: HL Room 4
+    second: {fileID: 2100000, guid: 4daaff4feb458e24ea72dd9a7fb476e8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: HL Room 5
+    second: {fileID: 2100000, guid: d39b8e88c90ee57469b46512ba8f1175, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: HL Room 6
+    second: {fileID: 2100000, guid: ecde452785f091640b370f5d6e00b2a4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: HP Room 1
+    second: {fileID: 2100000, guid: e80edf63f6130b244b5ca4a3118c3783, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: HP Room 2
+    second: {fileID: 2100000, guid: a2018bfb8fa533f4e9f830620c5ed119, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: HP Room 3
+    second: {fileID: 2100000, guid: a2878de719f371f4f92f2c682d4c9356, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: HP Room 4
+    second: {fileID: 2100000, guid: 44c313db6011bcb43a7035d5de7eab82, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Heaven Floor
+    second: {fileID: 2100000, guid: 95d5995b1d740af42aed0f28d9c56ad4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Heaven Passage
+    second: {fileID: 2100000, guid: c4477fe774231d342bd21d8cf40d235c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: HeavenRoom
+    second: {fileID: 2100000, guid: 25956de725aa4524eadec7106fcf6252, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hel Passage
+    second: {fileID: 2100000, guid: d53d635ac55e5e5499d338cf41456120, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hell Room
+    second: {fileID: 2100000, guid: fd96fd082b0ff5e41b17e17eb7197727, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hell floor
+    second: {fileID: 2100000, guid: 82ef04ef3d5f5a3429e35886ab40a386, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Library Floor
+    second: {fileID: 2100000, guid: bba354dea6a28f443b8feae5837c3b7c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Library Walls
+    second: {fileID: 2100000, guid: 7f682b4f76e1a74459276925ae471eb1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Light grey Motar
+    second: {fileID: 2100000, guid: 17d36275a67c38a4c969a5b550d09d1c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: 30891e677d21d4749b8bb78f169f812e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Motar
+    second: {fileID: 2100000, guid: 43cf1f5f6063e5641ab123f5a7be5afa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: OutsideGrey
+    second: {fileID: 2100000, guid: 2e3dc83b9938b0245bd4767e202f4281, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: RedMortar
+    second: {fileID: 2100000, guid: a6a6229e699a4a24692b6c4e2d14e4ef, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SmallRoom
+    second: {fileID: 2100000, guid: dd34b827d4a741240a6128f8ca85c10f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Study floor
+    second: {fileID: 2100000, guid: 7c2436cb1a6401c45b6ed5782f3cfacc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: White Motar
+    second: {fileID: 2100000, guid: 0a2315526d0bd1e48814f05949f5ae76, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wood
+    second: {fileID: 2100000, guid: 24d14e7b587a05d4bb6246504207f406, type: 2}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
