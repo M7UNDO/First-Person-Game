@@ -69,7 +69,8 @@ public class FirstPersonControls : MonoBehaviour
     [Header("NOTE SETTINGS")]
     [Space(5)]
 
-    public GameObject noteCanvas;
+    public GameObject[] Notes;
+    private bool noteToggle;
 
 
 
@@ -340,32 +341,32 @@ public class FirstPersonControls : MonoBehaviour
             }
             else if (hit.collider.CompareTag("Note"))
             {
-
-                toggle = !toggle;
-                if (toggle == false)
-                {
-
-                    noteCanvas.SetActive(false);
-                }
-
-                if (toggle)
-                {
-                    noteCanvas.SetActive(true);
-                    
-                }
-                
+                hit.collider.GetComponent<FirstPersonControls>().NoteOpenClose();  
 
             }
+            else
+            {
+                foreach (GameObject note in Notes)
+                {
+                    note.SetActive(false);
+                }
+            }
+            
 
 
 
         }
         else
         {
-            noteCanvas.SetActive(false);
+            foreach(GameObject note in Notes)
+            {
+                note.SetActive(false);
+            }
             StartCoroutine(LockedDoor());
         }
     }
+
+   
 
     public void ItemExamination()
     {
@@ -395,12 +396,19 @@ public class FirstPersonControls : MonoBehaviour
                 toggle = !toggle;
                 if (toggle == false)
                 {
-                    
+                    NoteOpenClose();
                 }
 
                 if (toggle)
                 {
-                    
+                    NoteOpenClose();
+                }
+            }
+            else
+            {
+                foreach( GameObject note in Notes)
+                {
+                    note.SetActive(false);
                 }
             }
         }
@@ -428,6 +436,23 @@ public class FirstPersonControls : MonoBehaviour
                 }
             }
             
+        }
+    }
+
+    public void NoteOpenClose()
+    {
+        foreach (GameObject note in Notes)
+        {
+            toggle = !toggle;
+            if (toggle == false)
+            {
+                note.SetActive(false);
+            }
+
+            if (toggle)
+            {
+                note.SetActive(true);
+            }
         }
     }
 
