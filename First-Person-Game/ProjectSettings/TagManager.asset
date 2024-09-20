@@ -13,6 +13,17 @@ TagManager:
   - Bullet
   - Bookshelf
   - Desk
+  - Switch
+  - LockedDoor
+  - GoldKey
+  - SilverKey
+  - BronzeKey
+  - Drawer
+  - RightDoor
+  - LeftDoor
+  - Lever
+  - Cabinet
+  - Note
   layers:
   - Default
   - TransparentFX

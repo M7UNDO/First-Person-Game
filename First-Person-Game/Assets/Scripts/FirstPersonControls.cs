@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEditor;
+using Unity.UI;
+using UnityEngine.UI;
 
 public class FirstPersonControls : MonoBehaviour
 {
@@ -22,7 +24,7 @@ public class FirstPersonControls : MonoBehaviour
     private float verticalLookRotation = 0f; // Keeps track of vertical camera rotation for clamping
     private Vector3 velocity; // Velocity of the player
     private CharacterController characterController; // Reference to the CharacterController component
-    public GameObject crosshair;
+    public Image crosshair;
 
     [Header("SHOOTING SETTINGS")]
     [Space(5)]
@@ -36,6 +38,7 @@ public class FirstPersonControls : MonoBehaviour
     [Space(5)]
     public Transform holdPosition; // Position where the picked-up object will be held
     private GameObject heldObject; // Reference to the currently held object
+    
 
     [Header("CROUCH SETTINGS")]
     [Space(5)]
@@ -44,22 +47,30 @@ public class FirstPersonControls : MonoBehaviour
     public float crouchSpeed = 1.5f;//Speed at which the player is moving while crouching
     private bool isCrouching = false; //Whether player is currently crouching
 
-    [Header("DOOR SETTINGS")]
+    [Header("DOOR AND DRAWER SETTINGS")]
     [Space(5)]
     public float Interactiondistance = 3f;
     public string doorOpenAnimName, doorCloseAnimName;
     public LayerMask layers;
-    public GameObject lockedDoor;
-    public GameObject block;
-    public Collider myCollider;
+    public GameObject[] Doors;
+    public GameObject[] Drawers;
 
     [Header("EXAMINE SETTINGS")]
     [Space(5)]
-    public float ExamineRange = 0.2f;
-    public GameObject DeskDescriptionPanel;
-    public GameObject BookshelfDescriptionPanel;
+    public GameObject[] ItemDescriptions;
     private bool toggle;
 
+
+    [Header("INTERACT SETTINGS")]
+    [Space(5)]
+    public Material switchMaterial; // Material to apply when switch is activated
+    public GameObject[] objectsToChangeColor; // Array of objects to change color
+
+    [Header("NOTE SETTINGS")]
+    [Space(5)]
+
+    public GameObject[] Notes;
+    private bool noteToggle;
 
 
 
@@ -67,13 +78,14 @@ public class FirstPersonControls : MonoBehaviour
     {
         // Get and store the CharacterController component attached to this GameObject
         characterController = GetComponent<CharacterController>();
-        myCollider = lockedDoor.GetComponent<Collider>();
-        myCollider.enabled = false;
+        //Doors[0].layer = 2;
+        //Doors[2].layer = 2;
+        //Doors[3].layer = 2;
     }
 
     private void Start()
     {
-        
+
     }
 
     private void OnEnable()
@@ -100,11 +112,14 @@ public class FirstPersonControls : MonoBehaviour
 
         // Subscribe to the pick-up input event
         playerInput.Player.PickUp.performed += ctx => PickUpObject(); // Call the PickUpObject method when pick-up input is performed
-        playerInput.Player.Interact.performed += ctx => DoorInteraction(); // Call the PickUpObject method when pick-up input is performed
+        playerInput.Player.OldInteract.performed += ctx => Interaction(); // Call the PickUpObject method when pick-up input is performed
 
         playerInput.Player.Examine.performed += ctx => ItemExamination();//Call the ItemExamination method when an item is examined
 
         playerInput.Player.Crouch.performed += ctx => ToggleCrouch(); // Call the ToggleCrouchObject method when pick-up input is performed
+
+        // Subscribe to the interact input event
+        playerInput.Player.Interact.performed += ctx => Interact(); // Interact with switch
 
 
     }
@@ -117,15 +132,24 @@ public class FirstPersonControls : MonoBehaviour
         ApplyGravity();
     }
 
-    private void OnTriggerEnter(Collider coli)
+   /* private void OnTriggerEnter(Collider coli)
     {
-        if (coli.gameObject.tag == "Key")
+        if (coli.gameObject.CompareTag("GoldKey"))
         {
-            block.SetActive(false);
-            myCollider.enabled = true;
-            Destroy(coli.gameObject);
+            Doors[0].layer = 0;//Changes the layer the doors on back to the default so the raycast can interact with. Essentially unlocking the door
+            Destroy(coli.gameObject);//The Key is destroyed after it is collected
         }
-    }
+        else if (coli.gameObject.CompareTag("SilverKey"))
+        {
+            Doors[2].layer = 0;//Changes the layer the doors on back to the default so the raycast can interact with. Essentially unlocking the door
+            Destroy(coli.gameObject);//The Key is destroyed after it is collected
+        }
+        else if (coli.gameObject.CompareTag("BronzeKey"))
+        {
+            Doors[3].layer = 0;//Changes the layer the doors on back to the default so the raycast can interact with. Essentially unlocking the door
+            Destroy(coli.gameObject);//The Key is destroyed after it is collected
+        }
+    }*/
 
     public void Move()
     {
@@ -210,6 +234,7 @@ public class FirstPersonControls : MonoBehaviour
             heldObject.GetComponent<Rigidbody>().isKinematic = false; // Enable physics
             heldObject.transform.parent = null;
             holdingGun = false;
+            
         }
 
         // Perform a raycast from the camera's position forward
@@ -233,6 +258,8 @@ public class FirstPersonControls : MonoBehaviour
                 heldObject.transform.position = holdPosition.position;
                 heldObject.transform.rotation = holdPosition.rotation;
                 heldObject.transform.parent = holdPosition;
+
+               
             }
             else if (hit.collider.CompareTag("Magic Staff"))
             {
@@ -246,13 +273,12 @@ public class FirstPersonControls : MonoBehaviour
                 heldObject.transform.parent = holdPosition;
 
                 holdingGun = true;
-                
+
 
 
             }
         }
     }
-
 
     public void ToggleCrouch()
     {
@@ -268,7 +294,8 @@ public class FirstPersonControls : MonoBehaviour
         }
     }
 
-    public void DoorInteraction()
+
+    public void Interaction()
     {
         Ray ray = new Ray(playerCamera.position, playerCamera.forward);
         RaycastHit hit;
@@ -279,66 +306,143 @@ public class FirstPersonControls : MonoBehaviour
         {
             if (hit.collider.CompareTag("Door"))
             {
-                crosshair.SetActive(true);
-                hit.collider.GetComponent<Door>().OpenClose();
+                hit.collider.GetComponent<Door>().DoorOpenClose();
+
+            }
+            else if (hit.collider.CompareTag("Drawer"))
+            {
+                hit.collider.GetComponent<Door>().DrawerOpenClose();
+                print("DRAWER OPENED");
+
+            }
+            else if (hit.collider.CompareTag("LockedDoor"))
+            {
+
+                hit.collider.GetComponent<Door>().DoorOpenClose();
+                Debug.Log("The door has opened");
+
+            }
+            else if (hit.collider.CompareTag("LeftDoor"))
+            {
+                hit.collider.GetComponent<CupboardScript>().LeftDoor();
+            }
+            else if (hit.collider.CompareTag("RightDoor"))
+            {
+                hit.collider.GetComponent<CupboardScript>().RightDoor();
+            }
+            else if (hit.collider.CompareTag("Lever"))
+            {
+                hit.collider.GetComponent<ShelfSwitch>().Lever();
+
+            }
+            else if (hit.collider.CompareTag("Cabinet"))
+            {
+                hit.collider.GetComponent<Door>().CabinetOpenClose();
+            }
+            else if (hit.collider.CompareTag("Note"))
+            {
+                toggle = !toggle;
+                if (toggle == false)
+                {
+
+                    Notes[0].SetActive(false);
+                    moveSpeed = 6.4f;
+                    lookSpeed = 0.62f;
 
 
+                }
+
+                if (toggle)
+                {
+                    Notes[0].SetActive(true);
+                    moveSpeed = 0;  
+                    lookSpeed = 0;
+                }
 
             }
             else
             {
-                crosshair.SetActive(false);
+               
             }
+            
+
+
+
         }
         else
         {
-            crosshair.SetActive(false);
+            
+            StartCoroutine(LockedDoor());
         }
-
-
-
     }
+
+   
 
     public void ItemExamination()
     {
         Ray ray = new Ray(playerCamera.position, playerCamera.forward);
         RaycastHit hit;
 
-        Debug.DrawRay(playerCamera.position, playerCamera.forward * ExamineRange, Color.green, 0.2f);
+        Debug.DrawRay(playerCamera.position, playerCamera.forward * pickUpRange, Color.green, 0.2f);
 
-        if (Physics.Raycast(ray, out hit, ExamineRange))
+        if (Physics.Raycast(ray, out hit, pickUpRange))
         {
-            if (hit.collider.CompareTag("Desk"))
+            if (hit.collider.CompareTag("Bookshelf"))
             {
                 toggle = !toggle;
                 if (toggle == false)
                 {
-                    DeskDescriptionPanel.SetActive(false);
+                   
+                    ItemDescriptions[0].SetActive(false);
                 }
 
                 if (toggle)
                 {
-                    DeskDescriptionPanel.SetActive(true);
+                    ItemDescriptions[0].SetActive(true);
                 }
             }
-            else if (hit.collider.CompareTag("Bookshelf"))
+            else if (hit.collider.CompareTag("Book"))
             {
-                toggle = !toggle;
-                if (toggle == false)
-                {
-                    BookshelfDescriptionPanel.SetActive(false);
-                }
-
-                if (toggle)
-                {
-                    BookshelfDescriptionPanel.SetActive(true);
-                }
+                
             }
-
-
-
+            
         }
 
     }
+
+    public void Interact()
+    {
+        // Perform a raycast to detect the lightswitch
+        Ray ray = new Ray(playerCamera.position, playerCamera.forward);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, pickUpRange))
+        {
+            if (hit.collider.CompareTag("Switch")) // Assuming the switch has this tag
+            {
+                // Change the material color of the objects in the array
+                foreach (GameObject obj in objectsToChangeColor)
+                {
+                    Renderer renderer = obj.GetComponent<Renderer>();
+                    if (renderer != null)
+                    {
+                        renderer.material.color = switchMaterial.color; // Set the color to match the switch material color
+                    }
+                }
+            }
+            
+        }
+    }
+
+    
+
+    private IEnumerator LockedDoor()
+    {
+        crosshair.color = Color.grey;
+        yield return new WaitForSeconds(1f);
+        crosshair.color = Color.white;
+    }
+
+
 
 }

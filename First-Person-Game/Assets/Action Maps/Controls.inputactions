@@ -60,7 +60,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Interact",
+                    "name": "OldInteract",
                     "type": "Button",
                     "id": "4159b236-e38a-448e-9bcd-e4447cd75903",
                     "expectedControlType": "Button",
@@ -72,6 +72,15 @@
                     "name": "Examine",
                     "type": "Button",
                     "id": "204b0910-bea4-4c47-89d5-cd49521dedf6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "5195da84-df22-4d06-b864-0b965a2ee672",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -258,7 +267,7 @@
                 {
                     "name": "",
                     "id": "dfd87349-1673-4d30-810c-b16878ef8e1f",
-                    "path": "<Gamepad>/rightTrigger",
+                    "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -317,7 +326,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Interact",
+                    "action": "OldInteract",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8d2d68d3-80b3-4d9a-b748-9fbf690ece8a",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "OldInteract",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -329,6 +349,39 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Examine",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ea9c3fc1-86b8-47eb-9473-7f923b0ce24d",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Examine",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "00d9f0e3-d186-4b49-901f-e0b1653adf22",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0f2e687f-d139-4d76-a3f0-6936ba39d2c8",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -4,32 +4,77 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    private bool toggle;
-    public Animator animator;
+    [Header("DOOR ANIMATION SETTINGS")]
+    [Space(5)]
 
-    public void OpenClose()
+    private bool toggle;
+    public Animator DoorAnimator;
+
+
+    [Header("DRAWER ANIMATION SETTINGS")]
+    [Space(5)]
+
+    public Animator DrawerAnimator;
+
+    [Header("CABINET ANIMATION SETTINGS")]
+    [Space(5)]
+
+    public Animator cabinetAnimator;
+
+
+    //Method referenced: OpenClose()
+    //Title: How to Make Doors in Unity-Unity C# Tutorial
+    //Author: Omogonix
+    //Date: 3 November 2023
+    //Availability: https://youtu.be/wzNykqSPa0M?si=VhTGdgftZh2k-Q3Z
+
+    public void DoorOpenClose()
     {
         toggle = !toggle;
         if(toggle == false)
         {
-            animator.ResetTrigger("open");
-            animator.SetTrigger("close");
+            DoorAnimator.ResetTrigger("open");
+            DoorAnimator.SetTrigger("close");
         }
 
         if (toggle)
         {
-            animator.ResetTrigger("close");
-            animator.SetTrigger("open");
+            DoorAnimator.ResetTrigger("close");
+            DoorAnimator.SetTrigger("open");
         }
     }
-    void Start()
+
+    public void DrawerOpenClose()
     {
-        
+        toggle = !toggle;
+        if (toggle == false)
+        {
+            DrawerAnimator.ResetTrigger("OpenDrawer");
+            DrawerAnimator.SetTrigger("CloseDrawer");
+        }
+
+        if (toggle)
+        {
+            DrawerAnimator.ResetTrigger("CloseDrawer");
+            DrawerAnimator.SetTrigger("OpenDrawer");
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void CabinetOpenClose()
     {
-        
+        toggle = !toggle;
+        if (toggle == false)
+        {
+            cabinetAnimator.ResetTrigger("CabinetOpen");
+            cabinetAnimator.SetTrigger("CabinetClose");
+        }
+
+        if (toggle)
+        {
+            cabinetAnimator.ResetTrigger("CabinetClose");
+            cabinetAnimator.SetTrigger("CabinetOpen");
+        }
     }
+
+
 }
