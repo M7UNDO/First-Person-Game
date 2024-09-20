@@ -69,7 +69,8 @@ public class FirstPersonControls : MonoBehaviour
     [Header("NOTE SETTINGS")]
     [Space(5)]
 
-    public GameObject noteCanvas;
+    public GameObject[] Notes;
+    private bool noteToggle;
 
 
 
@@ -111,7 +112,7 @@ public class FirstPersonControls : MonoBehaviour
 
         // Subscribe to the pick-up input event
         playerInput.Player.PickUp.performed += ctx => PickUpObject(); // Call the PickUpObject method when pick-up input is performed
-        playerInput.Player.OldInteract.performed += ctx => DoorInteraction(); // Call the PickUpObject method when pick-up input is performed
+        playerInput.Player.OldInteract.performed += ctx => Interaction(); // Call the PickUpObject method when pick-up input is performed
 
         playerInput.Player.Examine.performed += ctx => ItemExamination();//Call the ItemExamination method when an item is examined
 
@@ -294,7 +295,7 @@ public class FirstPersonControls : MonoBehaviour
     }
 
 
-    public void DoorInteraction()
+    public void Interaction()
     {
         Ray ray = new Ray(playerCamera.position, playerCamera.forward);
         RaycastHit hit;
@@ -340,32 +341,42 @@ public class FirstPersonControls : MonoBehaviour
             }
             else if (hit.collider.CompareTag("Note"))
             {
-
                 toggle = !toggle;
                 if (toggle == false)
                 {
 
-                    noteCanvas.SetActive(false);
+                    Notes[0].SetActive(false);
+                    moveSpeed = 6.4f;
+                    lookSpeed = 0.62f;
+
+
                 }
 
                 if (toggle)
                 {
-                    noteCanvas.SetActive(true);
-                    
+                    Notes[0].SetActive(true);
+                    moveSpeed = 0;  
+                    lookSpeed = 0;
                 }
-                
 
             }
+            else
+            {
+               
+            }
+            
 
 
 
         }
         else
         {
-            noteCanvas.SetActive(false);
+            
             StartCoroutine(LockedDoor());
         }
     }
+
+   
 
     public void ItemExamination()
     {
@@ -392,17 +403,9 @@ public class FirstPersonControls : MonoBehaviour
             }
             else if (hit.collider.CompareTag("Book"))
             {
-                toggle = !toggle;
-                if (toggle == false)
-                {
-                    
-                }
-
-                if (toggle)
-                {
-                    
-                }
+                
             }
+            
         }
 
     }
@@ -430,6 +433,8 @@ public class FirstPersonControls : MonoBehaviour
             
         }
     }
+
+    
 
     private IEnumerator LockedDoor()
     {
