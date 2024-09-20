@@ -5302,7 +5302,6 @@ GameObject:
   - component: {fileID: 330585545}
   - component: {fileID: 330585544}
   - component: {fileID: 330585547}
-  - component: {fileID: 330585548}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -5429,21 +5428,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!114 &330585548
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 330585543}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3197aca079a50f343bb3e30dfc0ceed4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rayLength: 5
-  crosshair: {fileID: 278465863}
-  interactKey: 0
 --- !u!1 &333200471
 GameObject:
   m_ObjectHideFlags: 0
@@ -6032,7 +6016,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &638512767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11457,7 +11441,7 @@ MonoBehaviour:
   - {fileID: 1807093491}
   - {fileID: 0}
   Notes:
-  - {fileID: 638512766}
+  - {fileID: 2035264517}
 --- !u!1 &1053856188
 GameObject:
   m_ObjectHideFlags: 0
@@ -18771,14 +18755,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f23c23aed3307845a08fef0e6b8e637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  closeKey: 0
-  player: {fileID: 977202157}
-  noteCanvas: {fileID: 638512766}
-  noteTextAreaUI: {fileID: 1237775049}
-  noteText: 
-  openEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &2035264517
 GameObject:
   m_ObjectHideFlags: 0
@@ -18796,7 +18772,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2035264518
 RectTransform:
   m_ObjectHideFlags: 0

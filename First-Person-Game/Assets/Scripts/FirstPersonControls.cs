@@ -341,11 +341,18 @@ public class FirstPersonControls : MonoBehaviour
             }
             else if (hit.collider.CompareTag("Note"))
             {
+
+                
+
                 toggle = !toggle;
                 if (toggle == false)
                 {
 
                     Notes[0].SetActive(false);
+                    
+                    
+
+
                     moveSpeed = 6.4f;
                     lookSpeed = 0.62f;
 
@@ -355,16 +362,425 @@ public class FirstPersonControls : MonoBehaviour
                 if (toggle)
                 {
                     Notes[0].SetActive(true);
+              
+                    
+
+
                     moveSpeed = 0;  
                     lookSpeed = 0;
                 }
 
             }
-            else
+            else if (hit.collider.CompareTag("Note1"))
             {
-               
+                toggle = !toggle;
+                if (toggle == false)
+                {
+
+                   
+                    Notes[1].SetActive(false);
+                    
+
+
+
+                    moveSpeed = 6.4f;
+                    lookSpeed = 0.62f;
+
+
+                }
+
+                if (toggle)
+                {
+                    
+                    Notes[1].SetActive(true);
+                    
+
+
+
+                    moveSpeed = 0;
+                    lookSpeed = 0;
+                }
+
+
+
             }
+            else if (hit.collider.CompareTag("Note2"))
+            {
+                toggle = !toggle;
+                if (toggle == false)
+                {
+
+                    Notes[2].SetActive(false);
+                   
+
+
+
+                    moveSpeed = 6.4f;
+                    lookSpeed = 0.62f;
+
+
+                }
+
+                if (toggle)
+                {
+                    Notes[2].SetActive(true);
+                    
+
+
+
+                    moveSpeed = 0;
+                    lookSpeed = 0;
+                }
+
+            }
+            else if (hit.collider.CompareTag("Note3"))
+            {
+                toggle = !toggle;
+                if (toggle == false)
+                {
+
+                    Notes[3].SetActive(false);
+                
+
+
+
+                    moveSpeed = 6.4f;
+                    lookSpeed = 0.62f;
+
+
+                }
+
+                if (toggle)
+                {
+                    
+                    Notes[3].SetActive(true);
+                  
+
+
+
+                    moveSpeed = 0;
+                    lookSpeed = 0;
+                }
+
+            }
+            else if (hit.collider.CompareTag("Note4"))
+            {
+                toggle = !toggle;
+                if (toggle == false)
+                {
+
+               
+                    Notes[4].SetActive(false);
+                   
+
+
+
+                    moveSpeed = 6.4f;
+                    lookSpeed = 0.62f;
+
+
+                }
+
+                if (toggle)
+                {
+                  
+                    Notes[4].SetActive(true);
+
+
+
+
+                    moveSpeed = 0;
+                    lookSpeed = 0;
+                }
+
+            }
+            else if (hit.collider.CompareTag("Note5"))
+            {
+                toggle = !toggle;
+                if (toggle == false)
+                {
+
+                
+                    Notes[5].SetActive(false);
+                  
+
+
+
+                    moveSpeed = 6.4f;
+                    lookSpeed = 0.62f;
+
+
+                }
+
+                if (toggle)
+                {
+          
+                    Notes[5].SetActive(true);
+                  
+
+
+
+                    moveSpeed = 0;
+                    lookSpeed = 0;
+                }
+
+            }
+            else if (hit.collider.CompareTag("Note6"))
+            {
+                toggle = !toggle;
+                if (toggle == false)
+                {
+
+                    Notes[6].SetActive(false);
+         
+
+
+
+                    moveSpeed = 6.4f;
+                    lookSpeed = 0.62f;
+
+
+                }
+
+                if (toggle)
+                {
+                    Notes[6].SetActive(true);
+                   
+
+
+
+                    moveSpeed = 0;
+                    lookSpeed = 0;
+                }
+
+            }
+            else if (hit.collider.CompareTag("Note7"))
+            {
+                toggle = !toggle;
+                if (toggle == false)
+                {
+
+                 
+                    Notes[7].SetActive(false);
+                
+
+                    moveSpeed = 6.4f;
+                    lookSpeed = 0.62f;
+
+
+                }
+
+                if (toggle)
+                {
+                    
+                    Notes[7].SetActive(true);
+                  
+        
+
+
+                    moveSpeed = 0;
+                    lookSpeed = 0;
+                }
+
+            }
+            else if (hit.collider.CompareTag("Note8"))
+            {
+                toggle = !toggle;
+                if (toggle == false)
+                {
+
+                
+                    Notes[8].SetActive(false);
+              
+
+
+                    moveSpeed = 6.4f;
+                    lookSpeed = 0.62f;
+
+
+                }
+
+                if (toggle)
+                {
+      
+                    Notes[8].SetActive(true);
+             
+
+
+                    moveSpeed = 0;
+                    lookSpeed = 0;
+                }
+
+            }
+            else if (hit.collider.CompareTag("Note9"))
+            {
+                toggle = !toggle;
+                if (toggle == false)
+                {
+
+                    Notes[9].SetActive(false);
+       
+
+
+                    moveSpeed = 6.4f;
+                    lookSpeed = 0.62f;
+
+
+                }
+
+                if (toggle)
+                {
+
+                    Notes[9].SetActive(true);
             
+
+
+                    moveSpeed = 0;
+                    lookSpeed = 0;
+                }
+
+            }
+            else if (hit.collider.CompareTag("Note10"))
+            {
+                toggle = !toggle;
+                if (toggle == false)
+                {
+
+        
+                    Notes[10].SetActive(false);
+               
+
+
+                    moveSpeed = 6.4f;
+                    lookSpeed = 0.62f;
+
+
+                }
+
+                if (toggle)
+                {
+                    Notes[10].SetActive(true);
+                   
+
+
+                    moveSpeed = 0;
+                    lookSpeed = 0;
+                }
+
+            }
+            else if (hit.collider.CompareTag("Note11"))
+            {
+                toggle = !toggle;
+                if (toggle == false)
+                {
+
+                    Notes[11].SetActive(false);
+                    
+
+
+                    moveSpeed = 6.4f;
+                    lookSpeed = 0.62f;
+
+
+                }
+
+                if (toggle)
+                {
+                  
+                    Notes[11].SetActive(true);
+               
+                    moveSpeed = 0;
+                    lookSpeed = 0;
+                }
+
+            }
+            else if (hit.collider.CompareTag("Note12"))
+            {
+                toggle = !toggle;
+                if (toggle == false)
+                {
+
+              
+                    Notes[12].SetActive(false);
+                   
+
+
+
+                    moveSpeed = 6.4f;
+                    lookSpeed = 0.62f;
+
+
+                }
+
+                if (toggle)
+                {
+
+                    Notes[12].SetActive(true);
+       
+
+
+                    moveSpeed = 0;
+                    lookSpeed = 0;
+                }
+
+            }
+            else if (hit.collider.CompareTag("Note13"))
+            {
+                toggle = !toggle;
+                if (toggle == false)
+                {
+
+                 
+                    Notes[13].SetActive(false);
+          
+
+
+                    moveSpeed = 6.4f;
+                    lookSpeed = 0.62f;
+
+
+                }
+
+                if (toggle)
+                {
+                    Notes[13].SetActive(true);
+               
+                    moveSpeed = 0;
+                    lookSpeed = 0;
+                }
+
+            }
+            else if (hit.collider.CompareTag("Note14"))
+            {
+                toggle = !toggle;
+                if (toggle == false)
+                {
+
+                    Notes[14].SetActive(false);
+         
+
+
+                    moveSpeed = 6.4f;
+                    lookSpeed = 0.62f;
+
+
+                }
+
+                if (toggle)
+                {
+            
+                    Notes[14].SetActive(true);
+
+
+
+                    moveSpeed = 0;
+                    lookSpeed = 0;
+                }
+
+            }
+           
+
+
 
 
 
@@ -375,6 +791,7 @@ public class FirstPersonControls : MonoBehaviour
             StartCoroutine(LockedDoor());
         }
     }
+
 
    
 
@@ -409,6 +826,8 @@ public class FirstPersonControls : MonoBehaviour
         }
 
     }
+
+    
 
     public void Interact()
     {
