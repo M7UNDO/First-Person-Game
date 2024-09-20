@@ -112,7 +112,7 @@ public class FirstPersonControls : MonoBehaviour
 
         // Subscribe to the pick-up input event
         playerInput.Player.PickUp.performed += ctx => PickUpObject(); // Call the PickUpObject method when pick-up input is performed
-        playerInput.Player.OldInteract.performed += ctx => DoorInteraction(); // Call the PickUpObject method when pick-up input is performed
+        playerInput.Player.OldInteract.performed += ctx => Interaction(); // Call the PickUpObject method when pick-up input is performed
 
         playerInput.Player.Examine.performed += ctx => ItemExamination();//Call the ItemExamination method when an item is examined
 
@@ -295,7 +295,7 @@ public class FirstPersonControls : MonoBehaviour
     }
 
 
-    public void DoorInteraction()
+    public void Interaction()
     {
         Ray ray = new Ray(playerCamera.position, playerCamera.forward);
         RaycastHit hit;
@@ -341,15 +341,28 @@ public class FirstPersonControls : MonoBehaviour
             }
             else if (hit.collider.CompareTag("Note"))
             {
-                hit.collider.GetComponent<FirstPersonControls>().NoteOpenClose();  
+                toggle = !toggle;
+                if (toggle == false)
+                {
+
+                    Notes[0].SetActive(false);
+                    moveSpeed = 6.4f;
+                    lookSpeed = 0.62f;
+
+
+                }
+
+                if (toggle)
+                {
+                    Notes[0].SetActive(true);
+                    moveSpeed = 0;  
+                    lookSpeed = 0;
+                }
 
             }
             else
             {
-                foreach (GameObject note in Notes)
-                {
-                    note.SetActive(false);
-                }
+               
             }
             
 
@@ -358,10 +371,7 @@ public class FirstPersonControls : MonoBehaviour
         }
         else
         {
-            foreach(GameObject note in Notes)
-            {
-                note.SetActive(false);
-            }
+            
             StartCoroutine(LockedDoor());
         }
     }
@@ -393,24 +403,9 @@ public class FirstPersonControls : MonoBehaviour
             }
             else if (hit.collider.CompareTag("Book"))
             {
-                toggle = !toggle;
-                if (toggle == false)
-                {
-                    NoteOpenClose();
-                }
-
-                if (toggle)
-                {
-                    NoteOpenClose();
-                }
+                
             }
-            else
-            {
-                foreach( GameObject note in Notes)
-                {
-                    note.SetActive(false);
-                }
-            }
+            
         }
 
     }
@@ -439,22 +434,7 @@ public class FirstPersonControls : MonoBehaviour
         }
     }
 
-    public void NoteOpenClose()
-    {
-        foreach (GameObject note in Notes)
-        {
-            toggle = !toggle;
-            if (toggle == false)
-            {
-                note.SetActive(false);
-            }
-
-            if (toggle)
-            {
-                note.SetActive(true);
-            }
-        }
-    }
+    
 
     private IEnumerator LockedDoor()
     {
