@@ -3,7 +3,82 @@ guid: 776be185a38da874d8a225e840991eff
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BookCoverBlack
+    second: {fileID: 2100000, guid: d3958bbe739fae64eac0797e08cb4139, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BookCoverBlack.001
+    second: {fileID: 2100000, guid: fdaa6a61d4382e44582f6f0dd471af36, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BookCoverJournal
+    second: {fileID: 2100000, guid: 3d8bc774d5d30c846a7d4c63ea18e72e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BookOfDeathCover
+    second: {fileID: 2100000, guid: 06fc6a49461aa044f986b033707b5035, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BookOfDeathCover.001
+    second: {fileID: 2100000, guid: 2defc759e8f7fc64ea558890aabdabc6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: ed98307915c45b548abcac6ca2fe64f8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.002
+    second: {fileID: 2100000, guid: 825f78a5e99d03443825d7fe7f2172ee, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.003
+    second: {fileID: 2100000, guid: 644ad07f8e5789a4f8568f1a369d6277, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.004
+    second: {fileID: 2100000, guid: d14b057df1e231b468a8b6901839a19f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.005
+    second: {fileID: 2100000, guid: f765226863a1c63409052af9ae1a624f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.006
+    second: {fileID: 2100000, guid: 0dd748417a1133d4880f4852302ba508, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.007
+    second: {fileID: 2100000, guid: 94ffc4a3ae155f249997c6e21b9903b4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.008
+    second: {fileID: 2100000, guid: b9ddf560f7d91cb4a8e09c25f56d0f47, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Page
+    second: {fileID: 2100000, guid: b87f98a507004f34d9d1cd12f9179174, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PurpleCover
+    second: {fileID: 2100000, guid: 5428114118ac58340bf264d6faf84576, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -3,7 +3,17 @@ guid: 88103debfe37ca84784499f44dfc6209
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.002
+    second: {fileID: 2100000, guid: bb2b504e77ea7844fa60dab9b2a68b9a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blue book
+    second: {fileID: 2100000, guid: 8f77bf25151d44042a15a8727343dd71, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
