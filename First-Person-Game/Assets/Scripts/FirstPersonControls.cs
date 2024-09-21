@@ -358,7 +358,7 @@ public class FirstPersonControls : MonoBehaviour
                 Destroy(hit.collider.gameObject);//The Key is destroyed after it is collected
             }
 
-            else if (hit.collider.CompareTag("SilverKey"))
+            else if (hit.collider.CompareTag("BronzeKey"))
             {
                 Doors[1].layer = 0;//Changes the layer the doors on back to the default so the raycast can interact with. Essentially unlocking the door
                 Destroy(hit.collider.gameObject);//The Key is destroyed after it is collected
