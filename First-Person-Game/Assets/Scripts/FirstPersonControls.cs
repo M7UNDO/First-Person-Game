@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEditor;
-using Unity.UI;
 using UnityEngine.UI;
 
 public class FirstPersonControls : MonoBehaviour
@@ -38,7 +37,6 @@ public class FirstPersonControls : MonoBehaviour
     [Space(5)]
     public Transform holdPosition; // Position where the picked-up object will be held
     private GameObject heldObject; // Reference to the currently held object
-    
 
     [Header("CROUCH SETTINGS")]
     [Space(5)]
@@ -79,9 +77,12 @@ public class FirstPersonControls : MonoBehaviour
     {
         // Get and store the CharacterController component attached to this GameObject
         characterController = GetComponent<CharacterController>();
-        //Doors[0].layer = 2;
-        //Doors[2].layer = 2;
-        //Doors[3].layer = 2;
+
+        Doors[0].layer = 2;
+        Doors[1].layer = 2;
+        Doors[2].layer = 2;
+        Doors[3].layer = 2;
+        
     }
 
     private void Start()
@@ -133,8 +134,9 @@ public class FirstPersonControls : MonoBehaviour
         ApplyGravity();
     }
 
-   /* private void OnTriggerEnter(Collider coli)
+    private void OnTriggerEnter(Collider coli)
     {
+
         if (coli.gameObject.CompareTag("GoldKey"))
         {
             Doors[0].layer = 0;//Changes the layer the doors on back to the default so the raycast can interact with. Essentially unlocking the door
@@ -142,15 +144,21 @@ public class FirstPersonControls : MonoBehaviour
         }
         else if (coli.gameObject.CompareTag("SilverKey"))
         {
-            Doors[2].layer = 0;//Changes the layer the doors on back to the default so the raycast can interact with. Essentially unlocking the door
+            Doors[1].layer = 0;//Changes the layer the doors on back to the default so the raycast can interact with. Essentially unlocking the door
             Destroy(coli.gameObject);//The Key is destroyed after it is collected
         }
         else if (coli.gameObject.CompareTag("BronzeKey"))
         {
+            Doors[2].layer = 0;//Changes the layer the doors on back to the default so the raycast can interact with. Essentially unlocking the door
+            Destroy(coli.gameObject);//The Key is destroyed after it is collected
+        }
+        else if (coli.gameObject.CompareTag("PlasticKey"))
+        {
             Doors[3].layer = 0;//Changes the layer the doors on back to the default so the raycast can interact with. Essentially unlocking the door
             Destroy(coli.gameObject);//The Key is destroyed after it is collected
         }
-    }*/
+
+    }
 
     public void Move()
     {
