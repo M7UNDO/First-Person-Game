@@ -69,6 +69,7 @@ public class FirstPersonControls : MonoBehaviour
 
     public GameObject[] Notes;
     private bool noteToggle;
+    public GameObject CanvasEndGame;
 
 
 
@@ -81,6 +82,7 @@ public class FirstPersonControls : MonoBehaviour
         Doors[0].layer = 2;
         Doors[1].layer = 2;
         Doors[2].layer = 2;
+        CanvasEndGame.SetActive(false);
        
     }
 
@@ -133,30 +135,24 @@ public class FirstPersonControls : MonoBehaviour
         ApplyGravity();
     }
 
-    /*private void OnTriggerEnter(Collider coli)
+    private void OnTriggerEnter(Collider coli)
     {
 
-        if (coli.gameObject.CompareTag("GoldKey"))
+        if (coli.gameObject.CompareTag("endPortal"))
         {
-            print("Gold Collected");
-            Doors[0].layer = 0;//Changes the layer the doors on back to the default so the raycast can interact with. Essentially unlocking the door
-            Destroy(coli.gameObject);//The Key is destroyed after it is collected
-        }
-        else if (coli.gameObject.CompareTag("SilverKey"))
-        {
-            print("Silver Collected");
-            Doors[1].layer = 0;//Changes the layer the doors on back to the default so the raycast can interact with. Essentially unlocking the door
-            Destroy(coli.gameObject);//The Key is destroyed after it is collected
-        }
-        else if (coli.gameObject.CompareTag("BronzeKey"))
-        {
-            print("Bronze Collected");
-            Doors[2].layer = 0;//Changes the layer the doors on back to the default so the raycast can interact with. Essentially unlocking the door
-            Destroy(coli.gameObject);//The Key is destroyed after it is collected
+           
+           moveSpeed = 0f;
+           lookSpeed = 0f;
+           CanvasEndGame.SetActive(true);
         }
         
 
-    }*/
+    }
+
+    public void OnApplicationQuit()
+    {
+       Application.Quit();
+    }
 
     public void Move()
     {
@@ -719,7 +715,7 @@ public class FirstPersonControls : MonoBehaviour
         else
         {
             
-            StartCoroutine(LockedDoor());
+            StartCoroutine(ChangeCrosshairColour());
         }
     }
 
@@ -740,12 +736,15 @@ public class FirstPersonControls : MonoBehaviour
                 toggle = !toggle;
                 if (toggle == false)
                 {
-                   
+                    moveSpeed = 6.4f;
+                    lookSpeed = 0.62f;
                     ItemDescriptions[0].SetActive(false);
                 }
 
                 if (toggle)
                 {
+                    moveSpeed = 0;
+                    lookSpeed = 0;
                     ItemDescriptions[0].SetActive(true);
                 }
             }
@@ -754,12 +753,15 @@ public class FirstPersonControls : MonoBehaviour
                 toggle = !toggle;
                 if (toggle == false)
                 {
-
+                    moveSpeed = 6.4f;
+                    lookSpeed = 0.62f;
                     ItemDescriptions[1].SetActive(false);
                 }
 
                 if (toggle)
                 {
+                    moveSpeed = 0;
+                    lookSpeed = 0;
                     ItemDescriptions[1].SetActive(true);
                 }
             }
@@ -768,12 +770,15 @@ public class FirstPersonControls : MonoBehaviour
                 toggle = !toggle;
                 if (toggle == false)
                 {
-
+                    moveSpeed = 6.4f;
+                    lookSpeed = 0.62f;
                     ItemDescriptions[2].SetActive(false);
                 }
 
                 if (toggle)
                 {
+                    moveSpeed = 0;
+                    lookSpeed = 0;
                     ItemDescriptions[2].SetActive(true);
                 }
             }
@@ -782,12 +787,15 @@ public class FirstPersonControls : MonoBehaviour
                 toggle = !toggle;
                 if (toggle == false)
                 {
-
+                    moveSpeed = 6.4f;
+                    lookSpeed = 0.62f;
                     ItemDescriptions[3].SetActive(false);
                 }
 
                 if (toggle)
                 {
+                    moveSpeed = 0;
+                    lookSpeed = 0;
                     ItemDescriptions[3].SetActive(true);
                 }
             }
@@ -796,12 +804,15 @@ public class FirstPersonControls : MonoBehaviour
                 toggle = !toggle;
                 if (toggle == false)
                 {
-
+                    moveSpeed = 6.4f;
+                    lookSpeed = 0.62f;
                     ItemDescriptions[4].SetActive(false);
                 }
 
                 if (toggle)
                 {
+                    moveSpeed = 0;
+                    lookSpeed = 0;
                     ItemDescriptions[4].SetActive(true);
                 }
             }
@@ -810,12 +821,15 @@ public class FirstPersonControls : MonoBehaviour
                 toggle = !toggle;
                 if (toggle == false)
                 {
-
+                    moveSpeed = 6.4f;
+                    lookSpeed = 0.62f;
                     ItemDescriptions[5].SetActive(false);
                 }
 
                 if (toggle)
                 {
+                    moveSpeed = 0;
+                    lookSpeed = 0;
                     ItemDescriptions[5].SetActive(true);
                 }
             }
@@ -824,12 +838,15 @@ public class FirstPersonControls : MonoBehaviour
                 toggle = !toggle;
                 if (toggle == false)
                 {
-
+                    moveSpeed = 6.4f;
+                    lookSpeed = 0.62f;
                     ItemDescriptions[6].SetActive(false);
                 }
 
                 if (toggle)
                 {
+                    moveSpeed = 0;
+                    lookSpeed = 0;
                     ItemDescriptions[6].SetActive(true);
                 }
             }
@@ -838,12 +855,15 @@ public class FirstPersonControls : MonoBehaviour
                 toggle = !toggle;
                 if (toggle == false)
                 {
-
+                    moveSpeed = 6.4f;
+                    lookSpeed = 0.62f;
                     ItemDescriptions[7].SetActive(false);
                 }
 
                 if (toggle)
                 {
+                    moveSpeed = 0;
+                    lookSpeed = 0;
                     ItemDescriptions[7].SetActive(true);
                 }
             }
@@ -852,12 +872,15 @@ public class FirstPersonControls : MonoBehaviour
                 toggle = !toggle;
                 if (toggle == false)
                 {
-
+                    moveSpeed = 6.4f;
+                    lookSpeed = 0.62f;
                     ItemDescriptions[8].SetActive(false);
                 }
 
                 if (toggle)
                 {
+                    moveSpeed = 0;
+                    lookSpeed = 0;
                     ItemDescriptions[8].SetActive(true);
                 }
             }
@@ -895,7 +918,7 @@ public class FirstPersonControls : MonoBehaviour
 
     
 
-    private IEnumerator LockedDoor()
+    private IEnumerator ChangeCrosshairColour()
     {
         crosshair.color = Color.grey;
         yield return new WaitForSeconds(1f);

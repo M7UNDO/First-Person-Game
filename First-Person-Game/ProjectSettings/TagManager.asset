@@ -39,6 +39,7 @@ TagManager:
   - Orb
   - PlasticKey
   - Cupboard
+  - endPortal
   layers:
   - Default
   - TransparentFX
