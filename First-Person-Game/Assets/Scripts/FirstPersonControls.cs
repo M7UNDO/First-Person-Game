@@ -74,6 +74,7 @@ public class FirstPersonControls : MonoBehaviour
 
 
 
+
     private void Awake()
     {
         // Get and store the CharacterController component attached to this GameObject
@@ -339,32 +340,28 @@ public class FirstPersonControls : MonoBehaviour
             {
                 hit.collider.GetComponent<Door>().CabinetOpenClose();
             }
+            else if (hit.collider.CompareTag("Orb"))
+            {
+                print("Spin");
+                hit.collider.GetComponent<OrbScript>().OrbSpin();
+            }
             else if (hit.collider.CompareTag("Note"))
             {
-
-                
 
                 toggle = !toggle;
                 if (toggle == false)
                 {
 
                     Notes[0].SetActive(false);
-                    
-                    
-
 
                     moveSpeed = 6.4f;
                     lookSpeed = 0.62f;
-
 
                 }
 
                 if (toggle)
                 {
                     Notes[0].SetActive(true);
-              
-                    
-
 
                     moveSpeed = 0;  
                     lookSpeed = 0;
@@ -377,15 +374,10 @@ public class FirstPersonControls : MonoBehaviour
                 if (toggle == false)
                 {
 
-                   
                     Notes[1].SetActive(false);
-                    
-
-
 
                     moveSpeed = 6.4f;
                     lookSpeed = 0.62f;
-
 
                 }
 
@@ -393,15 +385,10 @@ public class FirstPersonControls : MonoBehaviour
                 {
                     
                     Notes[1].SetActive(true);
-                    
-
-
 
                     moveSpeed = 0;
                     lookSpeed = 0;
                 }
-
-
 
             }
             else if (hit.collider.CompareTag("Note2"))
@@ -412,12 +399,8 @@ public class FirstPersonControls : MonoBehaviour
 
                     Notes[2].SetActive(false);
                    
-
-
-
                     moveSpeed = 6.4f;
                     lookSpeed = 0.62f;
-
 
                 }
 
@@ -425,9 +408,6 @@ public class FirstPersonControls : MonoBehaviour
                 {
                     Notes[2].SetActive(true);
                     
-
-
-
                     moveSpeed = 0;
                     lookSpeed = 0;
                 }
@@ -440,9 +420,6 @@ public class FirstPersonControls : MonoBehaviour
                 {
 
                     Notes[3].SetActive(false);
-                
-
-
 
                     moveSpeed = 6.4f;
                     lookSpeed = 0.62f;
@@ -455,9 +432,6 @@ public class FirstPersonControls : MonoBehaviour
                     
                     Notes[3].SetActive(true);
                   
-
-
-
                     moveSpeed = 0;
                     lookSpeed = 0;
                 }
@@ -471,9 +445,6 @@ public class FirstPersonControls : MonoBehaviour
 
                
                     Notes[4].SetActive(false);
-                   
-
-
 
                     moveSpeed = 6.4f;
                     lookSpeed = 0.62f;
@@ -485,9 +456,6 @@ public class FirstPersonControls : MonoBehaviour
                 {
                   
                     Notes[4].SetActive(true);
-
-
-
 
                     moveSpeed = 0;
                     lookSpeed = 0;
@@ -503,12 +471,8 @@ public class FirstPersonControls : MonoBehaviour
                 
                     Notes[5].SetActive(false);
                   
-
-
-
                     moveSpeed = 6.4f;
                     lookSpeed = 0.62f;
-
 
                 }
 
@@ -517,9 +481,6 @@ public class FirstPersonControls : MonoBehaviour
           
                     Notes[5].SetActive(true);
                   
-
-
-
                     moveSpeed = 0;
                     lookSpeed = 0;
                 }
@@ -533,21 +494,14 @@ public class FirstPersonControls : MonoBehaviour
 
                     Notes[6].SetActive(false);
          
-
-
-
                     moveSpeed = 6.4f;
                     lookSpeed = 0.62f;
-
 
                 }
 
                 if (toggle)
                 {
                     Notes[6].SetActive(true);
-                   
-
-
 
                     moveSpeed = 0;
                     lookSpeed = 0;
@@ -560,13 +514,10 @@ public class FirstPersonControls : MonoBehaviour
                 if (toggle == false)
                 {
 
-                 
                     Notes[7].SetActive(false);
                 
-
                     moveSpeed = 6.4f;
                     lookSpeed = 0.62f;
-
 
                 }
 
@@ -574,9 +525,6 @@ public class FirstPersonControls : MonoBehaviour
                 {
                     
                     Notes[7].SetActive(true);
-                  
-        
-
 
                     moveSpeed = 0;
                     lookSpeed = 0;
@@ -588,15 +536,10 @@ public class FirstPersonControls : MonoBehaviour
                 toggle = !toggle;
                 if (toggle == false)
                 {
-
-                
                     Notes[8].SetActive(false);
-              
-
 
                     moveSpeed = 6.4f;
                     lookSpeed = 0.62f;
-
 
                 }
 
@@ -604,8 +547,6 @@ public class FirstPersonControls : MonoBehaviour
                 {
       
                     Notes[8].SetActive(true);
-             
-
 
                     moveSpeed = 0;
                     lookSpeed = 0;
@@ -620,21 +561,15 @@ public class FirstPersonControls : MonoBehaviour
 
                     Notes[9].SetActive(false);
        
-
-
                     moveSpeed = 6.4f;
                     lookSpeed = 0.62f;
-
 
                 }
 
                 if (toggle)
                 {
-
                     Notes[9].SetActive(true);
             
-
-
                     moveSpeed = 0;
                     lookSpeed = 0;
                 }
@@ -646,23 +581,17 @@ public class FirstPersonControls : MonoBehaviour
                 if (toggle == false)
                 {
 
-        
                     Notes[10].SetActive(false);
                
-
-
                     moveSpeed = 6.4f;
                     lookSpeed = 0.62f;
-
 
                 }
 
                 if (toggle)
                 {
                     Notes[10].SetActive(true);
-                   
-
-
+               
                     moveSpeed = 0;
                     lookSpeed = 0;
                 }
@@ -675,12 +604,9 @@ public class FirstPersonControls : MonoBehaviour
                 {
 
                     Notes[11].SetActive(false);
-                    
-
-
+               
                     moveSpeed = 6.4f;
                     lookSpeed = 0.62f;
-
 
                 }
 
@@ -700,15 +626,10 @@ public class FirstPersonControls : MonoBehaviour
                 if (toggle == false)
                 {
 
-              
                     Notes[12].SetActive(false);
-                   
-
-
-
+                  
                     moveSpeed = 6.4f;
                     lookSpeed = 0.62f;
-
 
                 }
 
@@ -717,8 +638,6 @@ public class FirstPersonControls : MonoBehaviour
 
                     Notes[12].SetActive(true);
        
-
-
                     moveSpeed = 0;
                     lookSpeed = 0;
                 }
@@ -730,14 +649,10 @@ public class FirstPersonControls : MonoBehaviour
                 if (toggle == false)
                 {
 
-                 
                     Notes[13].SetActive(false);
           
-
-
                     moveSpeed = 6.4f;
                     lookSpeed = 0.62f;
-
 
                 }
 
@@ -757,12 +672,9 @@ public class FirstPersonControls : MonoBehaviour
                 {
 
                     Notes[14].SetActive(false);
-         
-
-
+        
                     moveSpeed = 6.4f;
                     lookSpeed = 0.62f;
-
 
                 }
 
@@ -771,17 +683,11 @@ public class FirstPersonControls : MonoBehaviour
             
                     Notes[14].SetActive(true);
 
-
-
                     moveSpeed = 0;
                     lookSpeed = 0;
                 }
 
             }
-           
-
-
-
 
 
         }
@@ -818,9 +724,19 @@ public class FirstPersonControls : MonoBehaviour
                     ItemDescriptions[0].SetActive(true);
                 }
             }
-            else if (hit.collider.CompareTag("Book"))
+            else if (hit.collider.CompareTag("Orb"))
             {
-                
+                toggle = !toggle;
+                if (toggle == false)
+                {
+
+                    ItemDescriptions[1].SetActive(false);
+                }
+
+                if (toggle)
+                {
+                    ItemDescriptions[1].SetActive(true);
+                }
             }
             
         }

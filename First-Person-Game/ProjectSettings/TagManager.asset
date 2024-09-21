@@ -38,6 +38,7 @@ TagManager:
   - Note12
   - Note13
   - Note14
+  - Orb
   layers:
   - Default
   - TransparentFX
