@@ -8,8 +8,6 @@ TagManager:
   - PickUp
   - Door
   - Magic Staff
-  - Examinable
-  - Key
   - Bullet
   - Bookshelf
   - Desk
@@ -40,6 +38,7 @@ TagManager:
   - Note14
   - Orb
   - PlasticKey
+  - Cupboard
   layers:
   - Default
   - TransparentFX

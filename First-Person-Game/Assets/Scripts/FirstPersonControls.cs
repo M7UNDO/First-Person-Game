@@ -51,7 +51,7 @@ public class FirstPersonControls : MonoBehaviour
     public string doorOpenAnimName, doorCloseAnimName;
     public LayerMask layers;
     public GameObject[] Doors;
-    public GameObject[] Drawers;
+    
 
     [Header("EXAMINE SETTINGS")]
     [Space(5)]
@@ -81,8 +81,7 @@ public class FirstPersonControls : MonoBehaviour
         Doors[0].layer = 2;
         Doors[1].layer = 2;
         Doors[2].layer = 2;
-        Doors[3].layer = 2;
-        
+       
     }
 
     private void Start()
@@ -134,31 +133,30 @@ public class FirstPersonControls : MonoBehaviour
         ApplyGravity();
     }
 
-    private void OnTriggerEnter(Collider coli)
+    /*private void OnTriggerEnter(Collider coli)
     {
 
         if (coli.gameObject.CompareTag("GoldKey"))
         {
+            print("Gold Collected");
             Doors[0].layer = 0;//Changes the layer the doors on back to the default so the raycast can interact with. Essentially unlocking the door
             Destroy(coli.gameObject);//The Key is destroyed after it is collected
         }
         else if (coli.gameObject.CompareTag("SilverKey"))
         {
+            print("Silver Collected");
             Doors[1].layer = 0;//Changes the layer the doors on back to the default so the raycast can interact with. Essentially unlocking the door
             Destroy(coli.gameObject);//The Key is destroyed after it is collected
         }
         else if (coli.gameObject.CompareTag("BronzeKey"))
         {
+            print("Bronze Collected");
             Doors[2].layer = 0;//Changes the layer the doors on back to the default so the raycast can interact with. Essentially unlocking the door
             Destroy(coli.gameObject);//The Key is destroyed after it is collected
         }
-        else if (coli.gameObject.CompareTag("PlasticKey"))
-        {
-            Doors[3].layer = 0;//Changes the layer the doors on back to the default so the raycast can interact with. Essentially unlocking the door
-            Destroy(coli.gameObject);//The Key is destroyed after it is collected
-        }
+        
 
-    }
+    }*/
 
     public void Move()
     {
@@ -348,11 +346,30 @@ public class FirstPersonControls : MonoBehaviour
             {
                 hit.collider.GetComponent<Door>().CabinetOpenClose();
             }
+
             else if (hit.collider.CompareTag("Orb"))
             {
                 print("Spin");
                 hit.collider.GetComponent<OrbScript>().OrbSpin();
             }
+            else if (hit.collider.CompareTag("GoldKey"))
+            {
+                Doors[0].layer = 0;//Changes the layer the doors on back to the default so the raycast can interact with. Essentially unlocking the door
+                Destroy(hit.collider.gameObject);//The Key is destroyed after it is collected
+            }
+
+            else if (hit.collider.CompareTag("SilverKey"))
+            {
+                Doors[1].layer = 0;//Changes the layer the doors on back to the default so the raycast can interact with. Essentially unlocking the door
+                Destroy(hit.collider.gameObject);//The Key is destroyed after it is collected
+            }
+
+            else if (hit.collider.CompareTag("SilverKey"))
+            {
+                Doors[2].layer = 0;//Changes the layer the doors on back to the default so the raycast can interact with. Essentially unlocking the door
+                Destroy(hit.collider.gameObject);//The Key is destroyed after it is collected
+            }
+
             else if (hit.collider.CompareTag("Note"))
             {
 
@@ -746,7 +763,106 @@ public class FirstPersonControls : MonoBehaviour
                     ItemDescriptions[1].SetActive(true);
                 }
             }
-            
+            else if (hit.collider.CompareTag("Door"))
+            {
+                toggle = !toggle;
+                if (toggle == false)
+                {
+
+                    ItemDescriptions[2].SetActive(false);
+                }
+
+                if (toggle)
+                {
+                    ItemDescriptions[2].SetActive(true);
+                }
+            }
+            else if (hit.collider.CompareTag("Lever"))
+            {
+                toggle = !toggle;
+                if (toggle == false)
+                {
+
+                    ItemDescriptions[3].SetActive(false);
+                }
+
+                if (toggle)
+                {
+                    ItemDescriptions[3].SetActive(true);
+                }
+            }
+            else if (hit.collider.CompareTag("Drawer"))
+            {
+                toggle = !toggle;
+                if (toggle == false)
+                {
+
+                    ItemDescriptions[4].SetActive(false);
+                }
+
+                if (toggle)
+                {
+                    ItemDescriptions[4].SetActive(true);
+                }
+            }
+            else if (hit.collider.CompareTag("Cupboard"))
+            {
+                toggle = !toggle;
+                if (toggle == false)
+                {
+
+                    ItemDescriptions[5].SetActive(false);
+                }
+
+                if (toggle)
+                {
+                    ItemDescriptions[5].SetActive(true);
+                }
+            }
+            else if (hit.collider.CompareTag("LeftDoor"))
+            {
+                toggle = !toggle;
+                if (toggle == false)
+                {
+
+                    ItemDescriptions[6].SetActive(false);
+                }
+
+                if (toggle)
+                {
+                    ItemDescriptions[6].SetActive(true);
+                }
+            }
+            else if (hit.collider.CompareTag("RightDoor"))
+            {
+                toggle = !toggle;
+                if (toggle == false)
+                {
+
+                    ItemDescriptions[7].SetActive(false);
+                }
+
+                if (toggle)
+                {
+                    ItemDescriptions[7].SetActive(true);
+                }
+            }
+            else if (hit.collider.CompareTag("Desk"))
+            {
+                toggle = !toggle;
+                if (toggle == false)
+                {
+
+                    ItemDescriptions[8].SetActive(false);
+                }
+
+                if (toggle)
+                {
+                    ItemDescriptions[8].SetActive(true);
+                }
+            }
+
+
         }
 
     }
