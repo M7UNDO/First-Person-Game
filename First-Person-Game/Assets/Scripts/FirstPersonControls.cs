@@ -82,7 +82,7 @@ public class FirstPersonControls : MonoBehaviour
         Doors[0].layer = 2;
         Doors[1].layer = 2;
         Doors[2].layer = 2;
-        CanvasEndGame.SetActive(false);
+        
        
     }
 
@@ -135,24 +135,9 @@ public class FirstPersonControls : MonoBehaviour
         ApplyGravity();
     }
 
-    private void OnTriggerEnter(Collider coli)
-    {
+   
 
-        if (coli.gameObject.CompareTag("endPortal"))
-        {
-           
-           moveSpeed = 0f;
-           lookSpeed = 0f;
-           CanvasEndGame.SetActive(true);
-        }
-        
-
-    }
-
-    public void OnApplicationQuit()
-    {
-       Application.Quit();
-    }
+    
 
     public void Move()
     {
