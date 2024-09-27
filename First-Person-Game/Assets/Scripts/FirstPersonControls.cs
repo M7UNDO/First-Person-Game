@@ -25,6 +25,14 @@ public class FirstPersonControls : MonoBehaviour
     private CharacterController characterController; // Reference to the CharacterController component
     public Image crosshair;
 
+    [Header("UI SETTINGS")]
+    public TextMeshProUGUI pickUpText;
+    public Image healthBar;
+    public float damageAmount = 0.25f; // Reduce the health bar by this amount
+    private float healAmount = 0.5f;// Fill the health bar by this amount
+
+
+
     [Header("SHOOTING SETTINGS")]
     [Space(5)]
     public GameObject projectilePrefab; // Projectile prefab for shooting
@@ -79,9 +87,9 @@ public class FirstPersonControls : MonoBehaviour
         // Get and store the CharacterController component attached to this GameObject
         characterController = GetComponent<CharacterController>();
 
-        Doors[0].layer = 2;
+      /*  Doors[0].layer = 2;
         Doors[1].layer = 2;
-        Doors[2].layer = 2;
+        Doors[2].layer = 2;*/
         
        
     }
@@ -133,11 +141,41 @@ public class FirstPersonControls : MonoBehaviour
         Move();
         LookAround();
         ApplyGravity();
+        CheckForPickUp();
     }
 
-   
+    private void CheckForPickUp()
+    {
+        Ray ray = new Ray(playerCamera.position, playerCamera.forward);
+        RaycastHit hit;
 
-    
+        // Perform raycast to detect objects
+        if (Physics.Raycast(ray, out hit, pickUpRange))
+        {
+            // Check if the object has the "PickUp" tag
+            if (hit.collider.CompareTag("PickUp"))
+            {
+                // Display the pick-up text
+                pickUpText.gameObject.SetActive(true);
+                pickUpText.text = hit.collider.gameObject.name;
+            }
+            else
+            {
+                // Hide the pick-up text if not looking at a "PickUp" object
+                pickUpText.gameObject.SetActive(false);
+            }
+        }
+        else
+        {
+            // Hide the text if not looking at any object
+            pickUpText.gameObject.SetActive(false);
+        }
+    }
+
+
+
+
+
 
     public void Move()
     {
@@ -196,7 +234,11 @@ public class FirstPersonControls : MonoBehaviour
             // Calculate the jump velocity
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
+
+        healthBar.fillAmount -= damageAmount;
     }
+
+
 
     public void Shoot()
     {
@@ -212,7 +254,10 @@ public class FirstPersonControls : MonoBehaviour
             // Destroy the projectile after 3 seconds
             Destroy(projectile, 3f);
         }
+
+        healthBar.fillAmount += healAmount;
     }
+
 
     public void PickUpObject()
     {
