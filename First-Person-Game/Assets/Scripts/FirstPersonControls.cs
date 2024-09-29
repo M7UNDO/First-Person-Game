@@ -31,8 +31,6 @@ public class FirstPersonControls : MonoBehaviour
     public float damageAmount = 0.25f; // Reduce the health bar by this amount
     private float healAmount = 0.5f;// Fill the health bar by this amount
 
-
-
     [Header("SHOOTING SETTINGS")]
     [Space(5)]
     public GameObject projectilePrefab; // Projectile prefab for shooting
@@ -59,39 +57,26 @@ public class FirstPersonControls : MonoBehaviour
     public string doorOpenAnimName, doorCloseAnimName;
     public LayerMask layers;
     public GameObject[] Doors;
-    
 
     [Header("EXAMINE SETTINGS")]
     [Space(5)]
     public GameObject[] ItemDescriptions;
     private bool toggle;
 
-
-    [Header("INTERACT SETTINGS")]
-    [Space(5)]
-    public Material switchMaterial; // Material to apply when switch is activated
-    public GameObject[] objectsToChangeColor; // Array of objects to change color
-
     [Header("NOTE SETTINGS")]
     [Space(5)]
 
     public GameObject[] Notes;
     private bool noteToggle;
-    public GameObject CanvasEndGame;
-
-
-
 
     private void Awake()
     {
         // Get and store the CharacterController component attached to this GameObject
         characterController = GetComponent<CharacterController>();
-
-      /*  Doors[0].layer = 2;
+        Doors[0].layer = 2;
         Doors[1].layer = 2;
-        Doors[2].layer = 2;*/
-        
-       
+        Doors[2].layer = 2;
+
     }
 
     private void Start()
@@ -129,12 +114,7 @@ public class FirstPersonControls : MonoBehaviour
 
         playerInput.Player.Crouch.performed += ctx => ToggleCrouch(); // Call the ToggleCrouchObject method when pick-up input is performed
 
-        // Subscribe to the interact input event
-        playerInput.Player.Interact.performed += ctx => Interact(); // Interact with switch
-
-
     }
-
     private void Update()
     {
         // Call Move and LookAround methods every frame to handle player movement and camera rotation
@@ -171,10 +151,6 @@ public class FirstPersonControls : MonoBehaviour
             pickUpText.gameObject.SetActive(false);
         }
     }
-
-
-
-
 
 
     public void Move()
@@ -226,7 +202,6 @@ public class FirstPersonControls : MonoBehaviour
         velocity.y += gravity * Time.deltaTime; // Apply gravity to the velocity
         characterController.Move(velocity * Time.deltaTime); // Apply the velocity to the character
     }
-
     public void Jump()
     {
         if (characterController.isGrounded)
@@ -237,9 +212,6 @@ public class FirstPersonControls : MonoBehaviour
 
         healthBar.fillAmount -= damageAmount;
     }
-
-
-
     public void Shoot()
     {
         if (holdingGun == true)
@@ -257,7 +229,6 @@ public class FirstPersonControls : MonoBehaviour
 
         healthBar.fillAmount += healAmount;
     }
-
 
     public void PickUpObject()
     {
@@ -340,7 +311,7 @@ public class FirstPersonControls : MonoBehaviour
             if (hit.collider.CompareTag("Door"))
             {
                 hit.collider.GetComponent<Door>().DoorOpenClose();
-
+                print("Door open/close");
             }
             else if (hit.collider.CompareTag("Drawer"))
             {
@@ -740,7 +711,6 @@ public class FirstPersonControls : MonoBehaviour
 
             }
 
-
         }
         else
         {
@@ -919,34 +889,6 @@ public class FirstPersonControls : MonoBehaviour
         }
 
     }
-
-    
-
-    public void Interact()
-    {
-        // Perform a raycast to detect the lightswitch
-        Ray ray = new Ray(playerCamera.position, playerCamera.forward);
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit, pickUpRange))
-        {
-            if (hit.collider.CompareTag("Switch")) // Assuming the switch has this tag
-            {
-                // Change the material color of the objects in the array
-                foreach (GameObject obj in objectsToChangeColor)
-                {
-                    Renderer renderer = obj.GetComponent<Renderer>();
-                    if (renderer != null)
-                    {
-                        renderer.material.color = switchMaterial.color; // Set the color to match the switch material color
-                    }
-                }
-            }
-            
-        }
-    }
-
-    
 
     private IEnumerator ChangeCrosshairColour()
     {
