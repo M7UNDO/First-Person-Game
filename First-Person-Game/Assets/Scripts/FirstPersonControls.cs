@@ -369,6 +369,22 @@ public class FirstPersonControls : MonoBehaviour
             else if (hit.collider.gameObject.GetComponent<NoteScript>())
             {
                 hit.collider.gameObject.GetComponent<NoteScript>().NoteOpenClose();
+
+                toggle = !toggle;
+                if (toggle == false)
+                {
+                    moveSpeed = 6.4f;
+                    lookSpeed = 0.62f;
+
+                }
+
+                if (toggle)
+                {
+                
+                    moveSpeed = 0;
+                    lookSpeed = 0;
+                }
+
             }
 
             else if (hit.collider.CompareTag("Note"))
@@ -894,6 +910,18 @@ public class FirstPersonControls : MonoBehaviour
 
         }
 
+    }
+
+    public void DisableMoveLook()
+    {
+        moveSpeed = 0f;
+        lookSpeed = 0f;
+    }
+
+    public void EnableMoveLook()
+    {
+        moveSpeed = 6.4f;
+        lookSpeed = 0f;
     }
 
     private IEnumerator ChangeCrosshairColour()
