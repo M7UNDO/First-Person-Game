@@ -1,0 +1,389 @@
+fileFormatVersion: 2
+guid: 384841c5e64db8341b150f4909804d37
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover1.001
+    second: {fileID: 2100000, guid: e61f6a3f3d868b643ac2423c8ae1cf9a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover1.002
+    second: {fileID: 2100000, guid: 4c4248b1ffcfe2d458cef4b6ad73f1ea, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover1.003
+    second: {fileID: 2100000, guid: 9d9b6a87efb4f9240a8b9479cbcea24b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover1.004
+    second: {fileID: 2100000, guid: b280b827259a87d4a951fd57b4e48a61, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover1.006
+    second: {fileID: 2100000, guid: 851aae4abc9ee734fbec6efa7011841b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover10.002
+    second: {fileID: 2100000, guid: 41f908e92f78d6645bba6ba88beaba4d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover10.003
+    second: {fileID: 2100000, guid: 87e9e1437a694a24992855a1a477b797, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover11
+    second: {fileID: 2100000, guid: fb082292180ed3840a65083ccebf1da6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover11.001
+    second: {fileID: 2100000, guid: 51f63ec9cd2608440b7441b440e2da85, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover12.001
+    second: {fileID: 2100000, guid: 804e91c88c404eb4baabc59b3aa4436a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover12.002
+    second: {fileID: 2100000, guid: 32168f3c91e018747a29c19020af1550, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover12.003
+    second: {fileID: 2100000, guid: 18620d4ea22f8f4448ba1f4488c06d07, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover12.004
+    second: {fileID: 2100000, guid: c76e0b2213e25054cb23c7bd1a0aa65d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover12.006
+    second: {fileID: 2100000, guid: e204e84add052ea47834f0c69a4ee92b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover13
+    second: {fileID: 2100000, guid: 42b1d816d8eff594380664c286b0fcec, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover13.001
+    second: {fileID: 2100000, guid: 6fca71038c81e8342a2a4471539ba45b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover13.002
+    second: {fileID: 2100000, guid: ab5efec768acae746bf2572812ac37dd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover14
+    second: {fileID: 2100000, guid: e3188a284a8dda04791b5a409091c097, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover15
+    second: {fileID: 2100000, guid: e1474438dd5e45c44b5f6cdb1f17a7c4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover16
+    second: {fileID: 2100000, guid: 1732a79b29a9df8478910cc5ad588435, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover16.001
+    second: {fileID: 2100000, guid: 030140390937edb40954933a29aab911, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover16.003
+    second: {fileID: 2100000, guid: a4adc7213335ff443a2b4abfef434a95, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover18
+    second: {fileID: 2100000, guid: df4133a795ca24f4498c6086d34f9793, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover18.001
+    second: {fileID: 2100000, guid: 00da5782ef566064b821da9dff01f9ec, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover18.003
+    second: {fileID: 2100000, guid: ce7deca50b743c949b2a56ac3bf58d56, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover19
+    second: {fileID: 2100000, guid: aad5cbc8af0a89543b98e035a4802200, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover19.001
+    second: {fileID: 2100000, guid: 1a25e5106a8dc474b879c836bf7b9860, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover19.002
+    second: {fileID: 2100000, guid: 2cab5c66576beb440b2271e3a5e097ff, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover2
+    second: {fileID: 2100000, guid: 4dec060697942c74ca58bc3ccd4932c4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover2.001
+    second: {fileID: 2100000, guid: 69f12ba4a24e305448f8286768ec096e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover2.003
+    second: {fileID: 2100000, guid: 45b309a2d2e9790498d5ac778834905e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover20.001
+    second: {fileID: 2100000, guid: c36972955212a1b4cb3494bfac5fffe0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover3
+    second: {fileID: 2100000, guid: 8b95c8899b9f50d4f8d7b5060c94a620, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover3.001
+    second: {fileID: 2100000, guid: 00b5d2b010ca3e341a932f94cc2ca22a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover4
+    second: {fileID: 2100000, guid: a207a59605384dd49a40c2d943c3773c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover4.002
+    second: {fileID: 2100000, guid: ddf5e4be66ba7c34c8832966bb1cf281, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover4.003
+    second: {fileID: 2100000, guid: 5cfac41b1afc2414c86607d698482674, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover4.004
+    second: {fileID: 2100000, guid: 7dde60fc7e36092448a7d0829b4dda0e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover4.006
+    second: {fileID: 2100000, guid: f0cad8d25be0d5d4a9226095722d270a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover5.002
+    second: {fileID: 2100000, guid: 55f45c2b7bcd9fd4b9a6cef36c4dcb46, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover6
+    second: {fileID: 2100000, guid: 507d589c7d7b8df46a0794c1c442d477, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover6.003
+    second: {fileID: 2100000, guid: 8b2bb535410ab7c469ca9c4ccac67449, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover6.004
+    second: {fileID: 2100000, guid: f33d6cc57a1a80d4d93ac993d1e5a865, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover6.005
+    second: {fileID: 2100000, guid: 8056272a7c98f1946b23a176b436d7e3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover8
+    second: {fileID: 2100000, guid: 0d01c526ef8bd114fb33365057f905b1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover8.001
+    second: {fileID: 2100000, guid: 7be3a100f520c1640acabdf31b53d499, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover8.003
+    second: {fileID: 2100000, guid: 096f980569e827f498bc45f7c6ffbb39, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pages .001
+    second: {fileID: 2100000, guid: 57886583912c73144b6454129f3ea45e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pages .002
+    second: {fileID: 2100000, guid: 31791f2627b9eb342ae8f3d17b05589c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pages .004
+    second: {fileID: 2100000, guid: 413872c80982b114a98e264611b0e561, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pages .005
+    second: {fileID: 2100000, guid: 802bed8fb629c8a4797010b3d7c3a1d6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pages .006
+    second: {fileID: 2100000, guid: 09dff16e92b241a48a3bda636554de18, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pages .007
+    second: {fileID: 2100000, guid: 49348d70456c3be4d90f043e24e29346, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pages .008
+    second: {fileID: 2100000, guid: f88bb11700364f04faa1d8fea10270ba, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pages .009
+    second: {fileID: 2100000, guid: 8bffaa16810fc134f88a632039b55807, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wood
+    second: {fileID: 2100000, guid: 1210abd85bdb22a49bac41718263a2ed, type: 2}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

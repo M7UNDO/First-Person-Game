@@ -23,13 +23,16 @@ public class FirstPersonControls : MonoBehaviour
     private float verticalLookRotation = 0f; // Keeps track of vertical camera rotation for clamping
     private Vector3 velocity; // Velocity of the player
     private CharacterController characterController; // Reference to the CharacterController component
-    public Image crosshair;
+    public RawImage crosshair;
 
     [Header("UI SETTINGS")]
     public TextMeshProUGUI pickUpText;
     public Image healthBar;
     public float damageAmount = 0.25f; // Reduce the health bar by this amount
     private float healAmount = 0.5f;// Fill the health bar by this amount
+    public GameObject[] Notes;
+    private bool noteToggle;
+    public float transparency;
 
     [Header("SHOOTING SETTINGS")]
     [Space(5)]
@@ -63,11 +66,6 @@ public class FirstPersonControls : MonoBehaviour
     public GameObject[] ItemDescriptions;
     private bool toggle;
 
-    [Header("NOTE SETTINGS")]
-    [Space(5)]
-
-    public GameObject[] Notes;
-    private bool noteToggle;
 
     private void Awake()
     {
@@ -122,6 +120,8 @@ public class FirstPersonControls : MonoBehaviour
         LookAround();
         ApplyGravity();
         CheckForPickUp();
+        
+
     }
 
     private void CheckForPickUp()
@@ -133,22 +133,22 @@ public class FirstPersonControls : MonoBehaviour
         if (Physics.Raycast(ray, out hit, pickUpRange))
         {
             // Check if the object has the "PickUp" tag
-            if (hit.collider.CompareTag("PickUp"))
+            if (hit.collider.CompareTag("Door"))
             {
-                // Display the pick-up text
-                pickUpText.gameObject.SetActive(true);
-                pickUpText.text = hit.collider.gameObject.name;
+               crosshair.color = Color.white;
+                print("change colour");
             }
             else
             {
-                // Hide the pick-up text if not looking at a "PickUp" object
-                pickUpText.gameObject.SetActive(false);
+                crosshair.color = new Color(255f, 255f, 255f, transparency);
+                
+              
             }
         }
         else
         {
             // Hide the text if not looking at any object
-            pickUpText.gameObject.SetActive(false);
+            crosshair.color = new Color(255f, 255f, 255f, transparency);
         }
     }
 
@@ -308,8 +308,11 @@ public class FirstPersonControls : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, Interactiondistance, layers))
         {
+
+
             if (hit.collider.CompareTag("Door"))
             {
+                
                 hit.collider.GetComponent<Door>().DoorOpenClose();
                 print("Door open/close");
             }
@@ -767,6 +770,7 @@ public class FirstPersonControls : MonoBehaviour
             }
             else if (hit.collider.CompareTag("Door"))
             {
+                
                 toggle = !toggle;
                 if (toggle == false)
                 {
