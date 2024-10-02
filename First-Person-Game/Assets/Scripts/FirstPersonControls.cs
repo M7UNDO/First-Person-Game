@@ -23,7 +23,7 @@ public class FirstPersonControls : MonoBehaviour
     private float verticalLookRotation = 0f; // Keeps track of vertical camera rotation for clamping
     private Vector3 velocity; // Velocity of the player
     private CharacterController characterController; // Reference to the CharacterController component
-    public RawImage crosshair;
+    
 
     [Header("UI SETTINGS")]
     public TextMeshProUGUI pickUpText;
@@ -33,6 +33,7 @@ public class FirstPersonControls : MonoBehaviour
     public GameObject[] Notes;
     private bool noteToggle;
     public float transparency;
+    public RawImage crosshair;
 
     [Header("SHOOTING SETTINGS")]
     [Space(5)]
@@ -56,8 +57,8 @@ public class FirstPersonControls : MonoBehaviour
 
     [Header("DOOR AND DRAWER SETTINGS")]
     [Space(5)]
+    //public string doorOpenAnimName, doorCloseAnimName;
     public float Interactiondistance = 3f;
-    public string doorOpenAnimName, doorCloseAnimName;
     public LayerMask layers;
     public GameObject[] Doors;
 
@@ -65,7 +66,6 @@ public class FirstPersonControls : MonoBehaviour
     [Space(5)]
     public GameObject[] ItemDescriptions;
     private bool toggle;
-
 
     private void Awake()
     {
@@ -120,8 +120,6 @@ public class FirstPersonControls : MonoBehaviour
         LookAround();
         ApplyGravity();
         CheckForPickUp();
-        
-
     }
 
     private void CheckForPickUp()
@@ -141,8 +139,6 @@ public class FirstPersonControls : MonoBehaviour
             else
             {
                 crosshair.color = new Color(255f, 255f, 255f, transparency);
-                
-              
             }
         }
         else
@@ -370,6 +366,11 @@ public class FirstPersonControls : MonoBehaviour
                 Destroy(hit.collider.gameObject);//The Key is destroyed after it is collected
             }
 
+            else if (hit.collider.gameObject.GetComponent<NoteScript>())
+            {
+                hit.collider.gameObject.GetComponent<NoteScript>().NoteOpenClose();
+            }
+
             else if (hit.collider.CompareTag("Note"))
             {
 
@@ -393,7 +394,7 @@ public class FirstPersonControls : MonoBehaviour
                 }
 
             }
-            else if (hit.collider.CompareTag("Note1"))
+          /* else if (hit.collider.CompareTag("Note1"))
             {
                 toggle = !toggle;
                 if (toggle == false)
@@ -713,6 +714,7 @@ public class FirstPersonControls : MonoBehaviour
                 }
 
             }
+          */
 
         }
         else
@@ -770,7 +772,7 @@ public class FirstPersonControls : MonoBehaviour
             }
             else if (hit.collider.CompareTag("Door"))
             {
-                
+
                 toggle = !toggle;
                 if (toggle == false)
                 {
