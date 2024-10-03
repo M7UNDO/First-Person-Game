@@ -134,12 +134,17 @@ public class FirstPersonControls : MonoBehaviour
             if (hit.collider.CompareTag("Door"))
             {
                crosshair.color = Color.white;
-                print("change colour");
+                
+            }
+            else if (hit.collider.CompareTag("Bookshelf"))
+            {
+                crosshair.color = Color.white;
             }
             else
             {
                 crosshair.color = new Color(255f, 255f, 255f, transparency);
             }
+
         }
         else
         {
@@ -310,7 +315,7 @@ public class FirstPersonControls : MonoBehaviour
             {
                 
                 hit.collider.GetComponent<Door>().DoorOpenClose();
-                print("Door open/close");
+                
             }
             else if (hit.collider.CompareTag("Drawer"))
             {
