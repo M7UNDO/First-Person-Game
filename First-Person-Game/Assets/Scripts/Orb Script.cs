@@ -9,14 +9,6 @@ public class OrbScript : MonoBehaviour
 
     private bool toggle;
     public Animator OrbAnimator;
-    
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     public void OrbSpin()
     {
@@ -28,10 +20,10 @@ public class OrbScript : MonoBehaviour
             
         }
 
-        if (toggle)
+        if (toggle == true)
         {
-            OrbAnimator.ResetTrigger("spin");
-            OrbAnimator.SetTrigger("back");
+            OrbAnimator.ResetTrigger("back");
+            OrbAnimator.SetTrigger("spin");
             
         }
     }

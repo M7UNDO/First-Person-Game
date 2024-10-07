@@ -5,6 +5,8 @@ using UnityEngine;
 using TMPro;
 using UnityEditor;
 using UnityEngine.UI;
+using Unity.VisualScripting;
+using UnityEditor.Rendering.LookDev;
 
 public class FirstPersonControls : MonoBehaviour
 {
@@ -26,14 +28,37 @@ public class FirstPersonControls : MonoBehaviour
     
 
     [Header("UI SETTINGS")]
-    public TextMeshProUGUI pickUpText;
-    public Image healthBar;
+    //public TextMeshProUGUI pickUpText;
+    //public Image healthBar;
     public float damageAmount = 0.25f; // Reduce the health bar by this amount
-    private float healAmount = 0.5f;// Fill the health bar by this amount
-    public GameObject[] Notes;
-    private bool noteToggle;
+    //private float healAmount = 0.5f;// Fill the health bar by this amount
     public float transparency;
     public RawImage crosshair;
+
+
+    [Header("HUD Settings")]
+    [Space(5)]
+    public TextMeshProUGUI LibClueText;
+    public TextMeshProUGUI LibStoryNote;
+    public TextMeshProUGUI LibKeysText;
+    public int LibraryClueCount = 0;
+    public int LibNoteCount = 0;
+    public int LibraryKeyCount = 0;
+    public GameObject[] HUDElements;
+
+    /*public TextMeshProUGUI HellClueText;
+    public TextMeshProUGUI HellStoryNote;
+    public TextMeshProUGUI HellKeysText;
+    public int HellClueCount = 0;
+    public int HellNoteCount = 0;
+    public int HllKeyCount = 0;
+
+    public TextMeshProUGUI HeavenClueText;
+    public TextMeshProUGUI HeavenStoryNote;
+    public TextMeshProUGUI HeavenKeysText;
+    public int HeavenClueCount = 0;
+    public int HeavenNoteCount = 0;
+    public int HeavenKeyCount = 0;*/
 
     [Header("SHOOTING SETTINGS")]
     [Space(5)]
@@ -69,16 +94,17 @@ public class FirstPersonControls : MonoBehaviour
 
     private void Awake()
     {
-        // Get and store the CharacterController component attached to this GameObject
+        //Get and store the CharacterController component attached to this GameObject
         characterController = GetComponent<CharacterController>();
-        Doors[0].layer = 2;
-        Doors[1].layer = 2;
-        Doors[2].layer = 2;
+        //Doors[0].layer = 0;
+        //Doors[1].layer = 0;
+       // Doors[2].layer = 0;
 
     }
 
     private void Start()
     {
+        
 
     }
 
@@ -120,7 +146,13 @@ public class FirstPersonControls : MonoBehaviour
         LookAround();
         ApplyGravity();
         CheckForPickUp();
+        
+        
     }
+
+   
+
+
 
     private void CheckForPickUp()
     {
@@ -133,10 +165,26 @@ public class FirstPersonControls : MonoBehaviour
             // Check if the object has the "PickUp" tag
             if (hit.collider.CompareTag("Door"))
             {
-               crosshair.color = Color.white;
-                
+                crosshair.color = Color.white;
+
             }
-            else if (hit.collider.CompareTag("Bookshelf"))
+            else if (hit.collider.CompareTag("PickUp"))
+            {
+                crosshair.color = Color.white;
+            }
+            else if (hit.collider.CompareTag("Orb"))
+            {
+                crosshair.color = Color.white;
+            }
+            else if (hit.collider.CompareTag("LeftDoor"))
+            {
+                crosshair.color = Color.white;
+            }
+            else if (hit.collider.CompareTag("RightDoor"))
+            {
+                crosshair.color = Color.white;
+            }
+            else if (hit.collider.gameObject.GetComponent<NoteScript>())
             {
                 crosshair.color = Color.white;
             }
@@ -151,6 +199,22 @@ public class FirstPersonControls : MonoBehaviour
             // Hide the text if not looking at any object
             crosshair.color = new Color(255f, 255f, 255f, transparency);
         }
+    }
+
+    private void HUD()
+    {
+        LibClueText.text = LibraryClueCount + "/1";
+        LibStoryNote.text = LibNoteCount + "/3";
+        LibKeysText.text = LibraryKeyCount + "/1";
+
+        /*HellClueText.text = HellClueCount + "/1";
+        HellStoryNote.text = HellNoteCount + "/3";
+        HellKeysText.text = HllKeyCount + "/1";
+
+        HeavenClueText.text = HeavenClueCount + "/1";
+        HeavenStoryNote.text = HeavenNoteCount + "/3";
+        HeavenKeysText.text = HeavenKeyCount + "/1";*/
+
     }
 
 
@@ -211,7 +275,7 @@ public class FirstPersonControls : MonoBehaviour
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
 
-        healthBar.fillAmount -= damageAmount;
+        //healthBar.fillAmount -= damageAmount;
     }
     public void Shoot()
     {
@@ -228,7 +292,7 @@ public class FirstPersonControls : MonoBehaviour
             Destroy(projectile, 3f);
         }
 
-        healthBar.fillAmount += healAmount;
+        //healthBar.fillAmount += healAmount;
     }
 
     public void PickUpObject()
@@ -250,7 +314,7 @@ public class FirstPersonControls : MonoBehaviour
         Debug.DrawRay(playerCamera.position, playerCamera.forward * pickUpRange, Color.red, 2f);
 
 
-        if (Physics.Raycast(ray, out hit, pickUpRange))
+        if (Physics.Raycast(ray, out hit, pickUpRange, layers))
         {
             // Check if the hit object has the tag "PickUp"
             if (hit.collider.CompareTag("PickUp"))
@@ -323,13 +387,6 @@ public class FirstPersonControls : MonoBehaviour
                 print("DRAWER OPENED");
 
             }
-            else if (hit.collider.CompareTag("LockedDoor"))
-            {
-
-                hit.collider.GetComponent<Door>().DoorOpenClose();
-                Debug.Log("The door has opened");
-
-            }
             else if (hit.collider.CompareTag("LeftDoor"))
             {
                 hit.collider.GetComponent<CupboardScript>().LeftDoor();
@@ -363,6 +420,7 @@ public class FirstPersonControls : MonoBehaviour
             {
                 Doors[1].layer = 0;//Changes the layer the doors on back to the default so the raycast can interact with. Essentially unlocking the door
                 Destroy(hit.collider.gameObject);//The Key is destroyed after it is collected
+                
             }
 
             else if (hit.collider.CompareTag("SilverKey"))
@@ -375,6 +433,12 @@ public class FirstPersonControls : MonoBehaviour
             {
                 hit.collider.gameObject.GetComponent<NoteScript>().NoteOpenClose();
 
+                if (hit.collider.CompareTag("Clue"))
+                {
+                    
+
+                }
+
                 toggle = !toggle;
                 if (toggle == false)
                 {
@@ -392,361 +456,10 @@ public class FirstPersonControls : MonoBehaviour
 
             }
 
-            else if (hit.collider.CompareTag("Note"))
-            {
 
-                toggle = !toggle;
-                if (toggle == false)
-                {
-
-                    Notes[0].SetActive(false);
-
-                    moveSpeed = 6.4f;
-                    lookSpeed = 0.62f;
-
-                }
-
-                if (toggle)
-                {
-                    Notes[0].SetActive(true);
-
-                    moveSpeed = 0;  
-                    lookSpeed = 0;
-                }
-
-            }
-          /* else if (hit.collider.CompareTag("Note1"))
-            {
-                toggle = !toggle;
-                if (toggle == false)
-                {
-
-                    Notes[1].SetActive(false);
-
-                    moveSpeed = 6.4f;
-                    lookSpeed = 0.62f;
-
-                }
-
-                if (toggle)
-                {
-                    
-                    Notes[1].SetActive(true);
-
-                    moveSpeed = 0;
-                    lookSpeed = 0;
-                }
-
-            }
-            else if (hit.collider.CompareTag("Note2"))
-            {
-                toggle = !toggle;
-                if (toggle == false)
-                {
-
-                    Notes[2].SetActive(false);
-                   
-                    moveSpeed = 6.4f;
-                    lookSpeed = 0.62f;
-
-                }
-
-                if (toggle)
-                {
-                    Notes[2].SetActive(true);
-                    
-                    moveSpeed = 0;
-                    lookSpeed = 0;
-                }
-
-            }
-            else if (hit.collider.CompareTag("Note3"))
-            {
-                toggle = !toggle;
-                if (toggle == false)
-                {
-
-                    Notes[3].SetActive(false);
-
-                    moveSpeed = 6.4f;
-                    lookSpeed = 0.62f;
-
-
-                }
-
-                if (toggle)
-                {
-                    
-                    Notes[3].SetActive(true);
-                  
-                    moveSpeed = 0;
-                    lookSpeed = 0;
-                }
-
-            }
-            else if (hit.collider.CompareTag("Note4"))
-            {
-                toggle = !toggle;
-                if (toggle == false)
-                {
-
-               
-                    Notes[4].SetActive(false);
-
-                    moveSpeed = 6.4f;
-                    lookSpeed = 0.62f;
-
-
-                }
-
-                if (toggle)
-                {
-                  
-                    Notes[4].SetActive(true);
-
-                    moveSpeed = 0;
-                    lookSpeed = 0;
-                }
-
-            }
-            else if (hit.collider.CompareTag("Note5"))
-            {
-                toggle = !toggle;
-                if (toggle == false)
-                {
-
-                
-                    Notes[5].SetActive(false);
-                  
-                    moveSpeed = 6.4f;
-                    lookSpeed = 0.62f;
-
-                }
-
-                if (toggle)
-                {
-          
-                    Notes[5].SetActive(true);
-                  
-                    moveSpeed = 0;
-                    lookSpeed = 0;
-                }
-
-            }
-            else if (hit.collider.CompareTag("Note6"))
-            {
-                toggle = !toggle;
-                if (toggle == false)
-                {
-
-                    Notes[6].SetActive(false);
-         
-                    moveSpeed = 6.4f;
-                    lookSpeed = 0.62f;
-
-                }
-
-                if (toggle)
-                {
-                    Notes[6].SetActive(true);
-
-                    moveSpeed = 0;
-                    lookSpeed = 0;
-                }
-
-            }
-            else if (hit.collider.CompareTag("Note7"))
-            {
-                toggle = !toggle;
-                if (toggle == false)
-                {
-
-                    Notes[7].SetActive(false);
-                
-                    moveSpeed = 6.4f;
-                    lookSpeed = 0.62f;
-
-                }
-
-                if (toggle)
-                {
-                    
-                    Notes[7].SetActive(true);
-
-                    moveSpeed = 0;
-                    lookSpeed = 0;
-                }
-
-            }
-            else if (hit.collider.CompareTag("Note8"))
-            {
-                toggle = !toggle;
-                if (toggle == false)
-                {
-                    Notes[8].SetActive(false);
-
-                    moveSpeed = 6.4f;
-                    lookSpeed = 0.62f;
-
-                }
-
-                if (toggle)
-                {
-      
-                    Notes[8].SetActive(true);
-
-                    moveSpeed = 0;
-                    lookSpeed = 0;
-                }
-
-            }
-            else if (hit.collider.CompareTag("Note9"))
-            {
-                toggle = !toggle;
-                if (toggle == false)
-                {
-
-                    Notes[9].SetActive(false);
-       
-                    moveSpeed = 6.4f;
-                    lookSpeed = 0.62f;
-
-                }
-
-                if (toggle)
-                {
-                    Notes[9].SetActive(true);
-            
-                    moveSpeed = 0;
-                    lookSpeed = 0;
-                }
-
-            }
-            else if (hit.collider.CompareTag("Note10"))
-            {
-                toggle = !toggle;
-                if (toggle == false)
-                {
-
-                    Notes[10].SetActive(false);
-               
-                    moveSpeed = 6.4f;
-                    lookSpeed = 0.62f;
-
-                }
-
-                if (toggle)
-                {
-                    Notes[10].SetActive(true);
-               
-                    moveSpeed = 0;
-                    lookSpeed = 0;
-                }
-
-            }
-            else if (hit.collider.CompareTag("Note11"))
-            {
-                toggle = !toggle;
-                if (toggle == false)
-                {
-
-                    Notes[11].SetActive(false);
-               
-                    moveSpeed = 6.4f;
-                    lookSpeed = 0.62f;
-
-                }
-
-                if (toggle)
-                {
-                  
-                    Notes[11].SetActive(true);
-               
-                    moveSpeed = 0;
-                    lookSpeed = 0;
-                }
-
-            }
-            else if (hit.collider.CompareTag("Note12"))
-            {
-                toggle = !toggle;
-                if (toggle == false)
-                {
-
-                    Notes[12].SetActive(false);
-                  
-                    moveSpeed = 6.4f;
-                    lookSpeed = 0.62f;
-
-                }
-
-                if (toggle)
-                {
-
-                    Notes[12].SetActive(true);
-       
-                    moveSpeed = 0;
-                    lookSpeed = 0;
-                }
-
-            }
-            else if (hit.collider.CompareTag("Note13"))
-            {
-                toggle = !toggle;
-                if (toggle == false)
-                {
-
-                    Notes[13].SetActive(false);
-          
-                    moveSpeed = 6.4f;
-                    lookSpeed = 0.62f;
-
-                }
-
-                if (toggle)
-                {
-                    Notes[13].SetActive(true);
-               
-                    moveSpeed = 0;
-                    lookSpeed = 0;
-                }
-
-            }
-            else if (hit.collider.CompareTag("Note14"))
-            {
-                toggle = !toggle;
-                if (toggle == false)
-                {
-
-                    Notes[14].SetActive(false);
+        }
         
-                    moveSpeed = 6.4f;
-                    lookSpeed = 0.62f;
-
-                }
-
-                if (toggle)
-                {
-            
-                    Notes[14].SetActive(true);
-
-                    moveSpeed = 0;
-                    lookSpeed = 0;
-                }
-
-            }
-          */
-
-        }
-        else
-        {
-            
-            StartCoroutine(ChangeCrosshairColour());
-        }
     }
-
-
-   
 
     public void ItemExamination()
     {
@@ -755,7 +468,7 @@ public class FirstPersonControls : MonoBehaviour
 
         Debug.DrawRay(playerCamera.position, playerCamera.forward * pickUpRange, Color.green, 0.2f);
 
-        if (Physics.Raycast(ray, out hit, pickUpRange))
+        if (Physics.Raycast(ray, out hit, pickUpRange, layers))
         {
             if (hit.collider.CompareTag("Bookshelf"))
             {
@@ -894,48 +607,23 @@ public class FirstPersonControls : MonoBehaviour
                     ItemDescriptions[7].SetActive(true);
                 }
             }
-            else if (hit.collider.CompareTag("Desk"))
-            {
-                toggle = !toggle;
-                if (toggle == false)
-                {
-                    moveSpeed = 6.4f;
-                    lookSpeed = 0.62f;
-                    ItemDescriptions[8].SetActive(false);
-                }
-
-                if (toggle)
-                {
-                    moveSpeed = 0;
-                    lookSpeed = 0;
-                    ItemDescriptions[8].SetActive(true);
-                }
-            }
+            
 
 
         }
 
     }
 
-    public void DisableMoveLook()
+
+    IEnumerator DeactivateDeleteUI()
     {
-        moveSpeed = 0f;
-        lookSpeed = 0f;
+        if(LibraryClueCount == 1)
+        {
+            yield return new WaitForSeconds(5f);
+            Destroy(HUDElements[0]);
+        }
+        
     }
-
-    public void EnableMoveLook()
-    {
-        moveSpeed = 6.4f;
-        lookSpeed = 0f;
-    }
-
-    private IEnumerator ChangeCrosshairColour()
-    {
-        crosshair.color = Color.grey;
-        yield return new WaitForSeconds(1f);
-        crosshair.color = Color.white;
-    }
-
-
+     
 
 }

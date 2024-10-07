@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    [Header("DOOR ANIMATION SETTINGS")]
-    [Space(5)]
 
     private bool toggle;
+    [Header("DOOR ANIMATION SETTINGS")]
+    [Space(3)]
+
     public Animator DoorAnimator;
 
-
     [Header("DRAWER ANIMATION SETTINGS")]
-    [Space(5)]
+    [Space(3)]
 
     public Animator DrawerAnimator;
 
     [Header("CABINET ANIMATION SETTINGS")]
-    [Space(5)]
+    [Space(3)]
 
     public Animator cabinetAnimator;
 
