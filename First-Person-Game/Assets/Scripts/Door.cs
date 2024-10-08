@@ -21,7 +21,6 @@ public class Door : MonoBehaviour
 
     public Animator cabinetAnimator;
 
-
     //Method referenced: OpenClose()
     //Title: How to Make Doors in Unity-Unity C# Tutorial
     //Author: Omogonix
