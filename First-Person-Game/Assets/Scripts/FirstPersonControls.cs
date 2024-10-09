@@ -6,7 +6,7 @@ using TMPro;
 using UnityEditor;
 using UnityEngine.UI;
 using Unity.VisualScripting;
-using UnityEditor.Rendering.LookDev;
+
 
 public class FirstPersonControls : MonoBehaviour
 {
@@ -34,8 +34,7 @@ public class FirstPersonControls : MonoBehaviour
     //private float healAmount = 0.5f;// Fill the health bar by this amount
     public float transparency;
     public RawImage crosshair;
-
-
+ 
     [Header("HUD Settings")]
     [Space(5)]
     public TextMeshProUGUI LibClueText;
@@ -104,8 +103,8 @@ public class FirstPersonControls : MonoBehaviour
 
     private void Start()
     {
-        
 
+        
     }
 
     private void OnEnable()
@@ -137,6 +136,8 @@ public class FirstPersonControls : MonoBehaviour
         playerInput.Player.Examine.performed += ctx => ItemExamination();//Call the ItemExamination method when an item is examined
 
         playerInput.Player.Crouch.performed += ctx => ToggleCrouch(); // Call the ToggleCrouchObject method when pick-up input is performed
+
+        
 
     }
     private void Update()
@@ -615,7 +616,7 @@ public class FirstPersonControls : MonoBehaviour
     }
 
 
-    IEnumerator DeactivateDeleteUI()
+    /*IEnumerator DeactivateDeleteUI()
     {
         if(LibraryClueCount == 1)
         {
@@ -623,7 +624,7 @@ public class FirstPersonControls : MonoBehaviour
             Destroy(HUDElements[0]);
         }
         
-    }
+    }*/
      
 
 }
