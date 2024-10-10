@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 
 public class UIPanels : MonoBehaviour
 {
@@ -29,6 +30,16 @@ public class UIPanels : MonoBehaviour
 
     }
 
+    public void LoadGame()
+    {
+        firstPersonControls.OnDisable();
+        SceneManager.LoadScene("Level Scene");
+    }
+
+    public void LoadMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
     public void Pause()
     {
         
