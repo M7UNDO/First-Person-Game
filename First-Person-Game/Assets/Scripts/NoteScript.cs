@@ -4,17 +4,28 @@ using UnityEngine;
 
 public class NoteScript : MonoBehaviour
 {
-    
-    
-    // Start is called before the first frame update
-    void Start()
+    public GameObject letterUI;
+    public MeshRenderer letterMesh;
+    private FirstPersonControls firstPersonControls;
+    private bool toggle;
+    public void NoteOpenClose()
     {
-        
+        toggle = !toggle;   
+        if(toggle == false)
+        {
+            letterUI.SetActive(false);
+            letterMesh.enabled = true;
+            
+        }
+
+        if (toggle == true)
+        {
+            letterUI.SetActive(true);
+            letterMesh.enabled = false;
+            
+
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+  
 }
