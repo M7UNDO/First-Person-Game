@@ -96,9 +96,9 @@ public class FirstPersonControls : MonoBehaviour
     {
         //Get and store the CharacterController component attached to this GameObject
         characterController = GetComponent<CharacterController>();
-        Doors[0].layer = 2;
-        Doors[1].layer = 2;
-        Doors[2].layer = 2;
+        Doors[0].layer = 0;
+        Doors[1].layer = 0;
+        Doors[2].layer = 0;
 
     }
 
