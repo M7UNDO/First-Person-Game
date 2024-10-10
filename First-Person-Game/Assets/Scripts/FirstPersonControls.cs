@@ -116,7 +116,6 @@ public class FirstPersonControls : MonoBehaviour
         // Enable the input actions
         playerInput.Player.Enable();
 
-
         // Subscribe to the movement input events
         playerInput.Player.Movement.performed += ctx => moveInput = ctx.ReadValue<Vector2>(); // Update moveInput when movement input is performed
         playerInput.Player.Movement.canceled += ctx => moveInput = Vector2.zero; // Reset moveInput when movement input is canceled
@@ -136,7 +135,6 @@ public class FirstPersonControls : MonoBehaviour
         playerInput.Player.OldInteract.performed += ctx => Interaction(); // Call the PickUpObject method when pick-up input is performed
 
         playerInput.Player.Examine.performed += ctx => ItemExamination();//Call the ItemExamination method when an item is examined
-        print(playerInput.Player.Examine);
 
         playerInput.Player.Crouch.performed += ctx => ToggleCrouch(); // Call the ToggleCrouchObject method when pick-up input is performed
 

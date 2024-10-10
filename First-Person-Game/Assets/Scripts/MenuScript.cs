@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MenuPanels : MonoBehaviour
+public class MenuScript : MonoBehaviour
 {
     [SerializeField] GameObject controlPanel;
     private bool controlstoggle;
