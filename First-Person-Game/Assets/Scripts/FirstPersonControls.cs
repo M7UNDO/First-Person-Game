@@ -28,6 +28,7 @@ public class FirstPersonControls : MonoBehaviour
     private CharacterController characterController; // Reference to the CharacterController component
     private Controls playerInput;
 
+
     [Header("UI SETTINGS")]
     [Space(5)]
     //public TextMeshProUGUI pickUpText;
@@ -38,6 +39,7 @@ public class FirstPersonControls : MonoBehaviour
     public RawImage crosshair;
     private HUD HUDScript;
     [SerializeField] GameObject player;
+    
 
 
     [Header("SHOOTING SETTINGS")]
@@ -66,6 +68,8 @@ public class FirstPersonControls : MonoBehaviour
     public float Interactiondistance = 3f;
     public LayerMask layers;
     public GameObject[] Doors;
+    public Image[] DoorLocks;
+    public GameObject DoorCanvas;
 
     [Header("EXAMINE SETTINGS")]
     [Space(5)]
@@ -77,9 +81,16 @@ public class FirstPersonControls : MonoBehaviour
         //Get and store the CharacterController component attached to this GameObject
         characterController = GetComponent<CharacterController>();
         HUDScript = player.GetComponent<HUD>();
-        Doors[0].layer = 0;
-        Doors[1].layer = 0;
-        Doors[2].layer = 0;
+
+        Doors[0].layer = 2;
+        Doors[1].layer = 2;
+        Doors[2].layer = 2;
+
+        DoorLocks[0].enabled = true;
+        DoorLocks[1].enabled = true;
+        DoorLocks[2].enabled = true;
+
+
 
     }
 
@@ -120,11 +131,6 @@ public class FirstPersonControls : MonoBehaviour
         playerInput.Player.Crouch.performed += ctx => ToggleCrouch(); // Call the ToggleCrouchObject method when pick-up input is performed
 
     }
-
-   
-
-
-
     private void Update()
     {
         // Call Move and LookAround methods every frame to handle player movement and camera rotation
@@ -132,8 +138,7 @@ public class FirstPersonControls : MonoBehaviour
         LookAround();
         ApplyGravity();
         CheckForPickUp();
-        
-        
+         
     }
 
     private void CheckForPickUp()
@@ -411,32 +416,36 @@ public class FirstPersonControls : MonoBehaviour
             }
             else if (hit.collider.CompareTag("GoldKey"))
             {
-                Doors[0].layer = 0;//Changes the layer the doors on back to the default so the raycast can interact with. Essentially unlocking the door
+                Doors[2].layer = 0;//Changes the layer the doors on back to the default so the raycast can interact with. Essentially unlocking the door
                 Destroy(hit.collider.gameObject);//The Key is destroyed after it is collected
                 if(HUDScript.HeavenKeyCount <= 0)
                 {
                     HUDScript.HeavenKeyCount++;
+                    DoorLocks[2].enabled = false;
+                    DoorCanvas.SetActive(false);
                 }
             }
 
             else if (hit.collider.CompareTag("BronzeKey"))
             {
-                Doors[1].layer = 0;//Changes the layer the doors on back to the default so the raycast can interact with. Essentially unlocking the door
+                Doors[0].layer = 0;//Changes the layer the doors on back to the default so the raycast can interact with. Essentially unlocking the door
                 Destroy(hit.collider.gameObject);//The Key is destroyed after it is collected
                 if(HUDScript.LibraryKeyCount <= 0)
                 {
                     HUDScript.LibraryKeyCount++;
+                    DoorLocks[0].enabled = false;
                 }
                 
             }
 
             else if (hit.collider.CompareTag("SilverKey"))
             {
-                Doors[2].layer = 0;//Changes the layer the doors on back to the default so the raycast can interact with. Essentially unlocking the door
+                Doors[1].layer = 0;//Changes the layer the doors on back to the default so the raycast can interact with. Essentially unlocking the door
                 Destroy(hit.collider.gameObject);//The Key is destroyed after it is collected
                 if(HUDScript.HllKeyCount <= 0)
                 {
                     HUDScript.HllKeyCount++;
+                    DoorLocks[1].enabled = false;
                 }
             }
 
