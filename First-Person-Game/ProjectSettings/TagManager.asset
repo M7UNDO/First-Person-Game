@@ -20,8 +20,13 @@ TagManager:
   - Cabinet
   - Orb
   - Cupboard
-  - Clue
   - Floor
+  - LibraryClue
+  - LibraryNote
+  - HellClue
+  - HellNote
+  - HeavenClue
+  - HeavenNote
   layers:
   - Default
   - TransparentFX
