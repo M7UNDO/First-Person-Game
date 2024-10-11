@@ -35,30 +35,9 @@ public class FirstPersonControls : MonoBehaviour
     //private float healAmount = 0.5f;// Fill the health bar by this amount
     public float transparency;
     public RawImage crosshair;
- 
-    [Header("HUD Settings")]
-    [Space(5)]
-    public TextMeshProUGUI LibClueText;
-    public TextMeshProUGUI LibStoryNote;
-    public TextMeshProUGUI LibKeysText;
-    public int LibraryClueCount = 0;
-    public int LibNoteCount = 0;
-    public int LibraryKeyCount = 0;
-    public GameObject[] HUDElements;
+    private HUD HUDScript;
+    [SerializeField] GameObject player;
 
-    /*public TextMeshProUGUI HellClueText;
-    public TextMeshProUGUI HellStoryNote;
-    public TextMeshProUGUI HellKeysText;
-    public int HellClueCount = 0;
-    public int HellNoteCount = 0;
-    public int HllKeyCount = 0;
-
-    public TextMeshProUGUI HeavenClueText;
-    public TextMeshProUGUI HeavenStoryNote;
-    public TextMeshProUGUI HeavenKeysText;
-    public int HeavenClueCount = 0;
-    public int HeavenNoteCount = 0;
-    public int HeavenKeyCount = 0;*/
 
     [Header("SHOOTING SETTINGS")]
     [Space(5)]
@@ -96,6 +75,7 @@ public class FirstPersonControls : MonoBehaviour
     {
         //Get and store the CharacterController component attached to this GameObject
         characterController = GetComponent<CharacterController>();
+        HUDScript = player.GetComponent<HUD>();
         Doors[0].layer = 0;
         Doors[1].layer = 0;
         Doors[2].layer = 0;
@@ -162,10 +142,6 @@ public class FirstPersonControls : MonoBehaviour
         
     }
 
-   
-
-
-
     private void CheckForPickUp()
     {
         Ray ray = new Ray(playerCamera.position, playerCamera.forward);
@@ -200,10 +176,42 @@ public class FirstPersonControls : MonoBehaviour
             {
                 crosshair.color = Color.white;
             }
+            else if (hit.collider.CompareTag("Drawer"))
+            {
+                crosshair.color = Color.white;
+
+            }
+            else if (hit.collider.CompareTag("Lever"))
+            {
+                crosshair.color = Color.white;
+            }
+            else if (hit.collider.CompareTag("Cabinet"))
+            {
+                crosshair.color = Color.white;
+            }
+            else if (hit.collider.CompareTag("GoldKey"))
+            {
+                crosshair.color = Color.white;
+            }
+            else if (hit.collider.CompareTag("BronzeKey"))
+            {
+                crosshair.color = Color.white;
+
+            }
+            else if (hit.collider.CompareTag("SilverKey"))
+            {
+                crosshair.color = Color.white;
+            }
+            else if (hit.collider.gameObject.GetComponent<NoteScript>())
+            {
+                crosshair.color = Color.white;
+
+            }
             else
             {
                 crosshair.color = new Color(255f, 255f, 255f, transparency);
             }
+
 
         }
         else
@@ -213,22 +221,7 @@ public class FirstPersonControls : MonoBehaviour
         }
     }
 
-    private void HUD()
-    {
-        LibClueText.text = LibraryClueCount + "/1";
-        LibStoryNote.text = LibNoteCount + "/3";
-        LibKeysText.text = LibraryKeyCount + "/1";
-
-        /*HellClueText.text = HellClueCount + "/1";
-        HellStoryNote.text = HellNoteCount + "/3";
-        HellKeysText.text = HllKeyCount + "/1";
-
-        HeavenClueText.text = HeavenClueCount + "/1";
-        HeavenStoryNote.text = HeavenNoteCount + "/3";
-        HeavenKeysText.text = HeavenKeyCount + "/1";*/
-
-    }
-
+  
 
     public void Move()
     {
@@ -426,12 +419,20 @@ public class FirstPersonControls : MonoBehaviour
             {
                 Doors[0].layer = 0;//Changes the layer the doors on back to the default so the raycast can interact with. Essentially unlocking the door
                 Destroy(hit.collider.gameObject);//The Key is destroyed after it is collected
+                if(HUDScript.HeavenKeyCount <= 0)
+                {
+                    HUDScript.HeavenKeyCount++;
+                }
             }
 
             else if (hit.collider.CompareTag("BronzeKey"))
             {
                 Doors[1].layer = 0;//Changes the layer the doors on back to the default so the raycast can interact with. Essentially unlocking the door
                 Destroy(hit.collider.gameObject);//The Key is destroyed after it is collected
+                if(HUDScript.LibraryKeyCount <= 0)
+                {
+                    HUDScript.LibraryKeyCount++;
+                }
                 
             }
 
@@ -439,17 +440,70 @@ public class FirstPersonControls : MonoBehaviour
             {
                 Doors[2].layer = 0;//Changes the layer the doors on back to the default so the raycast can interact with. Essentially unlocking the door
                 Destroy(hit.collider.gameObject);//The Key is destroyed after it is collected
+                if(HUDScript.HllKeyCount <= 0)
+                {
+                    HUDScript.HllKeyCount++;
+                }
             }
 
             else if (hit.collider.gameObject.GetComponent<NoteScript>())
             {
                 hit.collider.gameObject.GetComponent<NoteScript>().NoteOpenClose();
 
-                if (hit.collider.CompareTag("Clue"))
+                if (hit.collider.CompareTag("LibraryClue"))
                 {
-                    
+                    if(HUDScript.LibNoteCount <= 0)
+                    {
+                        HUDScript.LibNoteCount++;
+                    }
 
                 }
+
+                if (hit.collider.CompareTag("HellClue"))
+                {
+                    if(HUDScript.HellClueCount <= 0)
+                    {
+                        HUDScript.HellClueCount++;
+                    }
+
+                }
+
+                if (hit.collider.CompareTag("HeavenClue"))
+                {
+                    if(HUDScript.HeavenClueCount <= 0)
+                    {
+                        HUDScript.HeavenClueCount++;
+                    }
+
+                }
+
+                if (hit.collider.CompareTag("LibraryNote"))
+                {
+                    if(HUDScript.LibNoteCount <= 0)
+                    {
+                        HUDScript.LibNoteCount++;
+                    }
+
+                }
+
+                if (hit.collider.CompareTag("HellNote"))
+                {
+                    if(HUDScript.HellNoteCount <= 0)
+                    {
+                        HUDScript.HellNoteCount++;
+                    }
+
+                }
+
+                if (hit.collider.CompareTag("HeavenNote"))
+                {
+                    if(HUDScript.HeavenNoteCount <= 0)
+                    {
+                        HUDScript.HeavenNoteCount++;
+                    }
+
+                }
+
 
                 toggle = !toggle;
                 if (toggle == false)
