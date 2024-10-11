@@ -7,6 +7,7 @@ using UnityEditor;
 using UnityEngine.UI;
 using Unity.VisualScripting;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 
 public class FirstPersonControls : MonoBehaviour
@@ -27,6 +28,7 @@ public class FirstPersonControls : MonoBehaviour
     private Vector3 velocity; // Velocity of the player
     private CharacterController characterController; // Reference to the CharacterController component
     private Controls playerInput;
+
 
 
     [Header("UI SETTINGS")]
@@ -90,8 +92,6 @@ public class FirstPersonControls : MonoBehaviour
         DoorLocks[1].enabled = true;
         DoorLocks[2].enabled = true;
 
-
-
     }
 
     private void Start()
@@ -131,6 +131,8 @@ public class FirstPersonControls : MonoBehaviour
         playerInput.Player.Crouch.performed += ctx => ToggleCrouch(); // Call the ToggleCrouchObject method when pick-up input is performed
 
     }
+
+  
     private void Update()
     {
         // Call Move and LookAround methods every frame to handle player movement and camera rotation
@@ -402,11 +404,16 @@ public class FirstPersonControls : MonoBehaviour
             else if (hit.collider.CompareTag("Lever"))
             {
                 hit.collider.GetComponent<ShelfSwitch>().Lever();
+                print("Hit!!");
 
             }
             else if (hit.collider.CompareTag("Cabinet"))
             {
                 hit.collider.GetComponent<Door>().CabinetOpenClose();
+            }
+            else if (hit.collider.CompareTag("Staff"))
+            {
+                
             }
 
             else if (hit.collider.CompareTag("Orb"))
@@ -482,7 +489,7 @@ public class FirstPersonControls : MonoBehaviour
 
                 if (hit.collider.CompareTag("LibraryNote"))
                 {
-                    if(HUDScript.LibNoteCount <= 0)
+                    if(HUDScript.LibNoteCount <= 3)
                     {
                         HUDScript.LibNoteCount++;
                     }
@@ -491,7 +498,7 @@ public class FirstPersonControls : MonoBehaviour
 
                 if (hit.collider.CompareTag("HellNote"))
                 {
-                    if(HUDScript.HellNoteCount <= 0)
+                    if(HUDScript.HellNoteCount <= 2)
                     {
                         HUDScript.HellNoteCount++;
                     }
@@ -500,7 +507,7 @@ public class FirstPersonControls : MonoBehaviour
 
                 if (hit.collider.CompareTag("HeavenNote"))
                 {
-                    if(HUDScript.HeavenNoteCount <= 0)
+                    if(HUDScript.HeavenNoteCount <= 2)
                     {
                         HUDScript.HeavenNoteCount++;
                     }
