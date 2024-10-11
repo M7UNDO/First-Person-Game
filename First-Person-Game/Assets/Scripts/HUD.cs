@@ -49,10 +49,10 @@ public class HUD : MonoBehaviour
         HellClueText.text = HellClueCount + "/1";
         HellStoryNote.text = HellNoteCount + "/2";
         HellKeysText.text = HllKeyCount + "/1";
-        /*
+        
         HeavenClueText.text = HeavenClueCount + "/1";
-        HeavenStoryNote.text = HeavenNoteCount + "/3";
-        HeavenKeysText.text = HeavenKeyCount + "/1";*/
+        HeavenStoryNote.text = HeavenNoteCount + "/2";
+        HeavenKeysText.text = HeavenKeyCount + "/1";
 
     }
 }

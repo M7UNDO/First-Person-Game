@@ -46,6 +46,13 @@ public class UIPanels : MonoBehaviour
         }
     }
 
+    public void ResetScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        print("Scene restarted");
+        Time.timeScale = 1f;
+    }
+
 
     public void LoadGame()
     {

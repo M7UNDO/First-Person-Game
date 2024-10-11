@@ -27,6 +27,7 @@ TagManager:
   - HellNote
   - HeavenClue
   - HeavenNote
+  - Staff
   layers:
   - Default
   - TransparentFX
