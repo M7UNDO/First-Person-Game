@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEditor;
-using Unity.UI;
 using UnityEngine.UI;
+using Unity.VisualScripting;
+using UnityEngine.InputSystem;
+
 
 public class FirstPersonControls : MonoBehaviour
 {
@@ -24,7 +26,21 @@ public class FirstPersonControls : MonoBehaviour
     private float verticalLookRotation = 0f; // Keeps track of vertical camera rotation for clamping
     private Vector3 velocity; // Velocity of the player
     private CharacterController characterController; // Reference to the CharacterController component
-    public Image crosshair;
+    private Controls playerInput;
+
+
+    [Header("UI SETTINGS")]
+    [Space(5)]
+    //public TextMeshProUGUI pickUpText;
+    //public Image healthBar;
+    public float damageAmount = 0.25f; // Reduce the health bar by this amount
+    //private float healAmount = 0.5f;// Fill the health bar by this amount
+    public float transparency;
+    public RawImage crosshair;
+    private HUD HUDScript;
+    [SerializeField] GameObject player;
+    
+
 
     [Header("SHOOTING SETTINGS")]
     [Space(5)]
@@ -38,7 +54,6 @@ public class FirstPersonControls : MonoBehaviour
     [Space(5)]
     public Transform holdPosition; // Position where the picked-up object will be held
     private GameObject heldObject; // Reference to the currently held object
-    
 
     [Header("CROUCH SETTINGS")]
     [Space(5)]
@@ -49,43 +64,40 @@ public class FirstPersonControls : MonoBehaviour
 
     [Header("DOOR AND DRAWER SETTINGS")]
     [Space(5)]
+    //public string doorOpenAnimName, doorCloseAnimName;
     public float Interactiondistance = 3f;
-    public string doorOpenAnimName, doorCloseAnimName;
     public LayerMask layers;
     public GameObject[] Doors;
-    public GameObject[] Drawers;
+    public Image[] DoorLocks;
+    public GameObject DoorCanvas;
 
     [Header("EXAMINE SETTINGS")]
     [Space(5)]
     public GameObject[] ItemDescriptions;
     private bool toggle;
 
-
-    [Header("INTERACT SETTINGS")]
-    [Space(5)]
-    public Material switchMaterial; // Material to apply when switch is activated
-    public GameObject[] objectsToChangeColor; // Array of objects to change color
-
-    [Header("NOTE SETTINGS")]
-    [Space(5)]
-
-    public GameObject[] Notes;
-    private bool noteToggle;
-
-
-
     private void Awake()
     {
-        // Get and store the CharacterController component attached to this GameObject
+        //Get and store the CharacterController component attached to this GameObject
         characterController = GetComponent<CharacterController>();
-        //Doors[0].layer = 2;
-        //Doors[2].layer = 2;
-        //Doors[3].layer = 2;
+        HUDScript = player.GetComponent<HUD>();
+
+        Doors[0].layer = 2;
+        Doors[1].layer = 2;
+        Doors[2].layer = 2;
+
+        DoorLocks[0].enabled = true;
+        DoorLocks[1].enabled = true;
+        DoorLocks[2].enabled = true;
+
+
+
     }
 
     private void Start()
     {
 
+        
     }
 
     private void OnEnable()
@@ -118,38 +130,97 @@ public class FirstPersonControls : MonoBehaviour
 
         playerInput.Player.Crouch.performed += ctx => ToggleCrouch(); // Call the ToggleCrouchObject method when pick-up input is performed
 
-        // Subscribe to the interact input event
-        playerInput.Player.Interact.performed += ctx => Interact(); // Interact with switch
-
-
     }
-
     private void Update()
     {
         // Call Move and LookAround methods every frame to handle player movement and camera rotation
         Move();
         LookAround();
         ApplyGravity();
+        CheckForPickUp();
+         
     }
 
-   /* private void OnTriggerEnter(Collider coli)
+    private void CheckForPickUp()
     {
-        if (coli.gameObject.CompareTag("GoldKey"))
+        Ray ray = new Ray(playerCamera.position, playerCamera.forward);
+        RaycastHit hit;
+
+        // Perform raycast to detect objects
+        if (Physics.Raycast(ray, out hit, pickUpRange))
         {
-            Doors[0].layer = 0;//Changes the layer the doors on back to the default so the raycast can interact with. Essentially unlocking the door
-            Destroy(coli.gameObject);//The Key is destroyed after it is collected
+            // Check if the object has the "PickUp" tag
+            if (hit.collider.CompareTag("Door"))
+            {
+                crosshair.color = Color.white;
+
+            }
+            else if (hit.collider.CompareTag("PickUp"))
+            {
+                crosshair.color = Color.white;
+            }
+            else if (hit.collider.CompareTag("Orb"))
+            {
+                crosshair.color = Color.white;
+            }
+            else if (hit.collider.CompareTag("LeftDoor"))
+            {
+                crosshair.color = Color.white;
+            }
+            else if (hit.collider.CompareTag("RightDoor"))
+            {
+                crosshair.color = Color.white;
+            }
+            else if (hit.collider.gameObject.GetComponent<NoteScript>())
+            {
+                crosshair.color = Color.white;
+            }
+            else if (hit.collider.CompareTag("Drawer"))
+            {
+                crosshair.color = Color.white;
+
+            }
+            else if (hit.collider.CompareTag("Lever"))
+            {
+                crosshair.color = Color.white;
+            }
+            else if (hit.collider.CompareTag("Cabinet"))
+            {
+                crosshair.color = Color.white;
+            }
+            else if (hit.collider.CompareTag("GoldKey"))
+            {
+                crosshair.color = Color.white;
+            }
+            else if (hit.collider.CompareTag("BronzeKey"))
+            {
+                crosshair.color = Color.white;
+
+            }
+            else if (hit.collider.CompareTag("SilverKey"))
+            {
+                crosshair.color = Color.white;
+            }
+            else if (hit.collider.gameObject.GetComponent<NoteScript>())
+            {
+                crosshair.color = Color.white;
+
+            }
+            else
+            {
+                crosshair.color = new Color(255f, 255f, 255f, transparency);
+            }
+
+
         }
-        else if (coli.gameObject.CompareTag("SilverKey"))
+        else
         {
-            Doors[2].layer = 0;//Changes the layer the doors on back to the default so the raycast can interact with. Essentially unlocking the door
-            Destroy(coli.gameObject);//The Key is destroyed after it is collected
+            // Hide the text if not looking at any object
+            crosshair.color = new Color(255f, 255f, 255f, transparency);
         }
-        else if (coli.gameObject.CompareTag("BronzeKey"))
-        {
-            Doors[3].layer = 0;//Changes the layer the doors on back to the default so the raycast can interact with. Essentially unlocking the door
-            Destroy(coli.gameObject);//The Key is destroyed after it is collected
-        }
-    }*/
+    }
+
+  
 
     public void Move()
     {
@@ -200,7 +271,6 @@ public class FirstPersonControls : MonoBehaviour
         velocity.y += gravity * Time.deltaTime; // Apply gravity to the velocity
         characterController.Move(velocity * Time.deltaTime); // Apply the velocity to the character
     }
-
     public void Jump()
     {
         if (characterController.isGrounded)
@@ -208,8 +278,9 @@ public class FirstPersonControls : MonoBehaviour
             // Calculate the jump velocity
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
-    }
 
+        //healthBar.fillAmount -= damageAmount;
+    }
     public void Shoot()
     {
         if (holdingGun == true)
@@ -224,6 +295,8 @@ public class FirstPersonControls : MonoBehaviour
             // Destroy the projectile after 3 seconds
             Destroy(projectile, 3f);
         }
+
+        //healthBar.fillAmount += healAmount;
     }
 
     public void PickUpObject()
@@ -245,7 +318,7 @@ public class FirstPersonControls : MonoBehaviour
         Debug.DrawRay(playerCamera.position, playerCamera.forward * pickUpRange, Color.red, 2f);
 
 
-        if (Physics.Raycast(ray, out hit, pickUpRange))
+        if (Physics.Raycast(ray, out hit, pickUpRange, layers))
         {
             // Check if the hit object has the tag "PickUp"
             if (hit.collider.CompareTag("PickUp"))
@@ -304,22 +377,18 @@ public class FirstPersonControls : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, Interactiondistance, layers))
         {
+
+
             if (hit.collider.CompareTag("Door"))
             {
+                
                 hit.collider.GetComponent<Door>().DoorOpenClose();
-
+                
             }
             else if (hit.collider.CompareTag("Drawer"))
             {
                 hit.collider.GetComponent<Door>().DrawerOpenClose();
                 print("DRAWER OPENED");
-
-            }
-            else if (hit.collider.CompareTag("LockedDoor"))
-            {
-
-                hit.collider.GetComponent<Door>().DoorOpenClose();
-                Debug.Log("The door has opened");
 
             }
             else if (hit.collider.CompareTag("LeftDoor"))
@@ -339,44 +408,127 @@ public class FirstPersonControls : MonoBehaviour
             {
                 hit.collider.GetComponent<Door>().CabinetOpenClose();
             }
-            else if (hit.collider.CompareTag("Note"))
+
+            else if (hit.collider.CompareTag("Orb"))
             {
+                print("Spin");
+                hit.collider.GetComponent<OrbScript>().OrbSpin();
+            }
+            else if (hit.collider.CompareTag("GoldKey"))
+            {
+                Doors[2].layer = 0;//Changes the layer the doors on back to the default so the raycast can interact with. Essentially unlocking the door
+                Destroy(hit.collider.gameObject);//The Key is destroyed after it is collected
+                if(HUDScript.HeavenKeyCount <= 0)
+                {
+                    HUDScript.HeavenKeyCount++;
+                    DoorLocks[2].enabled = false;
+                    DoorCanvas.SetActive(false);
+                }
+            }
+
+            else if (hit.collider.CompareTag("BronzeKey"))
+            {
+                Doors[0].layer = 0;//Changes the layer the doors on back to the default so the raycast can interact with. Essentially unlocking the door
+                Destroy(hit.collider.gameObject);//The Key is destroyed after it is collected
+                if(HUDScript.LibraryKeyCount <= 0)
+                {
+                    HUDScript.LibraryKeyCount++;
+                    DoorLocks[0].enabled = false;
+                }
+                
+            }
+
+            else if (hit.collider.CompareTag("SilverKey"))
+            {
+                Doors[1].layer = 0;//Changes the layer the doors on back to the default so the raycast can interact with. Essentially unlocking the door
+                Destroy(hit.collider.gameObject);//The Key is destroyed after it is collected
+                if(HUDScript.HllKeyCount <= 0)
+                {
+                    HUDScript.HllKeyCount++;
+                    DoorLocks[1].enabled = false;
+                }
+            }
+
+            else if (hit.collider.gameObject.GetComponent<NoteScript>())
+            {
+                hit.collider.gameObject.GetComponent<NoteScript>().NoteOpenClose();
+
+                if (hit.collider.CompareTag("LibraryClue"))
+                {
+                    if(HUDScript.LibNoteCount <= 0)
+                    {
+                        HUDScript.LibNoteCount++;
+                    }
+
+                }
+
+                if (hit.collider.CompareTag("HellClue"))
+                {
+                    if(HUDScript.HellClueCount <= 0)
+                    {
+                        HUDScript.HellClueCount++;
+                    }
+
+                }
+
+                if (hit.collider.CompareTag("HeavenClue"))
+                {
+                    if(HUDScript.HeavenClueCount <= 0)
+                    {
+                        HUDScript.HeavenClueCount++;
+                    }
+
+                }
+
+                if (hit.collider.CompareTag("LibraryNote"))
+                {
+                    if(HUDScript.LibNoteCount <= 0)
+                    {
+                        HUDScript.LibNoteCount++;
+                    }
+
+                }
+
+                if (hit.collider.CompareTag("HellNote"))
+                {
+                    if(HUDScript.HellNoteCount <= 0)
+                    {
+                        HUDScript.HellNoteCount++;
+                    }
+
+                }
+
+                if (hit.collider.CompareTag("HeavenNote"))
+                {
+                    if(HUDScript.HeavenNoteCount <= 0)
+                    {
+                        HUDScript.HeavenNoteCount++;
+                    }
+
+                }
+
+
                 toggle = !toggle;
                 if (toggle == false)
                 {
-
-                    Notes[0].SetActive(false);
                     moveSpeed = 6.4f;
                     lookSpeed = 0.62f;
-
 
                 }
 
                 if (toggle)
                 {
-                    Notes[0].SetActive(true);
-                    moveSpeed = 0;  
+                
+                    moveSpeed = 0;
                     lookSpeed = 0;
                 }
 
             }
-            else
-            {
-               
-            }
-            
-
 
 
         }
-        else
-        {
-            
-            StartCoroutine(LockedDoor());
-        }
+        
     }
-
-   
 
     public void ItemExamination()
     {
@@ -385,64 +537,162 @@ public class FirstPersonControls : MonoBehaviour
 
         Debug.DrawRay(playerCamera.position, playerCamera.forward * pickUpRange, Color.green, 0.2f);
 
-        if (Physics.Raycast(ray, out hit, pickUpRange))
+        if (Physics.Raycast(ray, out hit, pickUpRange, layers))
         {
             if (hit.collider.CompareTag("Bookshelf"))
             {
                 toggle = !toggle;
                 if (toggle == false)
                 {
-                   
+                    moveSpeed = 6.4f;
+                    lookSpeed = 0.62f;
                     ItemDescriptions[0].SetActive(false);
                 }
 
                 if (toggle)
                 {
+                    moveSpeed = 0;
+                    lookSpeed = 0;
                     ItemDescriptions[0].SetActive(true);
                 }
             }
-            else if (hit.collider.CompareTag("Book"))
+            else if (hit.collider.CompareTag("Orb"))
             {
-                
-            }
-            
-        }
-
-    }
-
-    public void Interact()
-    {
-        // Perform a raycast to detect the lightswitch
-        Ray ray = new Ray(playerCamera.position, playerCamera.forward);
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit, pickUpRange))
-        {
-            if (hit.collider.CompareTag("Switch")) // Assuming the switch has this tag
-            {
-                // Change the material color of the objects in the array
-                foreach (GameObject obj in objectsToChangeColor)
+                toggle = !toggle;
+                if (toggle == false)
                 {
-                    Renderer renderer = obj.GetComponent<Renderer>();
-                    if (renderer != null)
-                    {
-                        renderer.material.color = switchMaterial.color; // Set the color to match the switch material color
-                    }
+                    moveSpeed = 6.4f;
+                    lookSpeed = 0.62f;
+                    ItemDescriptions[1].SetActive(false);
+                }
+
+                if (toggle)
+                {
+                    moveSpeed = 0;
+                    lookSpeed = 0;
+                    ItemDescriptions[1].SetActive(true);
+                }
+            }
+            else if (hit.collider.CompareTag("Door"))
+            {
+
+                toggle = !toggle;
+                if (toggle == false)
+                {
+                    moveSpeed = 6.4f;
+                    lookSpeed = 0.62f;
+                    ItemDescriptions[2].SetActive(false);
+                }
+
+                if (toggle)
+                {
+                    moveSpeed = 0;
+                    lookSpeed = 0;
+                    ItemDescriptions[2].SetActive(true);
+                }
+            }
+            else if (hit.collider.CompareTag("Lever"))
+            {
+                toggle = !toggle;
+                if (toggle == false)
+                {
+                    moveSpeed = 6.4f;
+                    lookSpeed = 0.62f;
+                    ItemDescriptions[3].SetActive(false);
+                }
+
+                if (toggle)
+                {
+                    moveSpeed = 0;
+                    lookSpeed = 0;
+                    ItemDescriptions[3].SetActive(true);
+                }
+            }
+            else if (hit.collider.CompareTag("Drawer"))
+            {
+                toggle = !toggle;
+                if (toggle == false)
+                {
+                    moveSpeed = 6.4f;
+                    lookSpeed = 0.62f;
+                    ItemDescriptions[4].SetActive(false);
+                }
+
+                if (toggle)
+                {
+                    moveSpeed = 0;
+                    lookSpeed = 0;
+                    ItemDescriptions[4].SetActive(true);
+                }
+            }
+            else if (hit.collider.CompareTag("Cupboard"))
+            {
+                toggle = !toggle;
+                if (toggle == false)
+                {
+                    moveSpeed = 6.4f;
+                    lookSpeed = 0.62f;
+                    ItemDescriptions[5].SetActive(false);
+                }
+
+                if (toggle)
+                {
+                    moveSpeed = 0;
+                    lookSpeed = 0;
+                    ItemDescriptions[5].SetActive(true);
+                }
+            }
+            else if (hit.collider.CompareTag("LeftDoor"))
+            {
+                toggle = !toggle;
+                if (toggle == false)
+                {
+                    moveSpeed = 6.4f;
+                    lookSpeed = 0.62f;
+                    ItemDescriptions[6].SetActive(false);
+                }
+
+                if (toggle)
+                {
+                    moveSpeed = 0;
+                    lookSpeed = 0;
+                    ItemDescriptions[6].SetActive(true);
+                }
+            }
+            else if (hit.collider.CompareTag("RightDoor"))
+            {
+                toggle = !toggle;
+                if (toggle == false)
+                {
+                    moveSpeed = 6.4f;
+                    lookSpeed = 0.62f;
+                    ItemDescriptions[7].SetActive(false);
+                }
+
+                if (toggle)
+                {
+                    moveSpeed = 0;
+                    lookSpeed = 0;
+                    ItemDescriptions[7].SetActive(true);
                 }
             }
             
+
+
         }
+
     }
 
-    
 
-    private IEnumerator LockedDoor()
+    /*IEnumerator DeactivateDeleteUI()
     {
-        crosshair.color = Color.grey;
-        yield return new WaitForSeconds(1f);
-        crosshair.color = Color.white;
-    }
-
-
+        if(LibraryClueCount == 1)
+        {
+            yield return new WaitForSeconds(5f);
+            Destroy(HUDElements[0]);
+        }
+        
+    }*/
+     
 
 }

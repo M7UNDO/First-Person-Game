@@ -4,17 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Gun
   - PickUp
   - Door
   - Magic Staff
-  - Examinable
-  - Key
   - Bullet
   - Bookshelf
-  - Desk
   - Switch
-  - LockedDoor
   - GoldKey
   - SilverKey
   - BronzeKey
@@ -23,17 +18,20 @@ TagManager:
   - LeftDoor
   - Lever
   - Cabinet
-  - Note
+  - Orb
+  - Cupboard
+  - Clue
+  - Floor
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Lamp
   - Water
   - UI
   - Ground
-  - 
-  - 
+  - Shelves
+  - Triggers
   - 
   - 
   - 
