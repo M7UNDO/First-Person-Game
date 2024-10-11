@@ -82,9 +82,9 @@ public class FirstPersonControls : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         HUDScript = player.GetComponent<HUD>();
 
-        Doors[0].layer = 2;
-        Doors[1].layer = 2;
-        Doors[2].layer = 2;
+        Doors[0].layer = 0;
+        Doors[1].layer = 0;
+        Doors[2].layer = 0;
 
         DoorLocks[0].enabled = true;
         DoorLocks[1].enabled = true;
@@ -482,7 +482,7 @@ public class FirstPersonControls : MonoBehaviour
 
                 if (hit.collider.CompareTag("LibraryNote"))
                 {
-                    if(HUDScript.LibNoteCount <= 0)
+                    if(HUDScript.LibNoteCount <= 3)
                     {
                         HUDScript.LibNoteCount++;
                     }
@@ -491,7 +491,7 @@ public class FirstPersonControls : MonoBehaviour
 
                 if (hit.collider.CompareTag("HellNote"))
                 {
-                    if(HUDScript.HellNoteCount <= 0)
+                    if(HUDScript.HellNoteCount <= 2)
                     {
                         HUDScript.HellNoteCount++;
                     }
@@ -500,7 +500,7 @@ public class FirstPersonControls : MonoBehaviour
 
                 if (hit.collider.CompareTag("HeavenNote"))
                 {
-                    if(HUDScript.HeavenNoteCount <= 0)
+                    if(HUDScript.HeavenNoteCount <= 3)
                     {
                         HUDScript.HeavenNoteCount++;
                     }
