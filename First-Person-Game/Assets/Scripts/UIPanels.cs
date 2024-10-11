@@ -32,7 +32,7 @@ public class UIPanels : MonoBehaviour
 
     public void LoadGame()
     {
-        firstPersonControls.OnDisable();
+        
         SceneManager.LoadScene("Level Scene");
     }
 

@@ -6,6 +6,7 @@ using TMPro;
 using UnityEditor;
 using UnityEngine.UI;
 using Unity.VisualScripting;
+using UnityEngine.InputSystem;
 
 
 public class FirstPersonControls : MonoBehaviour
@@ -25,7 +26,7 @@ public class FirstPersonControls : MonoBehaviour
     private float verticalLookRotation = 0f; // Keeps track of vertical camera rotation for clamping
     private Vector3 velocity; // Velocity of the player
     private CharacterController characterController; // Reference to the CharacterController component
-    
+    private Controls playerInput;
 
     [Header("UI SETTINGS")]
     [Space(5)]
@@ -120,14 +121,7 @@ public class FirstPersonControls : MonoBehaviour
 
     }
 
-    public void OnDisable()
-    {
-        // Create a new instance of the input actions
-        var playerInput = new Controls();
-
-        // Enable the input actions
-        playerInput.Player.Disable();
-    }
+   
 
 
 
