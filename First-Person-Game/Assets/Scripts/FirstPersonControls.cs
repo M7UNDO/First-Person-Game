@@ -29,7 +29,7 @@ public class FirstPersonControls : MonoBehaviour
     private CharacterController characterController; // Reference to the CharacterController component
     private Controls playerInput;
 
-
+    Animator InnitFanni;
 
     [Header("UI SETTINGS")]
     [Space(5)]
@@ -83,6 +83,8 @@ public class FirstPersonControls : MonoBehaviour
         //Get and store the CharacterController component attached to this GameObject
         characterController = GetComponent<CharacterController>();
         HUDScript = player.GetComponent<HUD>();
+
+        InnitFanni = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
 
         Doors[0].layer = 2;
         Doors[1].layer = 2;
@@ -244,6 +246,9 @@ public class FirstPersonControls : MonoBehaviour
 
         // Move the character controller based on the movement vector and speed
         characterController.Move(move * moveSpeed * Time.deltaTime);
+
+        InnitFanni.SetFloat("Speed", currentSpeed);
+
     }
 
     public void LookAround()
@@ -328,6 +333,13 @@ public class FirstPersonControls : MonoBehaviour
                 // Pick up the object
                 heldObject = hit.collider.gameObject;
                 heldObject.GetComponent<Rigidbody>().isKinematic = true; // Disable physics
+
+                //play the grab animation
+                Animator InnitFanni = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
+                if(InnitFanni != null)
+                {
+                    InnitFanni.SetTrigger("PickupObject");
+                }
 
                 // Attach the object to the hold position
                 heldObject.transform.position = holdPosition.position;
