@@ -41,6 +41,8 @@ public class FirstPersonControls : MonoBehaviour
     public RawImage crosshair;
     private HUD HUDScript;
     [SerializeField] GameObject player;
+    public GameObject[] EndingUI;
+    public GameObject ExitBtn;
     
 
 
@@ -84,9 +86,10 @@ public class FirstPersonControls : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         HUDScript = player.GetComponent<HUD>();
 
-        Doors[0].layer = 2;
-        Doors[1].layer = 2;
-        Doors[2].layer = 2;
+        ExitBtn.SetActive(false);
+        Doors[0].layer = 0;
+        Doors[1].layer = 0;
+        Doors[2].layer = 0;
 
         DoorLocks[0].enabled = true;
         DoorLocks[1].enabled = true;
@@ -203,15 +206,24 @@ public class FirstPersonControls : MonoBehaviour
             {
                 crosshair.color = Color.white;
             }
+            else if (hit.collider.CompareTag("Staff"))
+            {
+                crosshair.color = Color.white;
+            }
             else if (hit.collider.gameObject.GetComponent<NoteScript>())
             {
                 crosshair.color = Color.white;
 
             }
+            else if (hit.collider.CompareTag("Staff"))
+            {
+                crosshair.color = Color.white;
+            }
             else
             {
                 crosshair.color = new Color(255f, 255f, 255f, transparency);
             }
+
 
 
         }
@@ -413,7 +425,16 @@ public class FirstPersonControls : MonoBehaviour
             }
             else if (hit.collider.CompareTag("Staff"))
             {
+                StartCoroutine(DisplayButton());
+                foreach (GameObject end in EndingUI)
+                {
+                    end.SetActive(true);
+                }
+                moveSpeed = 0;
+                lookSpeed = 0;
                 
+                
+
             }
 
             else if (hit.collider.CompareTag("Orb"))
@@ -460,59 +481,7 @@ public class FirstPersonControls : MonoBehaviour
             {
                 hit.collider.gameObject.GetComponent<NoteScript>().NoteOpenClose();
 
-                if (hit.collider.CompareTag("LibraryClue"))
-                {
-                    if(HUDScript.LibNoteCount <= 0)
-                    {
-                        HUDScript.LibNoteCount++;
-                    }
-
-                }
-
-                if (hit.collider.CompareTag("HellClue"))
-                {
-                    if(HUDScript.HellClueCount <= 0)
-                    {
-                        HUDScript.HellClueCount++;
-                    }
-
-                }
-
-                if (hit.collider.CompareTag("HeavenClue"))
-                {
-                    if(HUDScript.HeavenClueCount <= 0)
-                    {
-                        HUDScript.HeavenClueCount++;
-                    }
-
-                }
-
-                if (hit.collider.CompareTag("LibraryNote"))
-                {
-                    if(HUDScript.LibNoteCount <= 3)
-                    {
-                        HUDScript.LibNoteCount++;
-                    }
-
-                }
-
-                if (hit.collider.CompareTag("HellNote"))
-                {
-                    if(HUDScript.HellNoteCount <= 2)
-                    {
-                        HUDScript.HellNoteCount++;
-                    }
-
-                }
-
-                if (hit.collider.CompareTag("HeavenNote"))
-                {
-                    if(HUDScript.HeavenNoteCount <= 2)
-                    {
-                        HUDScript.HeavenNoteCount++;
-                    }
-
-                }
+               
 
 
                 toggle = !toggle;
@@ -691,15 +660,13 @@ public class FirstPersonControls : MonoBehaviour
     }
 
 
-    /*IEnumerator DeactivateDeleteUI()
+    IEnumerator DisplayButton()
     {
-        if(LibraryClueCount == 1)
-        {
-            yield return new WaitForSeconds(5f);
-            Destroy(HUDElements[0]);
-        }
-        
-    }*/
+
+        yield return new WaitForSeconds(5.0f);
+        ExitBtn.SetActive(true);
+
+    }
      
 
 }

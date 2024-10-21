@@ -3,7 +3,112 @@ guid: 8ff54aa6410d27442a430b206ff1e17c
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover1.002
+    second: {fileID: 2100000, guid: d177194cb7a25194799fa228685723b0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover10.001
+    second: {fileID: 2100000, guid: 4d90c52d7f765ac408125017411b06cd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover11.001
+    second: {fileID: 2100000, guid: bbe26e33a2849034a894ebe99a34e6a4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover12.001
+    second: {fileID: 2100000, guid: 3093510d408b6ad469e2de18b332831a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover12.002
+    second: {fileID: 2100000, guid: e0e3d8f15604b974e91fa3a138cf2787, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover16.002
+    second: {fileID: 2100000, guid: 30ea2343784d2fb4fb0b7a5cb49bcb3e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover18
+    second: {fileID: 2100000, guid: 57b694a836c2dbd4c85404bebc673237, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover19.001
+    second: {fileID: 2100000, guid: 55050636998876540a93aacfdd4b16db, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover2.002
+    second: {fileID: 2100000, guid: e9cfc40a1fb59fd4c8eb100cd0ddf824, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover3.002
+    second: {fileID: 2100000, guid: 9313f916b4cc62749be4a440d5fc5070, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover4.002
+    second: {fileID: 2100000, guid: 6444f2164c8bbab419cc942ea016e95f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover5.001
+    second: {fileID: 2100000, guid: 58e33512b0dd9a64481d7192df9bb7df, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover6.001
+    second: {fileID: 2100000, guid: 9e8b2ddcc8c52be41b265519c33c9a08, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover7.001
+    second: {fileID: 2100000, guid: 9fc7192e9665e1c418512b21fc3506bb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover8.002
+    second: {fileID: 2100000, guid: f6d3c2429eaecd34fac7e846804defb0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book Cover9.001
+    second: {fileID: 2100000, guid: a934d9bc292d23445bb12eac7fe12569, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pages .006
+    second: {fileID: 2100000, guid: 9ffd636191344e74a8ca23cc64c650f7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pages .007
+    second: {fileID: 2100000, guid: 2bc43c3fcfbd23e4b825a49dc653ceb3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pages .008
+    second: {fileID: 2100000, guid: 62b68be47ed0bf547b24e02651deee43, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pages .009
+    second: {fileID: 2100000, guid: e7cc3f73527110f42a9a583fff63d68e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wood Round Table
+    second: {fileID: 2100000, guid: 2a67df3301a919640a678f98a4588a49, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
