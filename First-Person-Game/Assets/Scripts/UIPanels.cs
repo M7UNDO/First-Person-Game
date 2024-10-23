@@ -68,7 +68,7 @@ public class UIPanels : MonoBehaviour
     public void Pause()
     {
         
-        firstPersonControls = player.GetComponent<FirstPersonControls>();
+      
         firstPersonControls.lookSpeed = look;
         firstPersonControls.moveSpeed = move;
         

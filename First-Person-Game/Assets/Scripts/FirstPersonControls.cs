@@ -8,6 +8,7 @@ using UnityEngine.UI;
 using Unity.VisualScripting;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 
 public class FirstPersonControls : MonoBehaviour
@@ -27,7 +28,9 @@ public class FirstPersonControls : MonoBehaviour
     private float verticalLookRotation = 0f; // Keeps track of vertical camera rotation for clamping
     private Vector3 velocity; // Velocity of the player
     private CharacterController characterController; // Reference to the CharacterController component
-    private Controls playerInput;
+    public Controls playerInput;
+    public Transform itemPrefab;
+    public Transform orbPrefab;
 
 
 
@@ -43,6 +46,7 @@ public class FirstPersonControls : MonoBehaviour
     [SerializeField] GameObject player;
     public GameObject[] EndingUI;
     public GameObject ExitBtn;
+    private ExamineItems examineItems;
     
 
 
@@ -103,6 +107,8 @@ public class FirstPersonControls : MonoBehaviour
         
     }
 
+    
+
     private void OnEnable()
     {
         // Create a new instance of the input actions
@@ -129,13 +135,18 @@ public class FirstPersonControls : MonoBehaviour
         playerInput.Player.PickUp.performed += ctx => PickUpObject(); // Call the PickUpObject method when pick-up input is performed
         playerInput.Player.OldInteract.performed += ctx => Interaction(); // Call the PickUpObject method when pick-up input is performed
 
-        playerInput.Player.Examine.performed += ctx => ItemExamination();//Call the ItemExamination method when an item is examined
+        playerInput.Player.Examine.performed += OnExaminePerformed;
 
         playerInput.Player.Crouch.performed += ctx => ToggleCrouch(); // Call the ToggleCrouchObject method when pick-up input is performed
 
     }
 
-  
+    public void OnExaminePerformed(InputAction.CallbackContext ctx)
+    {
+        ItemExamination();
+    }
+
+
     private void Update()
     {
         // Call Move and LookAround methods every frame to handle player movement and camera rotation
@@ -515,6 +526,7 @@ public class FirstPersonControls : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, pickUpRange, layers))
         {
+            Debug.Log(hit.collider.gameObject.name);
             if (hit.collider.CompareTag("Bookshelf"))
             {
                 toggle = !toggle;
@@ -530,6 +542,13 @@ public class FirstPersonControls : MonoBehaviour
                     moveSpeed = 0;
                     lookSpeed = 0;
                     ItemDescriptions[0].SetActive(true);
+
+
+                    if (itemPrefab != null)
+                    {
+                      Destroy(itemPrefab.gameObject);
+                    }
+                     itemPrefab = Instantiate(itemPrefab, new Vector3(1000, 1000, 1000), Quaternion.identity);
                 }
             }
             else if (hit.collider.CompareTag("Orb"))
@@ -540,6 +559,7 @@ public class FirstPersonControls : MonoBehaviour
                     moveSpeed = 6.4f;
                     lookSpeed = 0.62f;
                     ItemDescriptions[1].SetActive(false);
+                    Destroy(itemPrefab.gameObject);
                 }
 
                 if (toggle)
@@ -547,6 +567,11 @@ public class FirstPersonControls : MonoBehaviour
                     moveSpeed = 0;
                     lookSpeed = 0;
                     ItemDescriptions[1].SetActive(true);
+                    if (itemPrefab != null)
+                    {
+                        Destroy(itemPrefab.gameObject);
+                    }
+                    itemPrefab = Instantiate(orbPrefab, new Vector3(1000, 1000, 1000), Quaternion.identity);
                 }
             }
             else if (hit.collider.CompareTag("Door"))
@@ -652,13 +677,10 @@ public class FirstPersonControls : MonoBehaviour
                     ItemDescriptions[7].SetActive(true);
                 }
             }
-            
-
 
         }
 
     }
-
 
     IEnumerator DisplayButton()
     {
@@ -667,6 +689,6 @@ public class FirstPersonControls : MonoBehaviour
         ExitBtn.SetActive(true);
 
     }
-     
 
+   
 }
