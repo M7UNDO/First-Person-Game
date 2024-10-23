@@ -556,14 +556,17 @@ public class FirstPersonControls : MonoBehaviour
                 toggle = !toggle;
                 if (toggle == false)
                 {
+                    crosshair.enabled = true;
                     moveSpeed = 6.4f;
                     lookSpeed = 0.62f;
                     ItemDescriptions[1].SetActive(false);
                     Destroy(itemPrefab.gameObject);
+                    
                 }
 
                 if (toggle)
                 {
+                    crosshair.enabled = false;
                     moveSpeed = 0;
                     lookSpeed = 0;
                     ItemDescriptions[1].SetActive(true);
