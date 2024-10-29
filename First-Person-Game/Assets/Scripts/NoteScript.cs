@@ -8,6 +8,7 @@ public class NoteScript : MonoBehaviour
     public MeshRenderer letterMesh;
     private FirstPersonControls firstPersonControls;
     private bool toggle;
+    public AudioSource PaperscrollOpen;
     public void NoteOpenClose()
     {
         toggle = !toggle;   
@@ -15,6 +16,7 @@ public class NoteScript : MonoBehaviour
         {
             letterUI.SetActive(false);
             letterMesh.enabled = true;
+            PaperscrollOpen.Play();
             
         }
 
@@ -22,6 +24,7 @@ public class NoteScript : MonoBehaviour
         {
             letterUI.SetActive(true);
             letterMesh.enabled = false;
+            PaperscrollOpen.Play();
             
 
         }

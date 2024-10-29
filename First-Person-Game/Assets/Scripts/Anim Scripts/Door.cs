@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-
-    private bool toggle;
+    private FirstPersonControls firstPersonControls;
+    public bool toggle;
     [Header("DOOR ANIMATION SETTINGS")]
     [Space(3)]
 
     public Animator DoorAnimator;
+    public AudioSource DoorOpen;
+    public AudioSource DoorClose;
+    public AudioSource DoorLocked;
+    public bool isDoorLocked = true;
+    
+
 
     [Header("DRAWER ANIMATION SETTINGS")]
     [Space(3)]
@@ -29,17 +35,26 @@ public class Door : MonoBehaviour
 
     public void DoorOpenClose()
     {
+        if (isDoorLocked)  // Check if the door is locked
+        {
+            DoorLocked.Play();
+            Debug.Log("The door is locked.");
+            return;
+        }
+
         toggle = !toggle;
         if(toggle == false)
         {
             DoorAnimator.ResetTrigger("open");
             DoorAnimator.SetTrigger("close");
+            DoorClose.Play();
         }
 
         if (toggle)
         {
             DoorAnimator.ResetTrigger("close");
             DoorAnimator.SetTrigger("open");
+            DoorOpen.Play();
         }
     }
 
@@ -75,5 +90,8 @@ public class Door : MonoBehaviour
         }
     }
 
+    public void UnlockDoor() => isDoorLocked = false;
 
+
+    
 }

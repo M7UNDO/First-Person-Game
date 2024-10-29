@@ -11,14 +11,11 @@ public class UIPanels : MonoBehaviour
     private bool controlstoggle;
     [SerializeField] GameObject pausePanel;
     [SerializeField] GameObject controlPanel;
-    FirstPersonControls firstPersonControls;
+    private FirstPersonControls firstPersonControls;
     [SerializeField] GameObject player;
-    private float move;
-    private float look;
     public Canvas ObjectiveCanvas;
     private Controls playerInput;
 
-    // Start is called before the first frame update
 
     private void OnEnable()
     {
@@ -31,8 +28,6 @@ public class UIPanels : MonoBehaviour
         // Subscribe to the pause event
         playerInput.Player.Pause.performed += ctx => Pause();
     }
-
-
 
     private void OnDisable()
     {
@@ -53,7 +48,6 @@ public class UIPanels : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-
     public void LoadGame()
     {
        
@@ -67,32 +61,23 @@ public class UIPanels : MonoBehaviour
     }
     public void Pause()
     {
-        
-      
-        firstPersonControls.lookSpeed = look;
-        firstPersonControls.moveSpeed = move;
-        
-
         toggle = !toggle;
         if (toggle == false)
         {
+            firstPersonControls.lookSpeed = 6.4f;
+            firstPersonControls.moveSpeed = 0.62f;
             pausePanel.SetActive(false);
-            firstPersonControls.lookSpeed = 0.62f;
-            firstPersonControls.moveSpeed = 6.4f;
             firstPersonControls.crosshair.enabled = true;
             ObjectiveCanvas.enabled = true;
             //Time.timeScale = 1.0f;
-
-
 
         }
 
         if (toggle)
         {
-            
-            pausePanel.SetActive(true);
             firstPersonControls.lookSpeed = 0f;
             firstPersonControls.moveSpeed = 0f;
+            pausePanel.SetActive(true);
             firstPersonControls.crosshair.enabled = false;
             ObjectiveCanvas.enabled = false;
             //Time.timeScale = 0f;
@@ -100,6 +85,19 @@ public class UIPanels : MonoBehaviour
 
     }
 
+    private void SetPlayerMovement(bool isActive)
+    {
+        if (isActive)
+        {
+            firstPersonControls.moveSpeed = 6.4f;
+            firstPersonControls.lookSpeed = 0.62f;
+        }
+        else
+        {
+            firstPersonControls.lookSpeed = 0f;
+            firstPersonControls.moveSpeed = 0f;
+        }
+    }
 
 
     public void ControlPanel()

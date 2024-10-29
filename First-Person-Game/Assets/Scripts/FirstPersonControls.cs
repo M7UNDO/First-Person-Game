@@ -29,10 +29,14 @@ public class FirstPersonControls : MonoBehaviour
     private Vector3 velocity; // Velocity of the player
     private CharacterController characterController; // Reference to the CharacterController component
     public Controls playerInput;
+
+    [Header("EXAMINE")]
+    [Space(5)]
     public Transform itemPrefab;
     public Transform orbPrefab;
-
-
+    public Transform[] ItemPrefabs;
+    public GameObject ExaminePanel;
+    private Door doorScript;
 
     [Header("UI SETTINGS")]
     [Space(5)]
@@ -48,8 +52,6 @@ public class FirstPersonControls : MonoBehaviour
     public GameObject ExitBtn;
     private ExamineItems examineItems;
     
-
-
     [Header("SHOOTING SETTINGS")]
     [Space(5)]
     public GameObject projectilePrefab; // Projectile prefab for shooting
@@ -76,13 +78,15 @@ public class FirstPersonControls : MonoBehaviour
     public float Interactiondistance = 3f;
     public LayerMask layers;
     public GameObject[] Doors;
-    public Image[] DoorLocks;
+    public GameObject[] DoorLocks;
     public GameObject DoorCanvas;
 
     [Header("EXAMINE SETTINGS")]
     [Space(5)]
     public GameObject[] ItemDescriptions;
     private bool toggle;
+
+    public AudioSource KeySfx;
 
     private void Awake()
     {
@@ -91,13 +95,9 @@ public class FirstPersonControls : MonoBehaviour
         HUDScript = player.GetComponent<HUD>();
 
         ExitBtn.SetActive(false);
-        Doors[0].layer = 0;
-        Doors[1].layer = 0;
-        Doors[2].layer = 0;
-
-        DoorLocks[0].enabled = true;
-        DoorLocks[1].enabled = true;
-        DoorLocks[2].enabled = true;
+        //DoorLocks[0].enabled = true;
+        //DoorLocks[1].enabled = true;
+        //DoorLocks[2].enabled = true;
 
     }
 
@@ -106,8 +106,6 @@ public class FirstPersonControls : MonoBehaviour
 
         
     }
-
-    
 
     private void OnEnable()
     {
@@ -406,9 +404,20 @@ public class FirstPersonControls : MonoBehaviour
 
             if (hit.collider.CompareTag("Door"))
             {
-                
+                foreach (GameObject door in Doors)
+                {
+                    if (hit.collider.gameObject.GetComponent<Door>().isDoorLocked == true)
+                    {
+                        hit.collider.GetComponent<Door>().DoorOpenClose();
+                        StartCoroutine(LockDoor());
+                    }
+
+                }
+
                 hit.collider.GetComponent<Door>().DoorOpenClose();
+
                 
+              
             }
             else if (hit.collider.CompareTag("Drawer"))
             {
@@ -441,10 +450,9 @@ public class FirstPersonControls : MonoBehaviour
                 {
                     end.SetActive(true);
                 }
-                moveSpeed = 0;
-                lookSpeed = 0;
-                
-                
+                SetPlayerMovement(false);
+
+
 
             }
 
@@ -460,21 +468,22 @@ public class FirstPersonControls : MonoBehaviour
                 if(HUDScript.HeavenKeyCount <= 0)
                 {
                     HUDScript.HeavenKeyCount++;
-                    DoorLocks[2].enabled = false;
+                    //DoorLocks[2].enabled = false;
                     DoorCanvas.SetActive(false);
                 }
             }
 
             else if (hit.collider.CompareTag("BronzeKey"))
             {
-                Doors[0].layer = 0;//Changes the layer the doors on back to the default so the raycast can interact with. Essentially unlocking the door
+                KeySfx.Play();
+                Doors[0].GetComponent<Door>().UnlockDoor();
                 Destroy(hit.collider.gameObject);//The Key is destroyed after it is collected
-                if(HUDScript.LibraryKeyCount <= 0)
+                /*if(HUDScript.LibraryKeyCount <= 0)
                 {
                     HUDScript.LibraryKeyCount++;
                     DoorLocks[0].enabled = false;
                 }
-                
+                */
             }
 
             else if (hit.collider.CompareTag("SilverKey"))
@@ -484,7 +493,7 @@ public class FirstPersonControls : MonoBehaviour
                 if(HUDScript.HllKeyCount <= 0)
                 {
                     HUDScript.HllKeyCount++;
-                    DoorLocks[1].enabled = false;
+                    //DoorLocks[1].enabled = false;
                 }
             }
 
@@ -498,16 +507,14 @@ public class FirstPersonControls : MonoBehaviour
                 toggle = !toggle;
                 if (toggle == false)
                 {
-                    moveSpeed = 6.4f;
-                    lookSpeed = 0.62f;
+                    SetPlayerMovement(true);
 
                 }
 
                 if (toggle)
                 {
-                
-                    moveSpeed = 0;
-                    lookSpeed = 0;
+
+                    SetPlayerMovement(false);
                 }
 
             }
@@ -532,15 +539,13 @@ public class FirstPersonControls : MonoBehaviour
                 toggle = !toggle;
                 if (toggle == false)
                 {
-                    moveSpeed = 6.4f;
-                    lookSpeed = 0.62f;
+                    SetPlayerMovement(true);
                     ItemDescriptions[0].SetActive(false);
                 }
 
                 if (toggle)
                 {
-                    moveSpeed = 0;
-                    lookSpeed = 0;
+                    SetPlayerMovement(false);
                     ItemDescriptions[0].SetActive(true);
 
 
@@ -556,9 +561,9 @@ public class FirstPersonControls : MonoBehaviour
                 toggle = !toggle;
                 if (toggle == false)
                 {
+                    SetPlayerMovement(true);
+                    ExaminePanel.SetActive(false);
                     crosshair.enabled = true;
-                    moveSpeed = 6.4f;
-                    lookSpeed = 0.62f;
                     ItemDescriptions[1].SetActive(false);
                     Destroy(itemPrefab.gameObject);
                     
@@ -566,15 +571,33 @@ public class FirstPersonControls : MonoBehaviour
 
                 if (toggle)
                 {
+                    SetPlayerMovement(false);
+                    ExaminePanel.SetActive(true);
                     crosshair.enabled = false;
-                    moveSpeed = 0;
-                    lookSpeed = 0;
                     ItemDescriptions[1].SetActive(true);
-                    if (itemPrefab != null)
-                    {
-                        Destroy(itemPrefab.gameObject);
-                    }
-                    itemPrefab = Instantiate(orbPrefab, new Vector3(1000, 1000, 1000), Quaternion.identity);
+                    itemPrefab = Instantiate(ItemPrefabs[0], new Vector3(1000, 1000, 1000), Quaternion.identity);
+                }
+            }
+            else if (hit.collider.CompareTag("BronzeKey"))
+            {
+                toggle = !toggle;
+                if (toggle == false)
+                {
+                    SetPlayerMovement(true);
+                    ExaminePanel.SetActive(false);
+                    crosshair.enabled = true;
+                    ItemDescriptions[1].SetActive(false);
+                    Destroy(itemPrefab.gameObject);
+
+                }
+
+                if (toggle)
+                {
+                    SetPlayerMovement(false);
+                    ExaminePanel.SetActive(true);
+                    crosshair.enabled = false;
+                    ItemDescriptions[1].SetActive(true);
+                    itemPrefab = Instantiate(ItemPrefabs[1], new Vector3(1000, 1000, 1000), Quaternion.identity);
                 }
             }
             else if (hit.collider.CompareTag("Door"))
@@ -583,15 +606,13 @@ public class FirstPersonControls : MonoBehaviour
                 toggle = !toggle;
                 if (toggle == false)
                 {
-                    moveSpeed = 6.4f;
-                    lookSpeed = 0.62f;
+                    SetPlayerMovement(true);
                     ItemDescriptions[2].SetActive(false);
                 }
 
                 if (toggle)
                 {
-                    moveSpeed = 0;
-                    lookSpeed = 0;
+                    SetPlayerMovement(false);
                     ItemDescriptions[2].SetActive(true);
                 }
             }
@@ -600,15 +621,13 @@ public class FirstPersonControls : MonoBehaviour
                 toggle = !toggle;
                 if (toggle == false)
                 {
-                    moveSpeed = 6.4f;
-                    lookSpeed = 0.62f;
+                    SetPlayerMovement(true);
                     ItemDescriptions[3].SetActive(false);
                 }
 
                 if (toggle)
                 {
-                    moveSpeed = 0;
-                    lookSpeed = 0;
+                    SetPlayerMovement(false);
                     ItemDescriptions[3].SetActive(true);
                 }
             }
@@ -617,15 +636,13 @@ public class FirstPersonControls : MonoBehaviour
                 toggle = !toggle;
                 if (toggle == false)
                 {
-                    moveSpeed = 6.4f;
-                    lookSpeed = 0.62f;
+                    SetPlayerMovement(true);
                     ItemDescriptions[4].SetActive(false);
                 }
 
                 if (toggle)
                 {
-                    moveSpeed = 0;
-                    lookSpeed = 0;
+                    SetPlayerMovement(false);
                     ItemDescriptions[4].SetActive(true);
                 }
             }
@@ -634,15 +651,13 @@ public class FirstPersonControls : MonoBehaviour
                 toggle = !toggle;
                 if (toggle == false)
                 {
-                    moveSpeed = 6.4f;
-                    lookSpeed = 0.62f;
+                    SetPlayerMovement(true);
                     ItemDescriptions[5].SetActive(false);
                 }
 
                 if (toggle)
                 {
-                    moveSpeed = 0;
-                    lookSpeed = 0;
+                    SetPlayerMovement(false);
                     ItemDescriptions[5].SetActive(true);
                 }
             }
@@ -651,15 +666,13 @@ public class FirstPersonControls : MonoBehaviour
                 toggle = !toggle;
                 if (toggle == false)
                 {
-                    moveSpeed = 6.4f;
-                    lookSpeed = 0.62f;
+                    SetPlayerMovement(true);
                     ItemDescriptions[6].SetActive(false);
                 }
 
                 if (toggle)
                 {
-                    moveSpeed = 0;
-                    lookSpeed = 0;
+                    SetPlayerMovement(false);
                     ItemDescriptions[6].SetActive(true);
                 }
             }
@@ -668,15 +681,13 @@ public class FirstPersonControls : MonoBehaviour
                 toggle = !toggle;
                 if (toggle == false)
                 {
-                    moveSpeed = 6.4f;
-                    lookSpeed = 0.62f;
+                    SetPlayerMovement(true);
                     ItemDescriptions[7].SetActive(false);
                 }
 
                 if (toggle)
                 {
-                    moveSpeed = 0;
-                    lookSpeed = 0;
+                    SetPlayerMovement(false);
                     ItemDescriptions[7].SetActive(true);
                 }
             }
@@ -684,6 +695,23 @@ public class FirstPersonControls : MonoBehaviour
         }
 
     }
+
+    private void SetPlayerMovement(bool isActive)
+    {
+        if (isActive)
+        {
+           moveSpeed = 6.4f;
+           lookSpeed = 0.62f;
+        }
+        else
+        {
+           lookSpeed = 0f;
+           moveSpeed = 0f;
+        }
+    }
+
+
+  
 
     IEnumerator DisplayButton()
     {
@@ -693,5 +721,21 @@ public class FirstPersonControls : MonoBehaviour
 
     }
 
-   
+    IEnumerator LockDoor()
+    {
+
+        foreach(GameObject UIlock in DoorLocks)
+        {
+            UIlock.SetActive(true);
+        }
+        yield return new WaitForSeconds(4.0f);
+        foreach (GameObject UIlock in DoorLocks)
+        {
+            UIlock.SetActive(false);
+        }
+
+    }
+
+
+
 }
