@@ -21,11 +21,15 @@ public class Door : MonoBehaviour
     [Space(3)]
 
     public Animator DrawerAnimator;
+    public AudioSource DrawerOpenSfx;
+    public AudioSource DrawerCloseSfx;
 
     [Header("CABINET ANIMATION SETTINGS")]
     [Space(3)]
 
     public Animator cabinetAnimator;
+    public AudioSource CabinetOpenSfx;
+    public AudioSource CabinetCloseSfx;
 
     //Method referenced: OpenClose()
     //Title: How to Make Doors in Unity-Unity C# Tutorial
@@ -65,12 +69,16 @@ public class Door : MonoBehaviour
         {
             DrawerAnimator.ResetTrigger("OpenDrawer");
             DrawerAnimator.SetTrigger("CloseDrawer");
+            DrawerCloseSfx.Play();
+
+
         }
 
         if (toggle)
         {
             DrawerAnimator.ResetTrigger("CloseDrawer");
             DrawerAnimator.SetTrigger("OpenDrawer");
+            DrawerOpenSfx.Play();
         }
     }
 
@@ -81,12 +89,14 @@ public class Door : MonoBehaviour
         {
             cabinetAnimator.ResetTrigger("CabinetOpen");
             cabinetAnimator.SetTrigger("CabinetClose");
+            CabinetCloseSfx.Play();
         }
 
         if (toggle)
         {
             cabinetAnimator.ResetTrigger("CabinetClose");
             cabinetAnimator.SetTrigger("CabinetOpen");
+            CabinetOpenSfx.Play();
         }
     }
 
