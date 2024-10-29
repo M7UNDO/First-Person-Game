@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
 using Unity.VisualScripting;
+using System.Runtime.CompilerServices;
 
 public class UIPanels : MonoBehaviour
 {
@@ -11,10 +12,10 @@ public class UIPanels : MonoBehaviour
     private bool controlstoggle;
     [SerializeField] GameObject pausePanel;
     [SerializeField] GameObject controlPanel;
-    private FirstPersonControls firstPersonControls;
-    [SerializeField] GameObject player;
+    [SerializeField] FirstPersonControls firstPersonControls;
     public Canvas ObjectiveCanvas;
     private Controls playerInput;
+    public AudioSource PanelOpenCloseSFX;
 
 
     private void OnEnable()
@@ -26,7 +27,7 @@ public class UIPanels : MonoBehaviour
         playerInput.Player.Enable();
 
         // Subscribe to the pause event
-        playerInput.Player.Pause.performed += ctx => Pause();
+        playerInput.Player.Pause.performed += ctx => PauseGame();
     }
 
     private void OnDisable()
@@ -34,7 +35,7 @@ public class UIPanels : MonoBehaviour
         // Unsubscribe from the pause event to avoid multiple calls
         if (playerInput != null)
         {
-            playerInput.Player.Pause.performed -= ctx => Pause();
+            playerInput.Player.Pause.performed -= ctx => PauseGame();
 
             // Disable the input actions
             playerInput.Player.Disable();
@@ -59,46 +60,33 @@ public class UIPanels : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
     }
-    public void Pause()
+    public void PauseGame()
     {
         toggle = !toggle;
         if (toggle == false)
         {
-            firstPersonControls.lookSpeed = 6.4f;
-            firstPersonControls.moveSpeed = 0.62f;
+            Debug.Log("PanelOff");
             pausePanel.SetActive(false);
-            firstPersonControls.crosshair.enabled = true;
+            Time.timeScale = 1.0f;
+            PanelOpenCloseSFX.Play();
             ObjectiveCanvas.enabled = true;
-            //Time.timeScale = 1.0f;
+            firstPersonControls.enabled = true;
+            firstPersonControls.crosshair.enabled = true;
 
         }
 
         if (toggle)
         {
-            firstPersonControls.lookSpeed = 0f;
-            firstPersonControls.moveSpeed = 0f;
+            Debug.Log("PanelOn");
             pausePanel.SetActive(true);
-            firstPersonControls.crosshair.enabled = false;
+            Time.timeScale = 0f;
+            PanelOpenCloseSFX.Play();
             ObjectiveCanvas.enabled = false;
-            //Time.timeScale = 0f;
+            firstPersonControls.enabled = false;
+            firstPersonControls.crosshair.enabled = false;
         }
 
     }
-
-    private void SetPlayerMovement(bool isActive)
-    {
-        if (isActive)
-        {
-            firstPersonControls.moveSpeed = 6.4f;
-            firstPersonControls.lookSpeed = 0.62f;
-        }
-        else
-        {
-            firstPersonControls.lookSpeed = 0f;
-            firstPersonControls.moveSpeed = 0f;
-        }
-    }
-
 
     public void ControlPanel()
     {

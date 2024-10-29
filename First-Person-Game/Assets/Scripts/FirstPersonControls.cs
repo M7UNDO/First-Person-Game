@@ -139,6 +139,38 @@ public class FirstPersonControls : MonoBehaviour
 
     }
 
+    private void OnDisable()
+    {
+        // Create a new instance of the input actions
+        var playerInput = new Controls();
+
+        // Enable the input actions
+        playerInput.Player.Enable();
+
+        // Subscribe to the movement input events
+        playerInput.Player.Movement.performed -= ctx => moveInput = ctx.ReadValue<Vector2>(); // Update moveInput when movement input is performed
+        playerInput.Player.Movement.canceled -= ctx => moveInput = Vector2.zero; // Reset moveInput when movement input is canceled
+
+        // Subscribe to the look input events
+        playerInput.Player.LookAround.performed -= ctx => lookInput = ctx.ReadValue<Vector2>(); // Update lookInput when look input is performed
+        playerInput.Player.LookAround.canceled -= ctx => lookInput = Vector2.zero; // Reset lookInput when look input is canceled
+
+        // Subscribe to the jump input event
+        playerInput.Player.Jump.performed -= ctx => Jump(); // Call the Jump method when jump input is performed
+
+        // Subscribe to the shoot input event
+        playerInput.Player.Shoot.performed -= ctx => Shoot(); // Call the Shoot method when shoot input is performed
+
+        // Subscribe to the pick-up input event
+        playerInput.Player.PickUp.performed -= ctx => PickUpObject(); // Call the PickUpObject method when pick-up input is performed
+        playerInput.Player.OldInteract.performed += ctx => Interaction(); // Call the PickUpObject method when pick-up input is performed
+
+        playerInput.Player.Examine.performed -= OnExaminePerformed;
+
+        playerInput.Player.Crouch.performed -= ctx => ToggleCrouch(); // Call the ToggleCrouchObject method when pick-up input is performed
+
+    }
+
     public void OnExaminePerformed(InputAction.CallbackContext ctx)
     {
         ItemExamination();
