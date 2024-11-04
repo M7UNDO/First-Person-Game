@@ -5418,17 +5418,16 @@ MonoBehaviour:
   gravity: -17.2
   jumpHeight: 2
   playerCamera: {fileID: 1423877699}
+  itemPrefab: {fileID: 0}
+  orbPrefab: {fileID: 0}
+  ItemPrefabs: []
+  ExaminePanel: {fileID: 0}
   damageAmount: 0.25
   transparency: 0.1
   crosshair: {fileID: 710421613}
-  LibClueText: {fileID: 0}
-  LibStoryNote: {fileID: 0}
-  LibKeysText: {fileID: 0}
-  LibraryClueCount: 0
-  LibNoteCount: 0
-  LibraryKeyCount: 0
-  HUDElements:
-  - {fileID: 197227923}
+  player: {fileID: 0}
+  EndingUI: []
+  ExitBtn: {fileID: 0}
   projectilePrefab: {fileID: 1648695503671054799, guid: b4a0d6b39169544499a24dfa5dae6028,
     type: 3}
   firePoint: {fileID: 999209274}
@@ -5443,6 +5442,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 115
   Doors: []
+  DoorLocks: []
+  DoorCanvas: {fileID: 0}
   ItemDescriptions:
   - {fileID: 0}
   - {fileID: 0}
@@ -5453,6 +5454,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  KeySfx: {fileID: 0}
 --- !u!143 &2082243231
 CharacterController:
   m_ObjectHideFlags: 0
