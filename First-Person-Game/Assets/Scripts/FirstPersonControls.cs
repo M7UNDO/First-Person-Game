@@ -36,6 +36,7 @@ public class FirstPersonControls : MonoBehaviour
     public Transform orbPrefab;
     public Transform[] ItemPrefabs;
     public GameObject ExaminePanel;
+    public GameObject ExaminePanel2;
     private Door doorScript;
 
     [Header("UI SETTINGS")]
@@ -257,6 +258,10 @@ public class FirstPersonControls : MonoBehaviour
 
             }
             else if (hit.collider.CompareTag("Staff"))
+            {
+                crosshair.color = Color.white;
+            }
+            else if (hit.collider.CompareTag("Wand"))
             {
                 crosshair.color = Color.white;
             }
@@ -610,13 +615,35 @@ public class FirstPersonControls : MonoBehaviour
                     itemPrefab = Instantiate(ItemPrefabs[0], new Vector3(1000, 1000, 1000), Quaternion.identity);
                 }
             }
+            else if (hit.collider.CompareTag("Wand"))
+            {
+                toggle = !toggle;
+                if (toggle == false)
+                {
+                    SetPlayerMovement(true);
+                    ExaminePanel2.SetActive(false);
+                    crosshair.enabled = true;
+                    ItemDescriptions[2].SetActive(false);
+                    Destroy(itemPrefab.gameObject);
+
+                }
+
+                if (toggle)
+                {
+                    SetPlayerMovement(false);
+                    ExaminePanel2.SetActive(true);
+                    crosshair.enabled = false;
+                    ItemDescriptions[1].SetActive(true);
+                    itemPrefab = Instantiate(ItemPrefabs[2], new Vector3(1000, 1000, 1000), Quaternion.identity);
+                }
+            }
             else if (hit.collider.CompareTag("BronzeKey"))
             {
                 toggle = !toggle;
                 if (toggle == false)
                 {
                     SetPlayerMovement(true);
-                    ExaminePanel.SetActive(false);
+                    ExaminePanel2.SetActive(false);
                     crosshair.enabled = true;
                     ItemDescriptions[1].SetActive(false);
                     Destroy(itemPrefab.gameObject);
@@ -626,7 +653,7 @@ public class FirstPersonControls : MonoBehaviour
                 if (toggle)
                 {
                     SetPlayerMovement(false);
-                    ExaminePanel.SetActive(true);
+                    ExaminePanel2.SetActive(true);
                     crosshair.enabled = false;
                     ItemDescriptions[1].SetActive(true);
                     itemPrefab = Instantiate(ItemPrefabs[1], new Vector3(1000, 1000, 1000), Quaternion.identity);

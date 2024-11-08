@@ -28,6 +28,8 @@ TagManager:
   - HeavenClue
   - HeavenNote
   - Staff
+  - Wand
+  - NPC
   layers:
   - Default
   - TransparentFX

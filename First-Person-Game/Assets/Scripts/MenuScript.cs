@@ -6,6 +6,7 @@ public class MenuScript : MonoBehaviour
 {
     [SerializeField] GameObject controlPanel;
     private bool controlstoggle;
+    public GameObject Title;
     // Start is called before the first frame update
     public void ControlPanel()
     {
@@ -14,6 +15,7 @@ public class MenuScript : MonoBehaviour
         if (controlstoggle == false)
         {
             controlPanel.SetActive(false);
+            Title.SetActive(true);
 
 
         }
@@ -22,6 +24,7 @@ public class MenuScript : MonoBehaviour
         {
 
             controlPanel.SetActive(true);
+            Title.SetActive(false);
         }
 
     }

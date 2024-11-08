@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     private bool isRotating = false; // Track if the camera is currently rotating
     public GameObject[] UIElements;
     public GameObject initialButton;
+    
 
     // Method to rotate the camera left by 90 degrees
     public void RotateCameraLeftBy90Degrees()
@@ -40,6 +41,8 @@ public class UIManager : MonoBehaviour
     {
         isRotating = true;
 
+        
+
         Quaternion startRotation = mainCamera.transform.rotation; // Initial rotation
         Quaternion endRotation = startRotation * Quaternion.Euler(20f, -angle, 0); // Target rotation
 
@@ -55,6 +58,8 @@ public class UIManager : MonoBehaviour
         isRotating = false;
 
         initialButton.SetActive(false);
+        
+        
 
         foreach (GameObject UIelement in UIElements)
         {
