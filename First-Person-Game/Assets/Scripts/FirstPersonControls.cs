@@ -615,6 +615,28 @@ public class FirstPersonControls : MonoBehaviour
                     itemPrefab = Instantiate(ItemPrefabs[0], new Vector3(1000, 1000, 1000), Quaternion.identity);
                 }
             }
+            else if (hit.collider.CompareTag("WizardHat"))
+            {
+                toggle = !toggle;
+                if (toggle == false)
+                {
+                    SetPlayerMovement(true);
+                    ExaminePanel.SetActive(false);
+                    crosshair.enabled = true;
+                    ItemDescriptions[1].SetActive(false);
+                    Destroy(itemPrefab.gameObject);
+
+                }
+
+                if (toggle)
+                {
+                    SetPlayerMovement(false);
+                    ExaminePanel.SetActive(true);
+                    crosshair.enabled = false;
+                    ItemDescriptions[1].SetActive(true);
+                    itemPrefab = Instantiate(ItemPrefabs[3], new Vector3(1000, 1000, 1000), Quaternion.identity);
+                }
+            }
             else if (hit.collider.CompareTag("Wand"))
             {
                 toggle = !toggle;

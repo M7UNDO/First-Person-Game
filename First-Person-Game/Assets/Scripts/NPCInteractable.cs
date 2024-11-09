@@ -16,7 +16,7 @@ public class NPCInteractable : MonoBehaviour
     
     public void Interact(Transform interactorTransform)
     {
-        ChatBubble3D.Create(transform.transform, new Vector3(-.3f, 1.7f, 0f), ChatBubble3D.IconType.Happy, "Hello There!");
+        //ChatBubble3D.Create(transform.transform, new Vector3(-.3f, 1.7f, 0f), ChatBubble3D.IconType.Happy, "Hello There!");
 
         animator.SetTrigger("Talk");
 

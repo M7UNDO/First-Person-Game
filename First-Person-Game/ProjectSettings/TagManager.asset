@@ -30,6 +30,7 @@ TagManager:
   - Staff
   - Wand
   - NPC
+  - WizardHat
   layers:
   - Default
   - TransparentFX
