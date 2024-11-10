@@ -30,6 +30,8 @@ public class FirstPersonControls : MonoBehaviour
     private CharacterController characterController; // Reference to the CharacterController component
     public Controls playerInput;
 
+    public Animator IF_Anim; // Character anime controller
+
     [Header("EXAMINE")]
     [Space(5)]
     public Transform itemPrefab;
@@ -302,6 +304,8 @@ public class FirstPersonControls : MonoBehaviour
 
         // Move the character controller based on the movement vector and speed
         characterController.Move(move * moveSpeed * Time.deltaTime);
+
+        IF_Anim.SetFloat("Speed", moveSpeed);
     }
 
     public void LookAround()
@@ -383,6 +387,7 @@ public class FirstPersonControls : MonoBehaviour
             // Check if the hit object has the tag "PickUp"
             if (hit.collider.CompareTag("PickUp"))
             {
+
                 // Pick up the object
                 heldObject = hit.collider.gameObject;
                 heldObject.GetComponent<Rigidbody>().isKinematic = true; // Disable physics
@@ -437,7 +442,10 @@ public class FirstPersonControls : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, Interactiondistance, layers))
         {
-
+            // Play animation
+            IF_Anim.SetTrigger("Grabbed");
+            IF_Anim.ResetTrigger("Grabbed");
+            print("grab");
 
             if (hit.collider.CompareTag("Door"))
             {
