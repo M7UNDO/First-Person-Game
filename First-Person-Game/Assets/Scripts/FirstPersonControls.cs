@@ -99,15 +99,12 @@ public class FirstPersonControls : MonoBehaviour
     {
         //Get and store the CharacterController component attached to this GameObject
         characterController = GetComponent<CharacterController>();
-        //HUDScript = player.GetComponent<HUD>();
-        //HUDScript = hud.GetComponent<HUD>();
-        //IntroUI[3].SetActive(true);
-        //SetPlayerMovement(false);
+
+        IntroUI[3].SetActive(true);
+        SetPlayerMovement(false);
         StartCoroutine(Display());
         ExitBtn.SetActive(false);
-        //DoorLocks[0].enabled = true;
-        //DoorLocks[1].enabled = true;
-        //DoorLocks[2].enabled = true;
+     
 
     }
 
