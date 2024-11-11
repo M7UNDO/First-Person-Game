@@ -49,6 +49,13 @@ public class UIPanels : MonoBehaviour
         Time.timeScale = 1f;
     }
 
+    public void LoadNew()
+    {
+        SceneManager.LoadScene("Level Scene"); // Load scene by name
+        print("Scene restarted");
+        Time.timeScale = 1f;
+    }
+
     public void LoadGame()
     {
        
@@ -58,7 +65,7 @@ public class UIPanels : MonoBehaviour
 
     public void LoadMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("Play Menu");
     }
     public void PauseGame()
     {

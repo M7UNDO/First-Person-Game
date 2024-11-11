@@ -28,13 +28,18 @@ TagManager:
   - WizardHat
   - Clue
   - Note
-  - Wizard
   - Paper
   - Spawn1
   - HellNote
   - HellClue
   - Spawn2
   - Spawn3
+  - Spawn4
+  - Wizard1
+  - Wizard2
+  - Wizard3
+  - Wizard4
+  - Wizard
   layers:
   - Default
   - TransparentFX

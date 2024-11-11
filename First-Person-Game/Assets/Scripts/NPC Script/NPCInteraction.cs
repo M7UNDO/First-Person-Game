@@ -5,25 +5,30 @@ using TMPro;
 
 public class NPCInteraction : MonoBehaviour
 {
-    public Animator npcAnimator;         // Animator for NPC animations
-    public GameObject dialoguePanel;     // UI panel for dialogue display
-    public TextMeshProUGUI dialogueText;// Text component to show dialogue text
-    public Button continueButton;        // Button to move to the next dialogue line
-    public string[] dialogueLines;       // Array of dialogue lines
-    private int dialogueIndex = 0;       // Tracks the current dialogue line index
-    private bool isInteracting = false;  // Tracks if interaction is active
-    public GameObject Wizard;
-    public FirstPersonControls firstPeronControls;
+    public Animator npcAnimator;              // Animator for NPC animations
+    public GameObject npcObject;              // Reference to the NPC GameObject (can be set in Inspector)
+    public GameObject dialoguePanel;          // UI panel for dialogue display
+    public TextMeshProUGUI dialogueText;      // Text component to show dialogue text
+    public Button continueButton;             // Button to move to the next dialogue line
+    public string[] dialogueLines;            // Array of dialogue lines
+    private int dialogueIndex = 0;            // Tracks the current dialogue line index
+    private bool isInteracting = false;       // Tracks if interaction is active
+    public FirstPersonControls firstPersonControls; // Reference to player controls
 
     // Start interaction when called from the player script
     public void StartInteraction()
     {
-        if (!isInteracting)  // Only start if not already interacting
+        if (!isInteracting && npcObject != null && npcObject.activeSelf)
         {
-            firstPeronControls.SetPlayerMovement(false);
+            firstPersonControls.SetPlayerMovement(false);  // Disable player movement
             isInteracting = true;
             dialogueIndex = 0;  // Reset dialogue index
-            npcAnimator.SetTrigger("talk");  // Trigger talking animation
+
+            if (npcAnimator != null)
+            {
+                npcAnimator.SetTrigger("talk");  // Trigger talking animation if animator is assigned
+            }
+
             ShowDialogue();  // Start showing the first dialogue line
         }
     }
@@ -63,9 +68,15 @@ public class NPCInteraction : MonoBehaviour
     // Ends interaction by hiding dialogue, returning to idle, and fading out NPC
     private void EndInteraction()
     {
-        firstPeronControls.SetPlayerMovement(true);
+        continueButton.gameObject.SetActive(false);
+        firstPersonControls.SetPlayerMovement(true);  // Re-enable player movement
         dialoguePanel.SetActive(false);  // Hide dialogue panel
-        npcAnimator.SetTrigger("Idle");  // Trigger idle animation
+
+        if (npcAnimator != null)
+        {
+            npcAnimator.SetTrigger("Idle");  // Trigger idle animation if animator is assigned
+        }
+
         StartCoroutine(FadeOutNPC());    // Fade out NPC after delay
     }
 
@@ -73,8 +84,10 @@ public class NPCInteraction : MonoBehaviour
     private IEnumerator FadeOutNPC()
     {
         yield return new WaitForSeconds(2f);  // Wait 2 seconds before hiding
-        Wizard.SetActive(false);
-        continueButton.gameObject.SetActive(false);// Deactivate NPC
+        if (npcObject != null)
+        {
+            npcObject.SetActive(false);      // Deactivate NPC GameObject if it exists
+        }
         isInteracting = false;                // Reset interaction state
     }
 }

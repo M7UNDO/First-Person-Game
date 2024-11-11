@@ -92,6 +92,7 @@ public class FirstPersonControls : MonoBehaviour
     [Header("NPC INTERACTION")]
     [Space(5)]
     public NPCInteraction npcInteraction;
+    public GameObject [] Wizard;
     
 
     private void Awake()
@@ -153,8 +154,7 @@ public class FirstPersonControls : MonoBehaviour
         // Create a new instance of the input actions
         var playerInput = new Controls();
 
-        // Enable the input actions
-        playerInput.Player.Enable();
+        
 
         // Subscribe to the movement input events
         playerInput.Player.Movement.performed -= ctx => moveInput = ctx.ReadValue<Vector2>(); // Update moveInput when movement input is performed
@@ -178,6 +178,8 @@ public class FirstPersonControls : MonoBehaviour
 
         playerInput.Player.Crouch.performed -= ctx => ToggleCrouch(); // Call the ToggleCrouchObject method when pick-up input is performed
 
+        // Enable the input actions
+        playerInput.Player.Disable();
     }
 
     public void OnExaminePerformed(InputAction.CallbackContext ctx)
@@ -235,9 +237,13 @@ public class FirstPersonControls : MonoBehaviour
             {
                 crosshair.color = Color.red;
             }
-            else if (hit.collider.CompareTag("Wizard"))
+            else if (hit.collider.CompareTag("Wizard1")|| hit.collider.CompareTag("Wizard2")|| hit.collider.CompareTag("Wizard3")|| hit.collider.CompareTag("Wizard1"))
             {
-                crosshair.color = Color.cyan;
+                crosshair.color = Color.yellow;
+            }
+            else if (hit.collider.gameObject.CompareTag("Spawn1") || hit.collider.gameObject.CompareTag("Spawn2") || hit.collider.gameObject.CompareTag("Spawn3") || hit.collider.gameObject.CompareTag("Spawn4"))
+            {
+                crosshair.color = Color.yellow;
             }
             else if (hit.collider.gameObject.GetComponent<NoteScript>() || hit.collider.gameObject.CompareTag("Note") || hit.collider.gameObject.CompareTag("Clue")|| hit.collider.gameObject.CompareTag("Paper"))
             {
@@ -581,7 +587,7 @@ public class FirstPersonControls : MonoBehaviour
                 }
 
             }
-            else if (hit.collider.CompareTag("Wizard"))
+            else if (hit.collider.gameObject.GetComponent<NPCInteraction>())
             {
                 NPCInteraction npc = hit.transform.GetComponent<NPCInteraction>();
                 if (npc != null)
@@ -593,24 +599,32 @@ public class FirstPersonControls : MonoBehaviour
             else if (hit.collider.CompareTag("Spawn1"))
             {
                 Destroy(hit.collider.gameObject);
-                npcInteraction.Wizard.SetActive(true);
+                Wizard[0].SetActive(true);
 
 
             }
             else if (hit.collider.CompareTag("Spawn2"))
             {
                 Destroy(hit.collider.gameObject);
-                npcInteraction.Wizard.SetActive(true);
+                Wizard[1].SetActive(true);
 
 
             }
             else if (hit.collider.CompareTag("Spawn3"))
             {
                 Destroy(hit.collider.gameObject);
-                npcInteraction.Wizard.SetActive(true);
+                Wizard[2].SetActive(true);
 
 
             }
+            else if (hit.collider.CompareTag("Spawn4"))
+            {
+                Destroy(hit.collider.gameObject);
+                Wizard[3].SetActive(true);
+
+
+            }
+
 
 
 
@@ -826,7 +840,7 @@ public class FirstPersonControls : MonoBehaviour
                     itemPrefab = Instantiate(ItemPrefabs[8], new Vector3(1000, 1000, 1000), Quaternion.identity);
                 }
             }
-            else if (hit.collider.gameObject.CompareTag("Spawn1")|| hit.collider.gameObject.CompareTag("Spawn2") || hit.collider.gameObject.CompareTag("Spawn3"))
+            else if (hit.collider.gameObject.CompareTag("Spawn1")|| hit.collider.gameObject.CompareTag("Spawn2") || hit.collider.gameObject.CompareTag("Spawn3")|| hit.collider.gameObject.CompareTag("Spawn4"))
             {
                 toggle = !toggle;
                 if (toggle == false)
