@@ -10,6 +10,7 @@ public class ObjectiveScript : MonoBehaviour
     [SerializeField] private GameObject objectivePanel;
     private bool toggle = true;
     private Controls playerInput;
+    public AudioSource panelSFX;
 
    
 
@@ -46,13 +47,14 @@ public class ObjectiveScript : MonoBehaviour
         if (toggle)
         {
             objectivePanel.SetActive(true);
+            panelSFX.Play();
         }
 
         if(toggle == false)
         {
             
             objectivePanel.SetActive(false);
-
+            panelSFX.Play();
         }
         
     }

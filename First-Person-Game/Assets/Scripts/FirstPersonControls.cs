@@ -32,28 +32,19 @@ public class FirstPersonControls : MonoBehaviour
 
     public Animator IF_Anim; // Character anime controller
 
-    [Header("EXAMINE")]
-    [Space(5)]
-    public Transform itemPrefab;
-    public Transform orbPrefab;
-    public Transform[] ItemPrefabs;
-    public GameObject ExaminePanel;
-    public GameObject ExaminePanel2;
-    private Door doorScript;
-
     [Header("UI SETTINGS")]
     [Space(5)]
-    //public TextMeshProUGUI pickUpText;
-    //public Image healthBar;
     public float damageAmount = 0.25f; // Reduce the health bar by this amount
-    //private float healAmount = 0.5f;// Fill the health bar by this amount
     public float transparency;
     public RawImage crosshair;
-    private HUD HUDScript;
+    public HUD HUDScript;
     [SerializeField] GameObject player;
     public GameObject[] EndingUI;
     public GameObject ExitBtn;
+    
     private ExamineItems examineItems;
+    public GameObject[] IntroUI;
+    public GameObject[] ContinueBtns;
     
     [Header("SHOOTING SETTINGS")]
     [Space(5)]
@@ -84,19 +75,34 @@ public class FirstPersonControls : MonoBehaviour
     public GameObject[] DoorLocks;
     public GameObject DoorCanvas;
 
-    [Header("EXAMINE SETTINGS")]
+    [Header("EXAMINE")]
     [Space(5)]
+
+    public Transform itemPrefab;
+    public Transform orbPrefab;
+    public Transform[] ItemPrefabs;
+    public GameObject ExaminePanel;
+    public GameObject ExaminePanel2;
+    private Door doorScript;
     public GameObject[] ItemDescriptions;
     private bool toggle;
 
     public AudioSource KeySfx;
 
+    [Header("NPC INTERACTION")]
+    [Space(5)]
+    public NPCInteraction npcInteraction;
+    
+
     private void Awake()
     {
         //Get and store the CharacterController component attached to this GameObject
         characterController = GetComponent<CharacterController>();
-        HUDScript = player.GetComponent<HUD>();
-
+        //HUDScript = player.GetComponent<HUD>();
+        //HUDScript = hud.GetComponent<HUD>();
+        //IntroUI[3].SetActive(true);
+        //SetPlayerMovement(false);
+        StartCoroutine(Display());
         ExitBtn.SetActive(false);
         //DoorLocks[0].enabled = true;
         //DoorLocks[1].enabled = true;
@@ -199,24 +205,16 @@ public class FirstPersonControls : MonoBehaviour
         if (Physics.Raycast(ray, out hit, pickUpRange))
         {
             // Check if the object has the "PickUp" tag
-            if (hit.collider.CompareTag("Door"))
+            if (hit.collider.CompareTag("PickUp") || hit.collider.CompareTag("Lever") || hit.collider.CompareTag("Door"))
             {
                 crosshair.color = Color.white;
 
             }
-            else if (hit.collider.CompareTag("PickUp"))
+            else if (hit.collider.CompareTag("Orb")|| hit.collider.CompareTag("Wand"))
             {
                 crosshair.color = Color.white;
             }
-            else if (hit.collider.CompareTag("Orb"))
-            {
-                crosshair.color = Color.white;
-            }
-            else if (hit.collider.CompareTag("LeftDoor"))
-            {
-                crosshair.color = Color.white;
-            }
-            else if (hit.collider.CompareTag("RightDoor"))
+            else if (hit.collider.CompareTag("LeftDoor")|| hit.collider.CompareTag("RightDoor"))
             {
                 crosshair.color = Color.white;
             }
@@ -224,55 +222,32 @@ public class FirstPersonControls : MonoBehaviour
             {
                 crosshair.color = Color.white;
             }
-            else if (hit.collider.CompareTag("Drawer"))
+            else if (hit.collider.CompareTag("Drawer")|| hit.collider.CompareTag("Cabinet"))
             {
                 crosshair.color = Color.white;
 
             }
-            else if (hit.collider.CompareTag("Lever"))
-            {
-                crosshair.color = Color.white;
-            }
-            else if (hit.collider.CompareTag("Cabinet"))
-            {
-                crosshair.color = Color.white;
-            }
-            else if (hit.collider.CompareTag("GoldKey"))
-            {
-                crosshair.color = Color.white;
-            }
-            else if (hit.collider.CompareTag("BronzeKey"))
-            {
-                crosshair.color = Color.white;
-
-            }
-            else if (hit.collider.CompareTag("SilverKey"))
+            else if (hit.collider.CompareTag("GoldKey") || hit.collider.CompareTag("BronzeKey")|| hit.collider.CompareTag("SilverKey"))
             {
                 crosshair.color = Color.white;
             }
             else if (hit.collider.CompareTag("Staff"))
             {
-                crosshair.color = Color.white;
+                crosshair.color = Color.red;
             }
-            else if (hit.collider.gameObject.GetComponent<NoteScript>())
+            else if (hit.collider.CompareTag("Wizard"))
+            {
+                crosshair.color = Color.cyan;
+            }
+            else if (hit.collider.gameObject.GetComponent<NoteScript>() || hit.collider.gameObject.CompareTag("Note") || hit.collider.gameObject.CompareTag("Clue")|| hit.collider.gameObject.CompareTag("Paper"))
             {
                 crosshair.color = Color.white;
 
-            }
-            else if (hit.collider.CompareTag("Staff"))
-            {
-                crosshair.color = Color.white;
-            }
-            else if (hit.collider.CompareTag("Wand"))
-            {
-                crosshair.color = Color.white;
             }
             else
             {
                 crosshair.color = new Color(255f, 255f, 255f, transparency);
             }
-
-
 
         }
         else
@@ -282,30 +257,37 @@ public class FirstPersonControls : MonoBehaviour
         }
     }
 
-  
+
 
     public void Move()
     {
+        // Read input from the new Input System
+
+
         // Create a movement vector based on the input
         Vector3 move = new Vector3(moveInput.x, 0, moveInput.y);
 
         // Transform direction from local to world space
         move = transform.TransformDirection(move);
 
-        float currentSpeed;
-        if (isCrouching)
+        // Determine the appropriate speed
+        float currentSpeed = isCrouching ? crouchSpeed : moveSpeed;
+
+        // Move the character controller based on the movement vector and speed
+        characterController.Move(move * currentSpeed * Time.deltaTime);
+
+        // Calculate the player's speed and update the animation
+        float actualSpeed = characterController.velocity.magnitude;
+        //animator.SetBool("isWalking", actualSpeed > 0);
+
+        if (actualSpeed > 0)
         {
-            currentSpeed = crouchSpeed;
+            IF_Anim.SetInteger("animState", 1);
         }
         else
         {
-            currentSpeed = moveSpeed;
+            IF_Anim.SetInteger("animState", 0);
         }
-
-        // Move the character controller based on the movement vector and speed
-        characterController.Move(move * moveSpeed * Time.deltaTime);
-
-        IF_Anim.SetFloat("Speed", moveSpeed);
     }
 
     public void LookAround()
@@ -432,6 +414,49 @@ public class FirstPersonControls : MonoBehaviour
         }
     }
 
+    public void IntroLoad()
+    {
+        if(IntroUI[0] != null)
+        {
+            if (IntroUI[0].activeSelf == true)
+            {
+                Destroy(IntroUI[0]);
+                ContinueBtns[0].SetActive(false);
+                IntroUI[0] = null;
+                StartCoroutine(Display());
+
+            }
+        }
+
+
+        if (IntroUI[1] != null)
+        {
+            if (IntroUI[1].activeSelf == true)
+            {
+                Destroy(IntroUI[1]);
+                Destroy(ContinueBtns[1]);
+                IntroUI[1] = null;
+                StartCoroutine(Display());
+            }
+        }
+
+        if (IntroUI[2] != null)
+        {
+            if (IntroUI[2].activeSelf == true)
+            {
+                Destroy(IntroUI[2]);
+                Destroy(ContinueBtns[2]);
+                Destroy(IntroUI[3]);
+                IntroUI[2]= null;
+                IntroUI[3]= null;
+                SetPlayerMovement(true);
+
+            }
+        }
+        
+
+    }
+
 
     public void Interaction()
     {
@@ -500,54 +525,47 @@ public class FirstPersonControls : MonoBehaviour
 
 
             }
-
             else if (hit.collider.CompareTag("Orb"))
             {
                 print("Spin");
                 hit.collider.GetComponent<OrbScript>().OrbSpin();
             }
-            else if (hit.collider.CompareTag("GoldKey"))
-            {
-                Doors[2].layer = 0;//Changes the layer the doors on back to the default so the raycast can interact with. Essentially unlocking the door
-                Destroy(hit.collider.gameObject);//The Key is destroyed after it is collected
-                if(HUDScript.HeavenKeyCount <= 0)
-                {
-                    HUDScript.HeavenKeyCount++;
-                    //DoorLocks[2].enabled = false;
-                    DoorCanvas.SetActive(false);
-                }
-            }
-
             else if (hit.collider.CompareTag("BronzeKey"))
             {
                 KeySfx.Play();
                 Doors[0].GetComponent<Door>().UnlockDoor();
                 Destroy(hit.collider.gameObject);//The Key is destroyed after it is collected
-                /*if(HUDScript.LibraryKeyCount <= 0)
-                {
-                    HUDScript.LibraryKeyCount++;
-                    DoorLocks[0].enabled = false;
-                }
-                */
-            }
 
+                if(HUDScript.LibraryKeyCount <= 0)
+                {
+                    HUDScript.LibraryKeyCount++;  
+                }
+                
+            }
             else if (hit.collider.CompareTag("SilverKey"))
             {
-                Doors[1].layer = 0;//Changes the layer the doors on back to the default so the raycast can interact with. Essentially unlocking the door
+                KeySfx.Play();
+                Doors[1].GetComponent<Door>().UnlockDoor();
                 Destroy(hit.collider.gameObject);//The Key is destroyed after it is collected
                 if(HUDScript.HllKeyCount <= 0)
                 {
                     HUDScript.HllKeyCount++;
-                    //DoorLocks[1].enabled = false;
+                    
                 }
             }
-
+            else if (hit.collider.CompareTag("GoldKey"))
+            {
+                KeySfx.Play();
+                Doors[2].GetComponent<Door>().UnlockDoor();
+                Destroy(hit.collider.gameObject);//The Key is destroyed after it is collected
+                if (HUDScript.HeavenKeyCount <= 0)
+                {
+                    HUDScript.HeavenKeyCount++;
+                }
+            }
             else if (hit.collider.gameObject.GetComponent<NoteScript>())
             {
                 hit.collider.gameObject.GetComponent<NoteScript>().NoteOpenClose();
-
-               
-
 
                 toggle = !toggle;
                 if (toggle == false)
@@ -563,6 +581,37 @@ public class FirstPersonControls : MonoBehaviour
                 }
 
             }
+            else if (hit.collider.CompareTag("Wizard"))
+            {
+                NPCInteraction npc = hit.transform.GetComponent<NPCInteraction>();
+                if (npc != null)
+                {
+                    npc.StartInteraction(); // Trigger interaction on the NPC
+                }
+
+            }
+            else if (hit.collider.CompareTag("Spawn1"))
+            {
+                Destroy(hit.collider.gameObject);
+                npcInteraction.Wizard.SetActive(true);
+
+
+            }
+            else if (hit.collider.CompareTag("Spawn2"))
+            {
+                Destroy(hit.collider.gameObject);
+                npcInteraction.Wizard.SetActive(true);
+
+
+            }
+            else if (hit.collider.CompareTag("Spawn3"))
+            {
+                Destroy(hit.collider.gameObject);
+                npcInteraction.Wizard.SetActive(true);
+
+
+            }
+
 
 
         }
@@ -578,30 +627,8 @@ public class FirstPersonControls : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, pickUpRange, layers))
         {
-            Debug.Log(hit.collider.gameObject.name);
-            if (hit.collider.CompareTag("Bookshelf"))
-            {
-                toggle = !toggle;
-                if (toggle == false)
-                {
-                    SetPlayerMovement(true);
-                    ItemDescriptions[0].SetActive(false);
-                }
-
-                if (toggle)
-                {
-                    SetPlayerMovement(false);
-                    ItemDescriptions[0].SetActive(true);
-
-
-                    if (itemPrefab != null)
-                    {
-                      Destroy(itemPrefab.gameObject);
-                    }
-                     itemPrefab = Instantiate(itemPrefab, new Vector3(1000, 1000, 1000), Quaternion.identity);
-                }
-            }
-            else if (hit.collider.CompareTag("Orb"))
+            
+            if (hit.collider.CompareTag("Orb"))
             {
                 toggle = !toggle;
                 if (toggle == false)
@@ -609,7 +636,7 @@ public class FirstPersonControls : MonoBehaviour
                     SetPlayerMovement(true);
                     ExaminePanel.SetActive(false);
                     crosshair.enabled = true;
-                    ItemDescriptions[1].SetActive(false);
+                    ItemDescriptions[0].SetActive(false);
                     Destroy(itemPrefab.gameObject);
                     
                 }
@@ -619,7 +646,7 @@ public class FirstPersonControls : MonoBehaviour
                     SetPlayerMovement(false);
                     ExaminePanel.SetActive(true);
                     crosshair.enabled = false;
-                    ItemDescriptions[1].SetActive(true);
+                    ItemDescriptions[0].SetActive(true);
                     itemPrefab = Instantiate(ItemPrefabs[0], new Vector3(1000, 1000, 1000), Quaternion.identity);
                 }
             }
@@ -642,7 +669,7 @@ public class FirstPersonControls : MonoBehaviour
                     ExaminePanel.SetActive(true);
                     crosshair.enabled = false;
                     ItemDescriptions[1].SetActive(true);
-                    itemPrefab = Instantiate(ItemPrefabs[3], new Vector3(1000, 1000, 1000), Quaternion.identity);
+                    itemPrefab = Instantiate(ItemPrefabs[1], new Vector3(1000, 1000, 1000), Quaternion.identity);
                 }
             }
             else if (hit.collider.CompareTag("Wand"))
@@ -663,8 +690,8 @@ public class FirstPersonControls : MonoBehaviour
                     SetPlayerMovement(false);
                     ExaminePanel2.SetActive(true);
                     crosshair.enabled = false;
-                    ItemDescriptions[1].SetActive(true);
-                    itemPrefab = Instantiate(ItemPrefabs[2], new Vector3(1000, 1000, 1000), Quaternion.identity);
+                    ItemDescriptions[2].SetActive(true);
+                    itemPrefab = Instantiate(ItemPrefabs[2], new Vector3(1000.035f, 1000f, 1000f), Quaternion.identity);
                 }
             }
             else if (hit.collider.CompareTag("BronzeKey"))
@@ -675,7 +702,7 @@ public class FirstPersonControls : MonoBehaviour
                     SetPlayerMovement(true);
                     ExaminePanel2.SetActive(false);
                     crosshair.enabled = true;
-                    ItemDescriptions[1].SetActive(false);
+                    ItemDescriptions[3].SetActive(false);
                     Destroy(itemPrefab.gameObject);
 
                 }
@@ -685,24 +712,52 @@ public class FirstPersonControls : MonoBehaviour
                     SetPlayerMovement(false);
                     ExaminePanel2.SetActive(true);
                     crosshair.enabled = false;
-                    ItemDescriptions[1].SetActive(true);
-                    itemPrefab = Instantiate(ItemPrefabs[1], new Vector3(1000, 1000, 1000), Quaternion.identity);
+                    ItemDescriptions[3].SetActive(true);
+                    itemPrefab = Instantiate(ItemPrefabs[3], new Vector3(1000, 1000, 1000), Quaternion.identity);
                 }
             }
-            else if (hit.collider.CompareTag("Door"))
+            else if (hit.collider.CompareTag("SilverKey"))
             {
-
                 toggle = !toggle;
                 if (toggle == false)
                 {
                     SetPlayerMovement(true);
-                    ItemDescriptions[2].SetActive(false);
+                    ExaminePanel2.SetActive(false);
+                    crosshair.enabled = true;
+                    ItemDescriptions[4].SetActive(false);
+                    Destroy(itemPrefab.gameObject);
+
                 }
 
                 if (toggle)
                 {
                     SetPlayerMovement(false);
-                    ItemDescriptions[2].SetActive(true);
+                    ExaminePanel2.SetActive(true);
+                    crosshair.enabled = false;
+                    ItemDescriptions[4].SetActive(true);
+                    itemPrefab = Instantiate(ItemPrefabs[4], new Vector3(1000, 1000, 1000), Quaternion.identity);
+                }
+            }
+            else if (hit.collider.CompareTag("GoldKey"))
+            {
+                toggle = !toggle;
+                if (toggle == false)
+                {
+                    SetPlayerMovement(true);
+                    ExaminePanel2.SetActive(false);
+                    crosshair.enabled = true;
+                    ItemDescriptions[5].SetActive(false);
+                    Destroy(itemPrefab.gameObject);
+
+                }
+
+                if (toggle)
+                {
+                    SetPlayerMovement(false);
+                    ExaminePanel2.SetActive(true);
+                    crosshair.enabled = false;
+                    ItemDescriptions[5].SetActive(true);
+                    itemPrefab = Instantiate(ItemPrefabs[5], new Vector3(1000, 1000, 1000), Quaternion.identity);
                 }
             }
             else if (hit.collider.CompareTag("Lever"))
@@ -711,81 +766,98 @@ public class FirstPersonControls : MonoBehaviour
                 if (toggle == false)
                 {
                     SetPlayerMovement(true);
-                    ItemDescriptions[3].SetActive(false);
-                }
-
-                if (toggle)
-                {
-                    SetPlayerMovement(false);
-                    ItemDescriptions[3].SetActive(true);
-                }
-            }
-            else if (hit.collider.CompareTag("Drawer"))
-            {
-                toggle = !toggle;
-                if (toggle == false)
-                {
-                    SetPlayerMovement(true);
-                    ItemDescriptions[4].SetActive(false);
-                }
-
-                if (toggle)
-                {
-                    SetPlayerMovement(false);
-                    ItemDescriptions[4].SetActive(true);
-                }
-            }
-            else if (hit.collider.CompareTag("Cupboard"))
-            {
-                toggle = !toggle;
-                if (toggle == false)
-                {
-                    SetPlayerMovement(true);
-                    ItemDescriptions[5].SetActive(false);
-                }
-
-                if (toggle)
-                {
-                    SetPlayerMovement(false);
-                    ItemDescriptions[5].SetActive(true);
-                }
-            }
-            else if (hit.collider.CompareTag("LeftDoor"))
-            {
-                toggle = !toggle;
-                if (toggle == false)
-                {
-                    SetPlayerMovement(true);
+                    ExaminePanel.SetActive(false);
+                    crosshair.enabled = true;
                     ItemDescriptions[6].SetActive(false);
+                    Destroy(itemPrefab.gameObject);
+
                 }
 
                 if (toggle)
                 {
                     SetPlayerMovement(false);
+                    ExaminePanel.SetActive(true);
+                    crosshair.enabled = false;
                     ItemDescriptions[6].SetActive(true);
+                    itemPrefab = Instantiate(ItemPrefabs[6], new Vector3(999.708f, 1000f, 1000.493f), Quaternion.identity);
                 }
             }
-            else if (hit.collider.CompareTag("RightDoor"))
+            else if (hit.collider.gameObject.CompareTag("Note"))
             {
                 toggle = !toggle;
                 if (toggle == false)
                 {
                     SetPlayerMovement(true);
+                    ExaminePanel2.SetActive(false);
+                    crosshair.enabled = true;
                     ItemDescriptions[7].SetActive(false);
+                    Destroy(itemPrefab.gameObject);
+
                 }
 
                 if (toggle)
                 {
                     SetPlayerMovement(false);
+                    ExaminePanel2.SetActive(true);
+                    crosshair.enabled = false;
                     ItemDescriptions[7].SetActive(true);
+                    itemPrefab = Instantiate(ItemPrefabs[7], new Vector3(1000, 1000, 1000), Quaternion.identity);
                 }
             }
+            else if (hit.collider.gameObject.CompareTag("Clue"))
+            {
+                toggle = !toggle;
+                if (toggle == false)
+                {
+                    SetPlayerMovement(true);
+                    ExaminePanel2.SetActive(false);
+                    crosshair.enabled = true;
+                    ItemDescriptions[8].SetActive(false);
+                    Destroy(itemPrefab.gameObject);
+
+                }
+
+                if (toggle)
+                {
+                    SetPlayerMovement(false);
+                    ExaminePanel2.SetActive(true);
+                    crosshair.enabled = false;
+                    ItemDescriptions[8].SetActive(true);
+                    itemPrefab = Instantiate(ItemPrefabs[8], new Vector3(1000, 1000, 1000), Quaternion.identity);
+                }
+            }
+            else if (hit.collider.gameObject.CompareTag("Spawn1")|| hit.collider.gameObject.CompareTag("Spawn2") || hit.collider.gameObject.CompareTag("Spawn3"))
+            {
+                toggle = !toggle;
+                if (toggle == false)
+                {
+                    SetPlayerMovement(true);
+                    ExaminePanel2.SetActive(false);
+                    crosshair.enabled = true;
+                    ItemDescriptions[9].SetActive(false);
+                    Destroy(itemPrefab.gameObject);
+
+                }
+
+                if (toggle)
+                {
+                    SetPlayerMovement(false);
+                    ExaminePanel2.SetActive(true);
+                    crosshair.enabled = false;
+                    ItemDescriptions[9].SetActive(true);
+                    itemPrefab = Instantiate(ItemPrefabs[9], new Vector3(1000, 1000, 1000), Quaternion.identity);
+                }
+            }
+
+
+
 
         }
 
     }
 
-    private void SetPlayerMovement(bool isActive)
+
+    public void SetPlayerMovement(bool isActive)
     {
         if (isActive)
         {
@@ -810,6 +882,69 @@ public class FirstPersonControls : MonoBehaviour
 
     }
 
+    IEnumerator Display()
+    {
+        if (IntroUI[0] != null)
+        {
+            yield return new WaitForSeconds(4.0f);
+            IntroUI[0].SetActive(true);
+        }
+        
+       
+
+        if (IntroUI[0] != null)
+        {
+            if (IntroUI[0].activeSelf == true)
+            {
+                yield return new WaitForSeconds(6.0f);
+                ContinueBtns[0].SetActive(true);
+            }
+        }
+
+        if (IntroUI[0] == null)
+        {
+
+            yield return new WaitForSeconds(2.0f);
+            if (IntroUI[1] != null)
+            {
+                IntroUI[1].SetActive(true);
+            }
+            
+        }
+
+
+        if (IntroUI[1] != null)
+        {
+            if (IntroUI[1].activeSelf == true)
+            {
+                yield return new WaitForSeconds(4.0f);
+                ContinueBtns[1].SetActive(true);
+            }
+        }
+        
+        if (IntroUI[1] == null)
+        {
+            yield return new WaitForSeconds(2.0f);
+            if (IntroUI[2] != null)
+            {
+                IntroUI[2].SetActive(true);
+            }
+            
+        }
+
+        if (IntroUI[2] != null)
+        {
+            if (IntroUI[2].activeSelf == true)
+            {
+                yield return new WaitForSeconds(3.0f);
+                ContinueBtns[2].SetActive(true);
+            }
+        }
+       
+
+
+    }
+
     IEnumerator LockDoor()
     {
 
@@ -824,7 +959,6 @@ public class FirstPersonControls : MonoBehaviour
         }
 
     }
-
 
 
 }

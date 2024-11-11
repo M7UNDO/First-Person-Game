@@ -9,6 +9,7 @@ public class ShelfSwitch : MonoBehaviour
     [Space(5)]
     private bool toggle;
     public Animator animator;
+    public AudioSource ShelfSlideSFX;
 
     public void Lever()
     {
@@ -17,6 +18,7 @@ public class ShelfSwitch : MonoBehaviour
         {
             animator.ResetTrigger("LeverOn");
             animator.SetTrigger("LeverOff");
+            ShelfSlideSFX.Play();
             
         }
 
@@ -24,6 +26,7 @@ public class ShelfSwitch : MonoBehaviour
         {
             animator.ResetTrigger("LeverOff");
             animator.SetTrigger("LeverOn");
+            ShelfSlideSFX.Play();
             
         }
     }

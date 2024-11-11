@@ -21,16 +21,20 @@ TagManager:
   - Orb
   - Cupboard
   - Floor
-  - LibraryClue
   - LibraryNote
-  - HellClue
-  - HellNote
-  - HeavenClue
-  - HeavenNote
   - Staff
   - Wand
   - NPC
   - WizardHat
+  - Clue
+  - Note
+  - Wizard
+  - Paper
+  - Spawn1
+  - HellNote
+  - HellClue
+  - Spawn2
+  - Spawn3
   layers:
   - Default
   - TransparentFX

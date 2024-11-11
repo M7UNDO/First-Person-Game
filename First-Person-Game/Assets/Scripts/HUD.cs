@@ -10,17 +10,14 @@ public class HUD : MonoBehaviour
     [Space(5)]
    
     public TextMeshProUGUI LibKeysText;
-  
     public int LibraryKeyCount = 0;
    
 
     public TextMeshProUGUI HellKeysText;
- 
     public int HllKeyCount = 0;
     
 
     public TextMeshProUGUI HeavenKeysText;
-  
     public int HeavenKeyCount = 0;
     void Start()
     {
@@ -36,13 +33,23 @@ public class HUD : MonoBehaviour
     private void HUDDisplay()
     {
         
-        LibKeysText.text = LibraryKeyCount + "/1";
+        LibKeysText.text = "Keys found: " + LibraryKeyCount + "/1";
+        if(LibraryKeyCount >= 1)
+        {
+            LibKeysText.color = Color.green;
+        }
+        
+        HellKeysText.text = "Keys found: " + HllKeyCount + "/1";
+        if (HllKeyCount >= 1)
+        {
+            HellKeysText.color = Color.green;
+        }
 
-        
-        HellKeysText.text = HllKeyCount + "/1";
-        
-        
-        HeavenKeysText.text = HeavenKeyCount + "/1";
+        HeavenKeysText.text = "Keys found: " + HeavenKeyCount + "/1";
+        if (HeavenKeyCount >= 1)
+        {
+            HeavenKeysText.color = Color.green;
+        }
 
     }
 }

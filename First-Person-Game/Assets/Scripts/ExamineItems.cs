@@ -10,6 +10,7 @@ using UnityEngine.InputSystem;
 public class ExamineItems : MonoBehaviour, IDragHandler
 {
     [SerializeField] FirstPersonControls firstPersonControls;
+
     
 
     void Start()
