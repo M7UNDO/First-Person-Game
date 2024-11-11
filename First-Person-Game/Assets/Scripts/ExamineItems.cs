@@ -4,8 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEditor;
 using UnityEngine.EventSystems;
-using static UnityEditor.Progress;
-using UnityEngine.InputSystem;
+
 
 public class ExamineItems : MonoBehaviour, IDragHandler
 {

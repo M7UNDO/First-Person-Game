@@ -93,6 +93,7 @@ public class FirstPersonControls : MonoBehaviour
     [Space(5)]
     public NPCInteraction npcInteraction;
     public GameObject [] Wizard;
+    public AudioSource WizardSpawnSfx;
     
 
     private void Awake()
@@ -234,13 +235,17 @@ public class FirstPersonControls : MonoBehaviour
             {
                 crosshair.color = Color.red;
             }
+            else if (hit.collider.CompareTag("WizardHat"))
+            {
+                crosshair.color = Color.red;
+            }
             else if (hit.collider.CompareTag("Wizard1")|| hit.collider.CompareTag("Wizard2")|| hit.collider.CompareTag("Wizard3")|| hit.collider.CompareTag("Wizard1"))
             {
                 crosshair.color = Color.yellow;
             }
             else if (hit.collider.gameObject.CompareTag("Spawn1") || hit.collider.gameObject.CompareTag("Spawn2") || hit.collider.gameObject.CompareTag("Spawn3") || hit.collider.gameObject.CompareTag("Spawn4"))
             {
-                crosshair.color = Color.yellow;
+                crosshair.color = Color.red;
             }
             else if (hit.collider.gameObject.GetComponent<NoteScript>() || hit.collider.gameObject.CompareTag("Note") || hit.collider.gameObject.CompareTag("Clue")|| hit.collider.gameObject.CompareTag("Paper"))
             {
@@ -596,6 +601,7 @@ public class FirstPersonControls : MonoBehaviour
             else if (hit.collider.CompareTag("Spawn1"))
             {
                 Destroy(hit.collider.gameObject);
+                WizardSpawnSfx.Play();
                 Wizard[0].SetActive(true);
 
 
@@ -603,6 +609,7 @@ public class FirstPersonControls : MonoBehaviour
             else if (hit.collider.CompareTag("Spawn2"))
             {
                 Destroy(hit.collider.gameObject);
+                WizardSpawnSfx.Play();
                 Wizard[1].SetActive(true);
 
 
@@ -610,6 +617,7 @@ public class FirstPersonControls : MonoBehaviour
             else if (hit.collider.CompareTag("Spawn3"))
             {
                 Destroy(hit.collider.gameObject);
+                WizardSpawnSfx.Play();
                 Wizard[2].SetActive(true);
 
 
@@ -617,6 +625,7 @@ public class FirstPersonControls : MonoBehaviour
             else if (hit.collider.CompareTag("Spawn4"))
             {
                 Destroy(hit.collider.gameObject);
+                WizardSpawnSfx.Play();
                 Wizard[3].SetActive(true);
 
 
