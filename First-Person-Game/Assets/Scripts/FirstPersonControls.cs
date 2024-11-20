@@ -83,9 +83,12 @@ public class FirstPersonControls : MonoBehaviour
     public Transform[] ItemPrefabs;
     public GameObject ExaminePanel;
     public GameObject ExaminePanel2;
+    public GameObject ExaminePanel3;
     private Door doorScript;
     public GameObject[] ItemDescriptions;
     private bool toggle;
+    [SerializeField] Light examineLight;
+    [SerializeField] Camera ExamineCamera2;
 
     public AudioSource KeySfx;
 
@@ -101,9 +104,9 @@ public class FirstPersonControls : MonoBehaviour
         //Get and store the CharacterController component attached to this GameObject
         characterController = GetComponent<CharacterController>();
 
-        IntroUI[3].SetActive(true);
-        SetPlayerMovement(false);
-        StartCoroutine(Display());
+        //IntroUI[3].SetActive(true);
+        //SetPlayerMovement(false);
+        //StartCoroutine(Display());
         ExitBtn.SetActive(false);
      
 
@@ -654,6 +657,8 @@ public class FirstPersonControls : MonoBehaviour
                 if (toggle == false)
                 {
                     SetPlayerMovement(true);
+                    examineLight.enabled = false;
+                    examineLight.intensity = 0f;
                     ExaminePanel.SetActive(false);
                     crosshair.enabled = true;
                     ItemDescriptions[0].SetActive(false);
@@ -664,6 +669,8 @@ public class FirstPersonControls : MonoBehaviour
                 if (toggle)
                 {
                     SetPlayerMovement(false);
+                    examineLight.enabled = true ;
+                    examineLight.intensity = 0.25f;
                     ExaminePanel.SetActive(true);
                     crosshair.enabled = false;
                     ItemDescriptions[0].SetActive(true);
@@ -676,6 +683,8 @@ public class FirstPersonControls : MonoBehaviour
                 if (toggle == false)
                 {
                     SetPlayerMovement(true);
+                    examineLight.enabled = false;
+                    examineLight.intensity = 0f;
                     ExaminePanel.SetActive(false);
                     crosshair.enabled = true;
                     ItemDescriptions[1].SetActive(false);
@@ -686,6 +695,8 @@ public class FirstPersonControls : MonoBehaviour
                 if (toggle)
                 {
                     SetPlayerMovement(false);
+                    examineLight.enabled = true;
+                    examineLight.intensity = 1.1f;
                     ExaminePanel.SetActive(true);
                     crosshair.enabled = false;
                     ItemDescriptions[1].SetActive(true);
@@ -698,6 +709,8 @@ public class FirstPersonControls : MonoBehaviour
                 if (toggle == false)
                 {
                     SetPlayerMovement(true);
+                    examineLight.enabled = false;
+                    examineLight.intensity = 0f;
                     ExaminePanel2.SetActive(false);
                     crosshair.enabled = true;
                     ItemDescriptions[2].SetActive(false);
@@ -708,6 +721,8 @@ public class FirstPersonControls : MonoBehaviour
                 if (toggle)
                 {
                     SetPlayerMovement(false);
+                    examineLight.enabled = true;
+                    examineLight.intensity = 0.5f; ;
                     ExaminePanel2.SetActive(true);
                     crosshair.enabled = false;
                     ItemDescriptions[2].SetActive(true);
@@ -720,7 +735,9 @@ public class FirstPersonControls : MonoBehaviour
                 if (toggle == false)
                 {
                     SetPlayerMovement(true);
-                    ExaminePanel2.SetActive(false);
+                    examineLight.enabled = false;
+                    examineLight.intensity = 0f;
+                    ExaminePanel3.SetActive(false);
                     crosshair.enabled = true;
                     ItemDescriptions[3].SetActive(false);
                     Destroy(itemPrefab.gameObject);
@@ -730,7 +747,9 @@ public class FirstPersonControls : MonoBehaviour
                 if (toggle)
                 {
                     SetPlayerMovement(false);
-                    ExaminePanel2.SetActive(true);
+                    examineLight.enabled = true;
+                    examineLight.intensity = 5.5f;
+                    ExaminePanel3.SetActive(true);
                     crosshair.enabled = false;
                     ItemDescriptions[3].SetActive(true);
                     itemPrefab = Instantiate(ItemPrefabs[3], new Vector3(1000, 1000, 1000), Quaternion.identity);
@@ -742,7 +761,9 @@ public class FirstPersonControls : MonoBehaviour
                 if (toggle == false)
                 {
                     SetPlayerMovement(true);
-                    ExaminePanel2.SetActive(false);
+                    examineLight.enabled = false;
+                    examineLight.intensity = 0f;
+                    ExaminePanel3.SetActive(false);
                     crosshair.enabled = true;
                     ItemDescriptions[4].SetActive(false);
                     Destroy(itemPrefab.gameObject);
@@ -752,7 +773,9 @@ public class FirstPersonControls : MonoBehaviour
                 if (toggle)
                 {
                     SetPlayerMovement(false);
-                    ExaminePanel2.SetActive(true);
+                    examineLight.enabled = true;
+                    examineLight.intensity = 5f;
+                    ExaminePanel3.SetActive(true);
                     crosshair.enabled = false;
                     ItemDescriptions[4].SetActive(true);
                     itemPrefab = Instantiate(ItemPrefabs[4], new Vector3(1000, 1000, 1000), Quaternion.identity);
@@ -764,7 +787,9 @@ public class FirstPersonControls : MonoBehaviour
                 if (toggle == false)
                 {
                     SetPlayerMovement(true);
-                    ExaminePanel2.SetActive(false);
+                    examineLight.enabled = false;
+                    examineLight.intensity = 0f;
+                    ExaminePanel3.SetActive(false);
                     crosshair.enabled = true;
                     ItemDescriptions[5].SetActive(false);
                     Destroy(itemPrefab.gameObject);
@@ -774,7 +799,9 @@ public class FirstPersonControls : MonoBehaviour
                 if (toggle)
                 {
                     SetPlayerMovement(false);
-                    ExaminePanel2.SetActive(true);
+                    examineLight.enabled = true;
+                    examineLight.intensity = 15f;
+                    ExaminePanel3.SetActive(true);
                     crosshair.enabled = false;
                     ItemDescriptions[5].SetActive(true);
                     itemPrefab = Instantiate(ItemPrefabs[5], new Vector3(1000, 1000, 1000), Quaternion.identity);
@@ -786,6 +813,8 @@ public class FirstPersonControls : MonoBehaviour
                 if (toggle == false)
                 {
                     SetPlayerMovement(true);
+                    examineLight.enabled = false;
+                    examineLight.intensity = 0f;
                     ExaminePanel.SetActive(false);
                     crosshair.enabled = true;
                     ItemDescriptions[6].SetActive(false);
@@ -796,6 +825,8 @@ public class FirstPersonControls : MonoBehaviour
                 if (toggle)
                 {
                     SetPlayerMovement(false);
+                    examineLight.enabled = true;
+                    examineLight.intensity = 1f;
                     ExaminePanel.SetActive(true);
                     crosshair.enabled = false;
                     ItemDescriptions[6].SetActive(true);
@@ -808,6 +839,8 @@ public class FirstPersonControls : MonoBehaviour
                 if (toggle == false)
                 {
                     SetPlayerMovement(true);
+                    examineLight.enabled = false;
+                    examineLight.intensity = 0f;
                     ExaminePanel2.SetActive(false);
                     crosshair.enabled = true;
                     ItemDescriptions[7].SetActive(false);
@@ -818,6 +851,8 @@ public class FirstPersonControls : MonoBehaviour
                 if (toggle)
                 {
                     SetPlayerMovement(false);
+                    examineLight.enabled = true;
+                    examineLight.intensity = 0.5f;
                     ExaminePanel2.SetActive(true);
                     crosshair.enabled = false;
                     ItemDescriptions[7].SetActive(true);
@@ -830,6 +865,8 @@ public class FirstPersonControls : MonoBehaviour
                 if (toggle == false)
                 {
                     SetPlayerMovement(true);
+                    examineLight.enabled = false;
+                    examineLight.intensity = 0f;
                     ExaminePanel2.SetActive(false);
                     crosshair.enabled = true;
                     ItemDescriptions[8].SetActive(false);
@@ -840,6 +877,8 @@ public class FirstPersonControls : MonoBehaviour
                 if (toggle)
                 {
                     SetPlayerMovement(false);
+                    examineLight.enabled = true;
+                    examineLight.intensity = 0.5f;
                     ExaminePanel2.SetActive(true);
                     crosshair.enabled = false;
                     ItemDescriptions[8].SetActive(true);
@@ -852,6 +891,9 @@ public class FirstPersonControls : MonoBehaviour
                 if (toggle == false)
                 {
                     SetPlayerMovement(true);
+                    ExamineCamera2.fieldOfView = 60f;
+                    examineLight.enabled = false;
+                    examineLight.intensity = 0f;
                     ExaminePanel2.SetActive(false);
                     crosshair.enabled = true;
                     ItemDescriptions[9].SetActive(false);
@@ -862,6 +904,9 @@ public class FirstPersonControls : MonoBehaviour
                 if (toggle)
                 {
                     SetPlayerMovement(false);
+                    ExamineCamera2.fieldOfView = 41f;
+                    examineLight.enabled = true;
+                    examineLight.intensity = 0.01f;
                     ExaminePanel2.SetActive(true);
                     crosshair.enabled = false;
                     ItemDescriptions[9].SetActive(true);

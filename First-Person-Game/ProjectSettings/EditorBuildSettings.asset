@@ -12,18 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Level Scene.unity
     guid: b5d02325c5c71344f9a8bca74f99cb5c
   - enabled: 1
-    path: Assets/Scenes/Play Menu.unity
-    guid: a70e2af75eb73bb45a3d5266e803d885
-  - enabled: 0
-    path: Assets/Scenes/l.unity
-    guid: db58e152c2727364b9f0cad1c486186f
-  - enabled: 0
-    path: Assets/Scenes/FP Controller.unity
-    guid: 9344a17115216824ba5fbbbedc307f24
-  - enabled: 0
-    path: Assets/Scenes/TestingScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 0
-    path: Assets/Scenes/MainMenu2.unity
-    guid: c971fdac91c10544b993fc31da5d84df
+    path: Assets/Scenes/PlayMenu.unity
+    guid: 654083399198a2443b3d2ff91fad6dc6
   m_configObjects: {}

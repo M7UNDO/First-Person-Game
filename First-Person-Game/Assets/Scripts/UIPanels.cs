@@ -12,6 +12,7 @@ public class UIPanels : MonoBehaviour
     private bool controlstoggle;
     [SerializeField] GameObject pausePanel;
     [SerializeField] GameObject controlPanel;
+    [SerializeField] GameObject volumePanel;
     [SerializeField] FirstPersonControls firstPersonControls;
     public Canvas ObjectiveCanvas;
     private Controls playerInput;
@@ -65,7 +66,7 @@ public class UIPanels : MonoBehaviour
 
     public void LoadMenu()
     {
-        SceneManager.LoadScene("Play Menu");
+        SceneManager.LoadScene("PlayMenu");
     }
     public void PauseGame()
     {
@@ -110,6 +111,25 @@ public class UIPanels : MonoBehaviour
         {
             
             controlPanel.SetActive(true);
+        }
+
+    }
+
+    public void VolumePanel()
+    {
+        controlstoggle = !controlstoggle;
+
+        if (controlstoggle == false)
+        {
+            volumePanel.SetActive(false);
+
+
+        }
+
+        if (controlstoggle)
+        {
+
+            volumePanel.SetActive(true);
         }
 
     }
