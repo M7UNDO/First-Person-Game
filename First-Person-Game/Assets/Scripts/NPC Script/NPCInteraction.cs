@@ -6,6 +6,7 @@ using TMPro;
 public class NPCInteraction : MonoBehaviour
 {
     public Animator npcAnimator;              // Animator for NPC animations
+    public AudioSource npcVanish;             // The woosh sound after the NPC dissapears;
     public GameObject npcObject;              // Reference to the NPC GameObject (can be set in Inspector)
     public GameObject dialoguePanel;          // UI panel for dialogue display
     public TextMeshProUGUI dialogueText;      // Text component to show dialogue text
@@ -87,6 +88,7 @@ public class NPCInteraction : MonoBehaviour
         if (npcObject != null)
         {
             npcObject.SetActive(false);      // Deactivate NPC GameObject if it exists
+            npcVanish.Play();
         }
         isInteracting = false;                // Reset interaction state
     }

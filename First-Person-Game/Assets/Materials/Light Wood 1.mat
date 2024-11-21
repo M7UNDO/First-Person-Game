@@ -31,7 +31,7 @@ Material:
     - _GlossyReflections: 1
     - _Metallic: 0.288
     - _Parallax: 0.02
-    - _Smoothness: 0.677
+    - _Smoothness: 0.362
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}

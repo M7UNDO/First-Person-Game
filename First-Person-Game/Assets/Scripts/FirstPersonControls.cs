@@ -29,6 +29,8 @@ public class FirstPersonControls : MonoBehaviour
     private Vector3 velocity; // Velocity of the player
     private CharacterController characterController; // Reference to the CharacterController component
     public Controls playerInput;
+    public AudioSource grabStaff;
+    
 
     public Animator IF_Anim; // Character anime controller
 
@@ -42,7 +44,7 @@ public class FirstPersonControls : MonoBehaviour
     public GameObject[] EndingUI;
     public GameObject ExitBtn;
     
-    private ExamineItems examineItems;
+ 
     public GameObject[] IntroUI;
     public GameObject[] ContinueBtns;
     
@@ -84,7 +86,6 @@ public class FirstPersonControls : MonoBehaviour
     public GameObject ExaminePanel;
     public GameObject ExaminePanel2;
     public GameObject ExaminePanel3;
-    private Door doorScript;
     public GameObject[] ItemDescriptions;
     private bool toggle;
     [SerializeField] Light examineLight;
@@ -104,19 +105,15 @@ public class FirstPersonControls : MonoBehaviour
         //Get and store the CharacterController component attached to this GameObject
         characterController = GetComponent<CharacterController>();
 
-        //IntroUI[3].SetActive(true);
-        //SetPlayerMovement(false);
-        //StartCoroutine(Display());
+        IntroUI[3].SetActive(true);
+        SetPlayerMovement(false);
+        StartCoroutine(Display());
         ExitBtn.SetActive(false);
      
 
     }
 
-    private void Start()
-    {
-
-        
-    }
+   
 
     private void OnEnable()
     {
@@ -208,12 +205,16 @@ public class FirstPersonControls : MonoBehaviour
         if (Physics.Raycast(ray, out hit, pickUpRange))
         {
             // Check if the object has the "PickUp" tag
-            if (hit.collider.CompareTag("PickUp") || hit.collider.CompareTag("Lever") || hit.collider.CompareTag("Door"))
+            if (hit.collider.CompareTag("PickUp") || hit.collider.CompareTag("Door"))
             {
                 crosshair.color = Color.white;
 
             }
             else if (hit.collider.CompareTag("Orb")|| hit.collider.CompareTag("Wand"))
+            {
+                crosshair.color = Color.white;
+            }
+            else if (hit.collider.CompareTag("Lever"))
             {
                 crosshair.color = Color.white;
             }
@@ -240,15 +241,15 @@ public class FirstPersonControls : MonoBehaviour
             }
             else if (hit.collider.CompareTag("WizardHat"))
             {
-                crosshair.color = Color.red;
+                crosshair.color = Color.white;
             }
-            else if (hit.collider.CompareTag("Wizard1")|| hit.collider.CompareTag("Wizard2")|| hit.collider.CompareTag("Wizard3")|| hit.collider.CompareTag("Wizard1"))
+            else if (hit.collider.CompareTag("Wizard1")|| hit.collider.CompareTag("Wizard2")|| hit.collider.CompareTag("Wizard3")|| hit.collider.CompareTag("Wizard4"))
             {
-                crosshair.color = Color.yellow;
+                crosshair.color = new Color(255f / 255f, 230f / 255f, 130f / 255f, 1f);
             }
             else if (hit.collider.gameObject.CompareTag("Spawn1") || hit.collider.gameObject.CompareTag("Spawn2") || hit.collider.gameObject.CompareTag("Spawn3") || hit.collider.gameObject.CompareTag("Spawn4"))
             {
-                crosshair.color = Color.red;
+                crosshair.color = new Color(255f / 255f, 230f / 255f, 130f / 255f, 1f);
             }
             else if (hit.collider.gameObject.GetComponent<NoteScript>() || hit.collider.gameObject.CompareTag("Note") || hit.collider.gameObject.CompareTag("Clue")|| hit.collider.gameObject.CompareTag("Paper"))
             {
@@ -281,11 +282,13 @@ public class FirstPersonControls : MonoBehaviour
         // Transform direction from local to world space
         move = transform.TransformDirection(move);
 
+
         // Determine the appropriate speed
         float currentSpeed = isCrouching ? crouchSpeed : moveSpeed;
 
         // Move the character controller based on the movement vector and speed
         characterController.Move(move * currentSpeed * Time.deltaTime);
+        
 
         // Calculate the player's speed and update the animation
         float actualSpeed = characterController.velocity.magnitude;
@@ -294,10 +297,12 @@ public class FirstPersonControls : MonoBehaviour
         if (actualSpeed > 0)
         {
             IF_Anim.SetInteger("animState", 1);
+           
         }
         else
         {
             IF_Anim.SetInteger("animState", 0);
+          
         }
     }
 
@@ -471,6 +476,8 @@ public class FirstPersonControls : MonoBehaviour
 
     public void Interaction()
     {
+
+        
         Ray ray = new Ray(playerCamera.position, playerCamera.forward);
         RaycastHit hit;
 
@@ -526,9 +533,12 @@ public class FirstPersonControls : MonoBehaviour
             }
             else if (hit.collider.CompareTag("Staff"))
             {
+
+                grabStaff.Play();
                 StartCoroutine(DisplayButton());
                 foreach (GameObject end in EndingUI)
                 {
+                    
                     end.SetActive(true);
                 }
                 SetPlayerMovement(false);
@@ -942,7 +952,7 @@ public class FirstPersonControls : MonoBehaviour
     IEnumerator DisplayButton()
     {
 
-        yield return new WaitForSeconds(5.0f);
+        yield return new WaitForSeconds(3.0f);
         ExitBtn.SetActive(true);
 
     }
@@ -951,7 +961,7 @@ public class FirstPersonControls : MonoBehaviour
     {
         if (IntroUI[0] != null)
         {
-            yield return new WaitForSeconds(4.0f);
+            yield return new WaitForSeconds(2f);
             IntroUI[0].SetActive(true);
         }
         
@@ -961,7 +971,7 @@ public class FirstPersonControls : MonoBehaviour
         {
             if (IntroUI[0].activeSelf == true)
             {
-                yield return new WaitForSeconds(6.0f);
+                yield return new WaitForSeconds(3.0f);
                 ContinueBtns[0].SetActive(true);
             }
         }
