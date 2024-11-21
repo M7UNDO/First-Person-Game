@@ -8,6 +8,7 @@ using System.Runtime.CompilerServices;
 
 public class UIPanels : MonoBehaviour
 {
+    public GameObject Title;
     private bool toggle;
     private bool controlstoggle;
     [SerializeField] GameObject pausePanel;
@@ -115,12 +116,33 @@ public class UIPanels : MonoBehaviour
 
     }
 
+    public void ControlPanelMenu()
+    {
+        controlstoggle = !controlstoggle;
+
+        if (controlstoggle == false)
+        {
+            Title.SetActive(true);
+            controlPanel.SetActive(false);
+
+
+        }
+
+        if (controlstoggle)
+        {
+            Title.SetActive(false);
+            controlPanel.SetActive(true);
+        }
+
+    }
+
     public void VolumePanel()
     {
         controlstoggle = !controlstoggle;
 
         if (controlstoggle == false)
         {
+            Title.SetActive(true);
             volumePanel.SetActive(false);
 
 
@@ -128,7 +150,7 @@ public class UIPanels : MonoBehaviour
 
         if (controlstoggle)
         {
-
+            Title.SetActive(false);
             volumePanel.SetActive(true);
         }
 

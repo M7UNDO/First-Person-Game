@@ -3282,6 +3282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a761b930a8a01f44681c5c04c102298a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Title: {fileID: 0}
   pausePanel: {fileID: 0}
   controlPanel: {fileID: 0}
   volumePanel: {fileID: 0}
@@ -5519,6 +5520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a761b930a8a01f44681c5c04c102298a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Title: {fileID: 849014427}
   pausePanel: {fileID: 0}
   controlPanel: {fileID: 0}
   volumePanel: {fileID: 1651351084}
@@ -7859,7 +7861,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
